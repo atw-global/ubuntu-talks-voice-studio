@@ -157,55 +157,126 @@ async def pronunciation_fix(cue_number: int):
 
 @router.post("/lesson1-english-guidance-demo")
 async def lesson1_english_guidance_demo():
-    """Isolated sample: Leah speaks English only; original isiZulu cues 3-10
-    remain unchanged. Does not overwrite the approved lesson recordings.
+    """Generate Leah's English intro/outro, then join with the ALREADY
+    RECORDED source-exact isiZulu cues 3-10. The previous Azure request
+    placed 10 voices in one SSML document and Azure rejected it (HTTP 400).
+    Each Azure request here has only one voice. No approved lesson clip is
+    overwritten; join happens in temporary storage.
     """
-    import pathlib
+    import asyncio
     import json
+    import pathlib
+    import subprocess
+    import tempfile
     from xml.sax.saxutils import escape as esc
+
+    from sqlalchemy import select
+    from app.api.endpoints.lesson1_recording import engine, recordings, _hash
+
     manifest_path = pathlib.Path(__file__).resolve().parents[2] / "data" / "lesson01_approved_139.json"
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-    cues = manifest["spoken_cues"]
-    # The English guide intentionally uses no target-language words.
+    cues = manifest["spoken_cues"][2:10]
+    expected = ["ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B",
+                "ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B"]
+    if len(cues) != 8 or any(c["speaker"] != role or c["order"] != n
+                             for n, (c, role) in enumerate(zip(cues, expected), 3)):
+        raise HTTPException(status_code=500, detail="Approved Lesson 1 dialogue source mismatch")
+
+    # Check database first. Do not make billable Azure calls if needed clips are missing.
+    with engine.connect() as conn:
+        rows = conn.execute(
+            select(recordings.c.clip_id, recordings.c.source_sha256, recordings.c.mp3)
+            .where(recordings.c.clip_id.in_([c["clip_id"] for c in cues]))
+        ).all()
+    saved = {row[0]: row for row in rows}
+    missing = [c["order"] for c in cues if c["clip_id"] not in saved
+               or saved[c["clip_id"]][1] != _hash(c)]
+    if missing:
+        raise HTTPException(status_code=409,
+                            detail=f"Original dialogue clips not yet available: {missing}")
+
     intro = ("Welcome to Lesson One: Sounds, Greetings and Respect. "
              "Today, you will practise greeting one person, greeting a group, "
              "and answering politely. First, listen to our two speakers. "
              "Notice how their expressions change with the situation.")
     outro = ("Now you have heard the conversation. "
              "Next, we will break it down and practise each expression together.")
-    segments = [
-        '<voice name="en-ZA-LeahNeural">' + esc(intro) + '</voice>',
-        '<break time="700ms"/>',
-    ]
-    expected = ["ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B",
-                "ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B"]
-    for c, role in zip(cues[2:10], expected):
-        if c["speaker"] != role or c["order"] not in range(3, 11):
-            raise HTTPException(status_code=500, detail="Lesson source mismatch")
-        segments.append('<voice name="' + c["azure_voice"] + '">' +
-                        esc(c["text_to_speak"]) + '</voice><break time="350ms"/>')
-    segments += ['<break time="500ms"/>',
-                 '<voice name="en-ZA-LeahNeural">' + esc(outro) + '</voice>']
-    ssml = ('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" '
-            'xml:lang="en-ZA">' + "".join(segments) + '</speak>')
     key, region = _credentials()
-    try:
-        async with httpx.AsyncClient(timeout=65) as client:
-            response = await client.post(
-                f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1",
-                content=ssml.encode("utf-8"),
-                headers={
-                    "Ocp-Apim-Subscription-Key": key,
-                    "Content-Type": "application/ssml+xml",
-                    "X-Microsoft-OutputFormat": "audio-24khz-96kbitrate-mono-mp3",
-                    "User-Agent": "UbuntuTalksEnglishGuidanceQA/1.0",
-                },
-            )
+    uri = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
+    headers = {
+        "Ocp-Apim-Subscription-Key": key,
+        "Content-Type": "application/ssml+xml",
+        "X-Microsoft-OutputFormat": "audio-24khz-96kbitrate-mono-mp3",
+        "User-Agent": "UbuntuTalksEnglishGuidanceQA/2.0",
+    }
+
+    async def synth_leah(client, english_text):
+        ssml = ('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" '
+                'xml:lang="en-ZA"><voice name="en-ZA-LeahNeural">' +
+                esc(english_text) + '</voice></speak>')
+        response = await client.post(uri, content=ssml.encode("utf-8"), headers=headers)
         if response.status_code != 200 or not response.content:
-            raise HTTPException(status_code=502,
-                                detail=f"Azure returned HTTP {response.status_code}")
-        return Response(content=response.content, media_type="audio/mpeg",
-                        headers={"Content-Disposition": 'inline; filename="lesson1-english-only-instructor-demo.mp3"',
-                                 "Cache-Control": "private, no-store"})
+            raise HTTPException(
+                status_code=502,
+                detail=f"Azure narrator-only synthesis returned HTTP {response.status_code}")
+        return bytes(response.content)
+
+    try:
+        async with httpx.AsyncClient(timeout=50) as client:
+            english_intro = await synth_leah(client, intro)
+            await asyncio.sleep(3)
+            english_outro = await synth_leah(client, outro)
     except httpx.HTTPError as exc:
-        raise HTTPException(status_code=502, detail="Azure demo synthesis unavailable") from exc
+        raise HTTPException(status_code=502, detail="Azure narrator synthesis unavailable") from exc
+
+    def assemble():
+        # Each saved clip is a standalone MP3 with the same output format.
+        # Audio is temp-only; approved recordings in PostgreSQL stay immutable.
+        with tempfile.TemporaryDirectory(prefix="ubuntu_voice_demo_") as folder:
+            folder = pathlib.Path(folder)
+            audio_parts = [english_intro] + [bytes(saved[c["clip_id"]][2]) for c in cues] + [english_outro]
+            paths = []
+            for i, blob in enumerate(audio_parts):
+                path = folder / f"part_{i:02d}.mp3"
+                path.write_bytes(blob)
+                paths.append(path)
+            pause = folder / "pause.mp3"
+            # Brief gap at voice boundaries, preserving each original recording.
+            make_pause = subprocess.run(
+                ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
+                 "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
+                 "-t", "0.45", "-c:a", "libmp3lame", "-b:a", "96k",
+                 "-y", str(pause)],
+                capture_output=True, timeout=20, check=False)
+            if make_pause.returncode != 0:
+                raise RuntimeError("Unable to generate short audio pause")
+            # Build an ordered concat manifest, injecting a short gap between
+            # finished utterances but never a change within an utterance.
+            playlist = folder / "pieces.txt"
+            lines = []
+            for i, path in enumerate(paths):
+                lines.append(f"file '{path.name}'")
+                if i < len(paths) - 1:
+                    lines.append("file 'pause.mp3'")
+            playlist.write_text("\\n".join(lines) + "\\n", encoding="utf-8")
+            output = folder / "lesson1-sample.mp3"
+            result = subprocess.run(
+                ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
+                 "-f", "concat", "-safe", "1", "-i", str(playlist),
+                 "-c", "copy", "-y", str(output)],
+                capture_output=True, timeout=30, check=False)
+            if result.returncode != 0 or not output.is_file():
+                raise RuntimeError("Unable to assemble the audio demo")
+            return output.read_bytes()
+
+    try:
+        mp3 = await asyncio.to_thread(assemble)
+    except (RuntimeError, subprocess.TimeoutExpired) as exc:
+        raise HTTPException(status_code=500, detail="Audio assembly failed") from exc
+    if len(mp3) < 2000:
+        raise HTTPException(status_code=500, detail="The assembled sample was unexpectedly short")
+    return Response(
+        content=mp3, media_type="audio/mpeg",
+        headers={"Content-Disposition": 'inline; filename="lesson1-english-guidance-demo.mp3"',
+                 "Cache-Control": "private, no-store"},
+    )
