@@ -3,7 +3,7 @@ let items=[],active=-1;const el=x=>document.getElementById(x),player=el('player'
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 async function studioFetch(url,options={},statusTarget=null){
   let lastError;
-  for(let attempt=0;attempt<8;attempt++){
+  for(let attempt=0;attempt<36;attempt++){
     try{
       const response=await fetch(url,{cache:'no-store',...options});
       if(response.ok)return response;
@@ -11,8 +11,8 @@ async function studioFetch(url,options={},statusTarget=null){
       // can return a transient 502 before the API container is ready.
       if([502,503,504].includes(response.status)){
         lastError=new Error('Studio API temporarily unavailable (HTTP '+response.status+')');
-        if(statusTarget)statusTarget.textContent='Connecting to recording server — retry '+(attempt+1)+'/8…';
-        await pause(3500+attempt*500);
+        if(statusTarget)statusTarget.textContent='Connecting to recording server — retry '+(attempt+1)+'/36…';
+        await pause(5000);
         continue;
       }
       let detail='';
@@ -21,11 +21,11 @@ async function studioFetch(url,options={},statusTarget=null){
     }catch(err){
       lastError=err;
       if(err.message.startsWith('HTTP '))throw err;
-      if(statusTarget)statusTarget.textContent='Reconnecting to recording server — attempt '+(attempt+1)+'/8…';
-      await pause(3500+attempt*500);
+      if(statusTarget)statusTarget.textContent='Reconnecting to recording server — attempt '+(attempt+1)+'/36…';
+      await pause(5000);
     }
   }
-  throw lastError||new Error('Recording server unavailable after automatic retries');
+  throw lastError||new Error('Recording server unavailable after extended cold-start retries');
 }
 async function reload(){try{const response=await studioFetch('/api/ubuntu/azure/lesson1/playlist',{},el('status'));if(!response.ok)throw Error('API status '+response.status);const data=await response.json();items=data.cues;el('status').textContent=data.recorded+' / '+data.total+' source-locked cues recorded'+(data.recorded!==data.total?' — playback will stop at missing audio':' — full sequence available');el('play').disabled=!items.some(x=>x.available);render();}catch(e){el('status').textContent='Cannot load recordings: '+e.message}}
 function render(){const q=el('queue');q.replaceChildren();for(const [i,c] of items.entries()){const li=document.createElement('li');li.className=(i===active?'current ':'')+(c.available?'':'unavailable');li.textContent=c.order+'. '+c.speaker+' — '+c.text+(c.available?'':' [not recorded]');if(c.available)li.onclick=()=>select(i,true);q.appendChild(li)}el('previous').disabled=active<=0;el('next').disabled=active<0||active+1>=items.length||!items[active+1]?.available;}
