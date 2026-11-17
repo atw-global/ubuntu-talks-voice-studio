@@ -258,7 +258,7 @@ async def lesson1_english_guidance_demo():
                 lines.append(f"file '{path.name}'")
                 if i < len(paths) - 1:
                     lines.append("file 'pause.mp3'")
-            playlist.write_text("\\n".join(lines) + "\\n", encoding="utf-8")
+            playlist.write_text(chr(10).join(lines) + chr(10), encoding="utf-8")
             output = folder / "lesson1-sample.mp3"
             result = subprocess.run(
                 ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
