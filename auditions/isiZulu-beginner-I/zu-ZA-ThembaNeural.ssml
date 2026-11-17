@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zu-ZA">
+  <!-- ZB1-02-0011; source-exact; teaching -->
+  <voice name="zu-ZA-ThembaNeural">
+    <prosody rate="-12%">Ubuyaphi?</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0012; source-exact; natural -->
+  <voice name="zu-ZA-ThembaNeural">
+    <prosody rate="+0%">Ubuyaphi?</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0019; source-exact; teaching -->
+  <voice name="zu-ZA-ThembaNeural">
+    <prosody rate="-12%">Igama lami nginguSanele.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0020; source-exact; natural -->
+  <voice name="zu-ZA-ThembaNeural">
+    <prosody rate="+0%">Igama lami nginguSanele.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0027; source-exact; teaching -->
+  <voice name="zu-ZA-ThembaNeural">
+    <prosody rate="-12%">Ngibuya eBotswana.</prosody>
+  </voice>
+  <break time="650ms"/>
+</speak>
