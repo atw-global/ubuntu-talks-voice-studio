@@ -1,0 +1,44 @@
+"""Protect Render's public backend origin from direct unauthenticated access.
+
+The OpenSpeakers frontend at Ubuntu Talks Voice Studio authenticates visitors,
+then its Nginx proxy supplies the separate server-side gateway token.
+Neither the browser nor a JavaScript asset receives the token.
+"""
+from __future__ import annotations
+
+import os
+import secrets
+
+from starlette.responses import JSONResponse
+
+
+class StudioGateway:
+    def __init__(self, application):
+        self.application = application
+
+    async def __call__(self, scope, receive, send):
+        typ = scope.get("type")
+        if typ not in {"http", "websocket"}:
+            return await self.application(scope, receive, send)
+
+        # Render health monitoring must work without API credentials.
+        if typ == "http" and scope.get("path") == "/health":
+            return await self.application(scope, receive, send)
+
+        expected = os.environ.get("STUDIO_BACKEND_GATEWAY_TOKEN", "")
+        supplied = ""
+        for name, value in scope.get("headers", []):
+            if name.lower() == b"x-voice-studio-internal-key":
+                supplied = value.decode("utf-8", errors="replace")
+                break
+
+        if not (expected and supplied and secrets.compare_digest(expected, supplied)):
+            if typ == "websocket":
+                await send({"type": "websocket.close", "code": 1008})
+                return
+            return await JSONResponse(
+                {"error": "Not authorized to access the Ubuntu Talks Voice Studio backend."},
+                status_code=403,
+            )(scope, receive, send)
+
+        return await self.application(scope, receive, send)
