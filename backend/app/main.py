@@ -85,6 +85,24 @@ async def lifespan(_app: FastAPI):
         )
 
     logger.info("OpenSpeakers backend ready")
+    # Opt-in internal diagnostic verifies that the English-guidance sample
+    # returns a nonempty MP3 without exposing any credentials or audio publicly.
+    # Runs only when the temporary demo verification flag is enabled.
+    import os as _envos
+    if _envos.environ.get("UBUNTU_LESSON1_DEMO_VERIFY", "").lower() == "true":
+        import asyncio as _verify_asyncio
+        async def _check_lesson1_demo():
+            from app.api.endpoints.azure_audition import lesson1_english_guidance_demo
+            try:
+                result = await lesson1_english_guidance_demo()
+                blob = result.body
+                if result.media_type == "audio/mpeg" and len(blob) > 3000:
+                    logger.info("Ubuntu Lesson 1 sample self-test PASS: audio/mpeg %d bytes", len(blob))
+                else:
+                    logger.error("Ubuntu Lesson 1 sample self-test FAIL: invalid media/size")
+            except Exception:
+                logger.exception("Ubuntu Lesson 1 sample self-test FAIL")
+        _verify_asyncio.create_task(_check_lesson1_demo(), name="ubuntu-lesson1-demo-selftest")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
