@@ -47,3 +47,12 @@ The user explicitly approved the Azure voice cast and authorized recording Lesso
 8. Do not paste Azure keys, Basic Auth credentials or other secrets in documents or chat.
 
 The finished lesson must preserve ALL approved 139 cue texts in order; audio master assembly and learner pauses should be validated separately after all clips are recorded.
+
+
+## 2026-11-17 — PRONUNCIATION QUALITY FLAG (BLOCK COMMERCIAL RELEASE)
+
+User listened to Lesson 1 and reported Mrs Ubuntu pronounces the word **isiZulu** roughly like "eye-sye-Zulu", not native isiZulu. This is a confirmed **user quality rejection** for the narrator's embedded isiZulu term, not a general certification of Thando/Themba's dialogue quality. The source manifest identifies `isiZulu` in exactly the first two Mrs Ubuntu narration cues (orders 1 and 2), both synthesized with the English `en-ZA-LeahNeural` voice.
+
+A text-preserving alternate code-switch audition was implemented in `backend/app/api/endpoints/azure_audition.py`, `POST /api/ubuntu/azure/pronunciation-fix/1` and `/2`, and a listening comparison added to `frontend/static/ubuntu-lesson1-listen.html`. This sends English portions through Leah and only the exact substring `isiZulu` through native-locale Thando. It does NOT overwrite any existing recording. Deployment initiated; check Render live status before claiming samples work. Voice switching may produce an audible timbre change; native speaker must evaluate. If audible voice switching is unsuitable, try SSML pronunciation lexicon and retest within same narrator, keeping the exact source text.
+
+**Do not publish** the lesson until narrator term pronunciation is accepted and actual isiZulu dialogue receives native speaker QA. All existing 139 source cues remain unchanged. User's reported defect is to be preserved in subsequent agent handoffs.
