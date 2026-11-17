@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-ZA">
+  <!-- ZB1-02-0001; source-exact; natural -->
+  <voice name="en-ZA-LeahNeural">
+    <prosody rate="+0%">Welcome to Lesson 2: Introduce Yourself &amp; Learn About Someone.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0002; source-exact; natural -->
+  <voice name="en-ZA-LeahNeural">
+    <prosody rate="+0%">In this lesson, we're going to learn how to share your name, where you're from, and ask another person the same questions.</prosody>
+  </voice>
+  <break time="650ms"/>
+</speak>
