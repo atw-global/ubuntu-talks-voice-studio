@@ -187,3 +187,9 @@ app.include_router(ws_router)
 
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
+
+# Security boundary for the dedicated Render API origin: the frontend
+# Nginx proxy authenticates the user and injects this server-side token.
+# This ASGI wrapper protects HTTP *and* WebSocket connections.
+from app.middleware.studio_gateway import StudioGateway
+app = StudioGateway(app)
