@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zu-ZA">
+  <!-- ZB1-02-0007; source-exact; teaching -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="-12%">Igama lami nginguSanele. Ngibuya eBotswana.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0008; source-exact; natural -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="+0%">Igama lami nginguSanele. Ngibuya eBotswana.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0015; source-exact; teaching -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="-12%">Igama lakhe nguThabo. Uqhamuka eMelika.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0016; source-exact; natural -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="+0%">Igama lakhe nguThabo. Uqhamuka eMelika.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0023; source-exact; teaching -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="-12%">Isibongo sami nguNtuli.</prosody>
+  </voice>
+  <break time="650ms"/>
+  <!-- ZB1-02-0024; source-exact; natural -->
+  <voice name="zu-ZA-ThandoNeural">
+    <prosody rate="+0%">Isibongo sami nguNtuli.</prosody>
+  </voice>
+  <break time="650ms"/>
+</speak>
