@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-ZA">
+  <!-- zulu-beginner-01-opening beat 1; role assignment SOURCE_OR_NARRATOR -->
+  <voice name="en-ZA-LeahNeural"><prosody rate="0%">Welcome to Lesson 1: Sounds, Greetings &amp; Respect.</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-opening beat 2; role assignment SOURCE_OR_NARRATOR -->
+  <voice name="en-ZA-LeahNeural"><prosody rate="0%">In this lesson, you'll learn how to greet one person or a group, ask how someone is, answer politely, and close the conversation well.</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-opening beat 3; role assignment SOURCE_OR_NARRATOR -->
+  <voice name="en-ZA-LeahNeural"><prosody rate="0%">Listen first. Then we'll practise the expressions together and use them in a short conversation.</prosody></voice>
+  <break time="700ms"/>
+</speak>
