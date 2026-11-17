@@ -188,6 +188,10 @@ app.include_router(ws_router)
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
 
+# Ubuntu Talks Azure Speech pilot: only explicit, capped voice audition requests.
+from app.api.endpoints.azure_audition import router as azure_audition_router
+app.include_router(azure_audition_router)
+
 # Ubuntu Talks Vast.ai integration is read-only until explicitly enabled.
 from app.api.endpoints.vast_status import router as vast_status_router
 app.include_router(vast_status_router)
