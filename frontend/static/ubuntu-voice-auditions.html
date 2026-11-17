@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ubuntu Talks Voice Studio — Lesson 1 Auditions</title>
+<style>body{margin:0;background:#080e1b;color:#eef4ff;font:16px system-ui,Arial,sans-serif}main{max-width:870px;margin:32px auto;padding:20px}.muted{color:#9fb0c8}h1{font-size:30px}.card{background:#141d2b;border:1px solid #2c3d54;border-radius:14px;padding:22px;margin:18px 0}button{background:#2679d9;color:white;border:0;border-radius:9px;padding:11px 18px;font-weight:700;cursor:pointer}button:disabled{opacity:.5}audio{width:100%;margin-top:14px}.status{padding:12px;background:#25354c;border-radius:8px;white-space:pre-wrap}a{color:#95c8ff}.tag{color:#b5e7c8}small{font-size:13px}</style></head><body><main>
+<p><a href="/">← OpenSpeakers</a></p><h1>Ubuntu Talks · Lesson 1 Voice Auditions</h1>
+<p class="muted">Short, source-exact samples from “Sounds, Greetings &amp; Respect”. These are voice tests, not the complete approved lesson. Each click calls Microsoft Azure Speech and may count against your usage allowance.</p>
+<p id="status" class="status">Checking Azure Speech connection…</p>
+<div class="card"><span class="tag">Mrs Ubuntu — narration</span><h2>Leah · South African English</h2><p>Welcome to Lesson 1: Sounds, Greetings &amp; Respect.</p><button data-voice="leah">Generate and listen</button><div id="audio-leah"></div></div>
+<div class="card"><span class="tag">isiZulu Speaker A</span><h2>Thando · isiZulu</h2><p>Sawubona, unjani?</p><button data-voice="thando">Generate and listen</button><div id="audio-thando"></div></div>
+<div class="card"><span class="tag">isiZulu Speaker B</span><h2>Themba · isiZulu</h2><p>Ngiyaphila, wena unjani?</p><button data-voice="themba">Generate and listen</button><div id="audio-themba"></div></div>
+<p class="muted"><small>Source: Ubuntu Talks isiZulu Beginner I Lesson 1 instructor master. Voice selections are provisional. Do not publish audio until native-speaker QA and rights clearance are complete.</small></p>
+</main><script>
+(async()=>{const t=document.getElementById('status');try{const r=await fetch('/api/ubuntu/azure/status');const d=await r.json();t.textContent=d.verified?'Azure Speech connection verified. Choose a voice below.':'Azure Speech not yet verified: '+JSON.stringify(d)}catch(e){t.textContent='Unable to reach studio API. '+e.message}})();
+document.querySelectorAll('button[data-voice]').forEach(button=>button.addEventListener('click',async()=>{
+const id=button.dataset.voice,target=document.getElementById('audio-'+id);button.disabled=true;button.textContent='Generating…';target.textContent='';
+try{const response=await fetch('/api/ubuntu/azure/audition/'+id,{method:'POST'});if(!response.ok){let d;try{d=await response.json()}catch{}throw new Error(d?.detail||'HTTP '+response.status)}const blob=await response.blob(),url=URL.createObjectURL(blob);const player=document.createElement('audio');player.controls=true;player.src=url;target.appendChild(player);const anchor=document.createElement('a');anchor.href=url;anchor.download='ubuntu-lesson1-'+id+'-audition.mp3';anchor.textContent='Download audition MP3';target.appendChild(anchor);player.play().catch(()=>{});}
+catch(e){target.textContent='Generation failed: '+e.message}finally{button.textContent='Generate again';button.disabled=false;}
+}));
+</script></body></html>
