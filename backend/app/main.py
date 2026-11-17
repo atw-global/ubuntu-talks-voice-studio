@@ -85,6 +85,14 @@ async def lifespan(_app: FastAPI):
         )
 
     logger.info("OpenSpeakers backend ready")
+    if __import__("os").environ.get("UBUNTU_LESSON1_MASTER_AUTOSTART", "").lower() == "true":
+        try:
+            from app.api.endpoints.lesson1_master import _produce as _build_master, _master_metadata
+            if _master_metadata() is None:
+                __import__("asyncio").create_task(_build_master(), name="lesson01-approved-master")
+        except Exception:
+            logger.exception("Lesson01 master auto-start failed")
+
     # Opt-in internal diagnostic verifies that the English-guidance sample
     # returns a nonempty MP3 without exposing any credentials or audio publicly.
     # Runs only when the temporary demo verification flag is enabled.
@@ -218,6 +226,10 @@ app.include_router(ws_router)
 
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
+
+# Full 139-cue private audio master, preserving all native isiZulu speech.
+from app.api.endpoints.lesson1_master import router as lesson1_master_router
+app.include_router(lesson1_master_router)
 
 # Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
 from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
