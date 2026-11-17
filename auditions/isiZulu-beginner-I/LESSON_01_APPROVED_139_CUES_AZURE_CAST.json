@@ -1,0 +1,1280 @@
+{
+  "schema_version": "2.0",
+  "course_id": "zu-beginner-i",
+  "lesson_id": "zulu-beginner-01",
+  "lesson_title": "Sounds, Greetings & Respect",
+  "origin": "Verified 139 text-and-voice blocks read from ElevenLabs Studio project jvjPtDNnRbMiWanGscbb, November 17 2026",
+  "source_of_target_language": "Ubuntu Talks previously approved Lesson 1 Studio script; do not modify any text_to_speak",
+  "status": "USER_APPROVED_AZURE_CAST_SOURCE_CAPTURED_AUDIO_NOT_GENERATED",
+  "speaker_voices": {
+    "BcpjRWrYhDBHmOnetmBl": {
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "language": "en-ZA"
+    },
+    "dOqxOZEisn8SiUH1dPCC": {
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "language": "zu-ZA"
+    },
+    "x52Gqgso2pdbdr7KngsJ": {
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "language": "zu-ZA"
+    }
+  },
+  "cue_count": 139,
+  "spoken_cues": [
+    {
+      "order": 1,
+      "clip_id": "ZB1-01-0001",
+      "text_to_speak": "Welcome to lesson 1: Sounds, Greetings & Respect. Your challenge today: Greet one person or a group, respond appropriately and take leave. Listen to the isiZulu exchange first; you do not need to understand every word yet.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 2,
+      "clip_id": "ZB1-01-0002",
+      "text_to_speak": "The scene: A new neighbour greets you, then you meet a group. You will hear two isiZulu voices. One opens the conversation and the other responds. Listen for the way a real exchange moves from one speaker to another.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 3,
+      "clip_id": "ZB1-01-0003",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 4,
+      "clip_id": "ZB1-01-0004",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 5,
+      "clip_id": "ZB1-01-0005",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 6,
+      "clip_id": "ZB1-01-0006",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 7,
+      "clip_id": "ZB1-01-0007",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 8,
+      "clip_id": "ZB1-01-0008",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 9,
+      "clip_id": "ZB1-01-0009",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 10,
+      "clip_id": "ZB1-01-0010",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 11,
+      "clip_id": "ZB1-01-0011",
+      "text_to_speak": "Now we will take apart the conversation. Listen to the language first. Notice what the speakers are doing, then uncover the meaning. We are learning useful building blocks, not memorising a long word list.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 12,
+      "clip_id": "ZB1-01-0012",
+      "text_to_speak": "Your language pattern is this: Notice the difference between greeting one person and greeting several people. Watch how a change in the situation changes which expression is appropriate.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 13,
+      "clip_id": "ZB1-01-0013",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 14,
+      "clip_id": "ZB1-01-0014",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 15,
+      "clip_id": "ZB1-01-0015",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 16,
+      "clip_id": "ZB1-01-0016",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 17,
+      "clip_id": "ZB1-01-0017",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 18,
+      "clip_id": "ZB1-01-0018",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 19,
+      "clip_id": "ZB1-01-0019",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 20,
+      "clip_id": "ZB1-01-0020",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 21,
+      "clip_id": "ZB1-01-0021",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 22,
+      "clip_id": "ZB1-01-0022",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 23,
+      "clip_id": "ZB1-01-0023",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 24,
+      "clip_id": "ZB1-01-0024",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 25,
+      "clip_id": "ZB1-01-0025",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 26,
+      "clip_id": "ZB1-01-0026",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 27,
+      "clip_id": "ZB1-01-0027",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 28,
+      "clip_id": "ZB1-01-0028",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 29,
+      "clip_id": "ZB1-01-0029",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 30,
+      "clip_id": "ZB1-01-0030",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 31,
+      "clip_id": "ZB1-01-0031",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 32,
+      "clip_id": "ZB1-01-0032",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 33,
+      "clip_id": "ZB1-01-0033",
+      "text_to_speak": "Your turn to build responses. Hear the first form, say it aloud, then compare what you said with the second voice. We will practise the same useful meanings in different orders so you have to think rather than copy.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 34,
+      "clip_id": "ZB1-01-0034",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 35,
+      "clip_id": "ZB1-01-0035",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 36,
+      "clip_id": "ZB1-01-0036",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 37,
+      "clip_id": "ZB1-01-0037",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 38,
+      "clip_id": "ZB1-01-0038",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 39,
+      "clip_id": "ZB1-01-0039",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 40,
+      "clip_id": "ZB1-01-0040",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 41,
+      "clip_id": "ZB1-01-0041",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 42,
+      "clip_id": "ZB1-01-0042",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 43,
+      "clip_id": "ZB1-01-0043",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 44,
+      "clip_id": "ZB1-01-0044",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 45,
+      "clip_id": "ZB1-01-0045",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 46,
+      "clip_id": "ZB1-01-0046",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 47,
+      "clip_id": "ZB1-01-0047",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 48,
+      "clip_id": "ZB1-01-0048",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 49,
+      "clip_id": "ZB1-01-0049",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 50,
+      "clip_id": "ZB1-01-0050",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 51,
+      "clip_id": "ZB1-01-0051",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 52,
+      "clip_id": "ZB1-01-0052",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 53,
+      "clip_id": "ZB1-01-0053",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 54,
+      "clip_id": "ZB1-01-0054",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 55,
+      "clip_id": "ZB1-01-0055",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 56,
+      "clip_id": "ZB1-01-0056",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 57,
+      "clip_id": "ZB1-01-0057",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 58,
+      "clip_id": "ZB1-01-0058",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 59,
+      "clip_id": "ZB1-01-0059",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 60,
+      "clip_id": "ZB1-01-0060",
+      "text_to_speak": "Now change roles. Listen to Voice A. You answer before Voice B is played. On the next round, listen to Voice B and answer before Voice A. You can slow down or request the pronunciation model, but do not read the entire answer before trying.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 61,
+      "clip_id": "ZB1-01-0061",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 62,
+      "clip_id": "ZB1-01-0062",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 63,
+      "clip_id": "ZB1-01-0063",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 64,
+      "clip_id": "ZB1-01-0064",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 65,
+      "clip_id": "ZB1-01-0065",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 66,
+      "clip_id": "ZB1-01-0066",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 67,
+      "clip_id": "ZB1-01-0067",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 68,
+      "clip_id": "ZB1-01-0068",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 69,
+      "clip_id": "ZB1-01-0069",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 70,
+      "clip_id": "ZB1-01-0070",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 71,
+      "clip_id": "ZB1-01-0071",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 72,
+      "clip_id": "ZB1-01-0072",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 73,
+      "clip_id": "ZB1-01-0073",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 74,
+      "clip_id": "ZB1-01-0074",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 75,
+      "clip_id": "ZB1-01-0075",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 76,
+      "clip_id": "ZB1-01-0076",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 77,
+      "clip_id": "ZB1-01-0077",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 78,
+      "clip_id": "ZB1-01-0078",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 79,
+      "clip_id": "ZB1-01-0079",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 80,
+      "clip_id": "ZB1-01-0080",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 81,
+      "clip_id": "ZB1-01-0081",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 82,
+      "clip_id": "ZB1-01-0082",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 83,
+      "clip_id": "ZB1-01-0083",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 84,
+      "clip_id": "ZB1-01-0084",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 85,
+      "clip_id": "ZB1-01-0085",
+      "text_to_speak": "Time for delayed recall. You will hear some familiar expressions mixed with newer ones. The order has changed, just as it will in a real conversation. Try to produce the target phrase from the English meaning before it plays.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 86,
+      "clip_id": "ZB1-01-0086",
+      "text_to_speak": "After you answer, rate yourself: ready, almost, or review needed. The course will return to difficult phrases later. You are not punished for needing more practice.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 87,
+      "clip_id": "ZB1-01-0087",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 88,
+      "clip_id": "ZB1-01-0088",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 89,
+      "clip_id": "ZB1-01-0089",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 90,
+      "clip_id": "ZB1-01-0090",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 91,
+      "clip_id": "ZB1-01-0091",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 92,
+      "clip_id": "ZB1-01-0092",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 93,
+      "clip_id": "ZB1-01-0093",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 94,
+      "clip_id": "ZB1-01-0094",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 95,
+      "clip_id": "ZB1-01-0095",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 96,
+      "clip_id": "ZB1-01-0096",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 97,
+      "clip_id": "ZB1-01-0097",
+      "text_to_speak": "Conversation lab. Picture this: A new neighbour greets you, then you meet a group. Speak naturally and choose expressions that actually fit the situation. If a turn feels unnatural or missing, the native instructor must author and approve the correction before we publish.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 98,
+      "clip_id": "ZB1-01-0098",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 99,
+      "clip_id": "ZB1-01-0099",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 100,
+      "clip_id": "ZB1-01-0100",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 101,
+      "clip_id": "ZB1-01-0101",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 102,
+      "clip_id": "ZB1-01-0102",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 103,
+      "clip_id": "ZB1-01-0103",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 104,
+      "clip_id": "ZB1-01-0104",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 105,
+      "clip_id": "ZB1-01-0105",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 106,
+      "clip_id": "ZB1-01-0106",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 107,
+      "clip_id": "ZB1-01-0107",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 108,
+      "clip_id": "ZB1-01-0108",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 109,
+      "clip_id": "ZB1-01-0109",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 110,
+      "clip_id": "ZB1-01-0110",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 111,
+      "clip_id": "ZB1-01-0111",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 112,
+      "clip_id": "ZB1-01-0112",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 113,
+      "clip_id": "ZB1-01-0113",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 114,
+      "clip_id": "ZB1-01-0114",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 115,
+      "clip_id": "ZB1-01-0115",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 116,
+      "clip_id": "ZB1-01-0116",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 117,
+      "clip_id": "ZB1-01-0117",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 118,
+      "clip_id": "ZB1-01-0118",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 119,
+      "clip_id": "ZB1-01-0119",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 120,
+      "clip_id": "ZB1-01-0120",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 121,
+      "clip_id": "ZB1-01-0121",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 122,
+      "clip_id": "ZB1-01-0122",
+      "text_to_speak": "Your final challenge: Greet one person and then a group; answer one follow-up and close politely. This is an independent performance. No target-language text is shown until after you finish. Speak at a comfortable pace and try to respond to one unexpected follow-up.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 123,
+      "clip_id": "ZB1-01-0123",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 124,
+      "clip_id": "ZB1-01-0124",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 125,
+      "clip_id": "ZB1-01-0125",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 126,
+      "clip_id": "ZB1-01-0126",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 127,
+      "clip_id": "ZB1-01-0127",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 128,
+      "clip_id": "ZB1-01-0128",
+      "text_to_speak": "Before you continue, check: Did you accomplish the communication goal? Could another person understand the message? Did you respond to the other speaker? If you need practice, use the replay lab and then try a different scenario.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 129,
+      "clip_id": "ZB1-01-0129",
+      "text_to_speak": "You have completed lesson 1. The most important achievement is not remembering a long list; it is being able to respond meaningfully. Review the difficult lines tomorrow, and complete the short voice challenge without reading a script.",
+      "speaker": "MRS_UBUNTU",
+      "azure_voice": "en-ZA-LeahNeural",
+      "previous_elevenlabs_voice_id": "BcpjRWrYhDBHmOnetmBl",
+      "language": "en-ZA"
+    },
+    {
+      "order": 130,
+      "clip_id": "ZB1-01-0130",
+      "text_to_speak": "Sanibonani.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 131,
+      "clip_id": "ZB1-01-0131",
+      "text_to_speak": "Sala kahle.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 132,
+      "clip_id": "ZB1-01-0132",
+      "text_to_speak": "Ngiyaphila, wena unjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 133,
+      "clip_id": "ZB1-01-0133",
+      "text_to_speak": "Unjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 134,
+      "clip_id": "ZB1-01-0134",
+      "text_to_speak": "Ngizokubona kusasa.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 135,
+      "clip_id": "ZB1-01-0135",
+      "text_to_speak": "Sisaphila, nina ninjani?",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 136,
+      "clip_id": "ZB1-01-0136",
+      "text_to_speak": "Ninjani?",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 137,
+      "clip_id": "ZB1-01-0137",
+      "text_to_speak": "Sawubona.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 138,
+      "clip_id": "ZB1-01-0138",
+      "text_to_speak": "Ngiyabonga.",
+      "speaker": "ZULU_A",
+      "azure_voice": "zu-ZA-ThandoNeural",
+      "previous_elevenlabs_voice_id": "dOqxOZEisn8SiUH1dPCC",
+      "language": "zu-ZA"
+    },
+    {
+      "order": 139,
+      "clip_id": "ZB1-01-0139",
+      "text_to_speak": "Ngiyaphila.",
+      "speaker": "ZULU_B",
+      "azure_voice": "zu-ZA-ThembaNeural",
+      "previous_elevenlabs_voice_id": "x52Gqgso2pdbdr7KngsJ",
+      "language": "zu-ZA"
+    }
+  ]
+}
