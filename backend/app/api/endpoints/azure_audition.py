@@ -153,3 +153,59 @@ async def pronunciation_fix(cue_number: int):
         )
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail="Azure synthesis unavailable") from exc
+
+
+@router.post("/lesson1-english-guidance-demo")
+async def lesson1_english_guidance_demo():
+    """Isolated sample: Leah speaks English only; original isiZulu cues 3-10
+    remain unchanged. Does not overwrite the approved lesson recordings.
+    """
+    import pathlib
+    import json
+    from xml.sax.saxutils import escape as esc
+    manifest_path = pathlib.Path(__file__).resolve().parents[2] / "data" / "lesson01_approved_139.json"
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    cues = manifest["spoken_cues"]
+    # The English guide intentionally uses no target-language words.
+    intro = ("Welcome to Lesson One: Sounds, Greetings and Respect. "
+             "Today, you will practise greeting one person, greeting a group, "
+             "and answering politely. First, listen to our two speakers. "
+             "Notice how their expressions change with the situation.")
+    outro = ("Now you have heard the conversation. "
+             "Next, we will break it down and practise each expression together.")
+    segments = [
+        '<voice name="en-ZA-LeahNeural">' + esc(intro) + '</voice>',
+        '<break time="700ms"/>',
+    ]
+    expected = ["ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B",
+                "ZULU_A", "ZULU_B", "ZULU_A", "ZULU_B"]
+    for c, role in zip(cues[2:10], expected):
+        if c["speaker"] != role or c["order"] not in range(3, 11):
+            raise HTTPException(status_code=500, detail="Lesson source mismatch")
+        segments.append('<voice name="' + c["azure_voice"] + '">' +
+                        esc(c["text_to_speak"]) + '</voice><break time="350ms"/>')
+    segments += ['<break time="500ms"/>',
+                 '<voice name="en-ZA-LeahNeural">' + esc(outro) + '</voice>']
+    ssml = ('<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" '
+            'xml:lang="en-ZA">' + "".join(segments) + '</speak>')
+    key, region = _credentials()
+    try:
+        async with httpx.AsyncClient(timeout=65) as client:
+            response = await client.post(
+                f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1",
+                content=ssml.encode("utf-8"),
+                headers={
+                    "Ocp-Apim-Subscription-Key": key,
+                    "Content-Type": "application/ssml+xml",
+                    "X-Microsoft-OutputFormat": "audio-24khz-96kbitrate-mono-mp3",
+                    "User-Agent": "UbuntuTalksEnglishGuidanceQA/1.0",
+                },
+            )
+        if response.status_code != 200 or not response.content:
+            raise HTTPException(status_code=502,
+                                detail=f"Azure returned HTTP {response.status_code}")
+        return Response(content=response.content, media_type="audio/mpeg",
+                        headers={"Content-Disposition": 'inline; filename="lesson1-english-only-instructor-demo.mp3"',
+                                 "Cache-Control": "private, no-store"})
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail="Azure demo synthesis unavailable") from exc
