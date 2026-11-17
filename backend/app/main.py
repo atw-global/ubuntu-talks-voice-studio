@@ -188,6 +188,10 @@ app.include_router(ws_router)
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
 
+# Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
+from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
+app.include_router(lesson1_recording_router)
+
 # Ubuntu Talks Azure Speech pilot: only explicit, capped voice audition requests.
 from app.api.endpoints.azure_audition import router as azure_audition_router
 app.include_router(azure_audition_router)
