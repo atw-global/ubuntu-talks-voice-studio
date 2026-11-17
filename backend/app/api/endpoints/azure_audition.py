@@ -104,3 +104,52 @@ async def audition(sample_id: str):
         )
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail="Azure synthesis unavailable") from exc
+
+
+# Language-aware pronunciation QA: reproduce approved text exactly, but use a
+# native zu-ZA voice for the embedded word "isiZulu" in English narration.
+# Audition only: DO NOT overwrite saved 139-cue lesson audio without approval.
+@router.post("/pronunciation-fix/{cue_number}")
+async def pronunciation_fix(cue_number: int):
+    if cue_number not in (1, 2):
+        raise HTTPException(status_code=404, detail="Only first two narration cues are available for QA")
+    import json
+    import pathlib
+    from xml.sax.saxutils import escape as escape_xml
+    path = pathlib.Path(__file__).resolve().parents[2] / "data" / "lesson01_approved_139.json"
+    source = json.loads(path.read_text(encoding="utf-8"))
+    cue = source["spoken_cues"][cue_number - 1]
+    assert cue["order"] == cue_number and cue["speaker"] == "MRS_UBUNTU"
+    text = cue["text_to_speak"]
+    parts = text.split("isiZulu")
+    if len(parts) != 2:
+        raise HTTPException(status_code=500, detail="Source cue has unexpected language mix")
+    ssml = (
+        '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-ZA">'
+        '<voice name="en-ZA-LeahNeural">' + escape_xml(parts[0]) + '</voice>'
+        '<voice name="zu-ZA-ThandoNeural">isiZulu</voice>'
+        '<voice name="en-ZA-LeahNeural">' + escape_xml(parts[1]) + '</voice>'
+        '</speak>'
+    )
+    key, region = _credentials()
+    try:
+        async with httpx.AsyncClient(timeout=45) as client:
+            response = await client.post(
+                f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1",
+                content=ssml.encode("utf-8"),
+                headers={
+                    "Ocp-Apim-Subscription-Key": key,
+                    "Content-Type": "application/ssml+xml",
+                    "X-Microsoft-OutputFormat": "audio-24khz-96kbitrate-mono-mp3",
+                    "User-Agent": "UbuntuTalksVoiceStudioPronunciationQA/1.0",
+                },
+            )
+        if response.status_code != 200 or not response.content:
+            raise HTTPException(status_code=502, detail=f"Azure returned HTTP {response.status_code}")
+        return Response(
+            content=response.content, media_type="audio/mpeg",
+            headers={"Content-Disposition": f'inline; filename="lesson1-cue-{cue_number:04d}-pronunciation-qa.mp3"',
+                     "Cache-Control": "private, no-store"},
+        )
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail="Azure synthesis unavailable") from exc
