@@ -45,7 +45,7 @@ class StudioGateway:
         # installed and explicitly enabled. This prevents orphaned Celery jobs.
         if typ == "http" and scope.get("path", "").startswith(("/api/", "/v1/")):
             if scope.get("method", "GET").upper() not in {"GET", "HEAD", "OPTIONS"}:
-                if os.environ.get("VOICE_STUDIO_GENERATION_ENABLED", "false").lower() != "true":
+                if (scope.get("path", "") not in {"/api/ubuntu/azure/audition/leah", "/api/ubuntu/azure/audition/thando", "/api/ubuntu/azure/audition/themba"} and os.environ.get("VOICE_STUDIO_GENERATION_ENABLED", "false").lower() != "true"):
                     return await JSONResponse(
                         {"error": "Speech generation is not enabled; GPU worker is not connected."},
                         status_code=503,
