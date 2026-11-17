@@ -85,6 +85,19 @@ async def lifespan(_app: FastAPI):
         )
 
     logger.info("OpenSpeakers backend ready")
+    # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
+    # from PostgreSQL checkpoints after Render free-service restarts.
+    # Opt-in only; no worker/GPU. Recording never publishes course content.
+    import os
+    import asyncio
+    if os.environ.get("UBUNTU_LESSON1_AUTORECORD", "false").lower() == "true":
+        from app.api.endpoints.lesson1_recording import _progress, _record
+        try:
+            if _progress()["remaining"] > 0:
+                logger.info("Starting/resuming authorized 139-cue Lesson 1 Azure recording")
+                asyncio.create_task(_record(), name="ubuntu-lesson1-azure-auto")
+        except Exception:
+            logger.exception("Unable to resume authorized Lesson 1 recording")
     yield
     logger.info("OpenSpeakers backend shutting down")
 
