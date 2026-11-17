@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="zu-ZA">
+  <!-- zulu-beginner-01-sounds beat 6; role assignment PROVISIONAL_ROLE_MUST_VERIFY -->
+  <voice name="zu-ZA-ThembaNeural"><prosody rate="-12%">amawele</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-sounds beat 8; role assignment PROVISIONAL_ROLE_MUST_VERIFY -->
+  <voice name="zu-ZA-ThembaNeural"><prosody rate="-12%">qamba</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-core beat 4; role assignment PROVISIONAL_ROLE_MUST_VERIFY -->
+  <voice name="zu-ZA-ThembaNeural"><prosody rate="-12%">Ngiyaphila, wena unjani?</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-core beat 6; role assignment PROVISIONAL_ROLE_MUST_VERIFY -->
+  <voice name="zu-ZA-ThembaNeural"><prosody rate="-12%">Ngiyabonga, ngiyaphila. Sala kahle.</prosody></voice>
+  <break time="700ms"/>
+  <!-- zulu-beginner-01-core beat 8; role assignment PROVISIONAL_ROLE_MUST_VERIFY -->
+  <voice name="zu-ZA-ThembaNeural"><prosody rate="-12%">Sanibonani</prosody></voice>
+  <break time="700ms"/>
+</speak>
