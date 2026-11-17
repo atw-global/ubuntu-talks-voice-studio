@@ -188,7 +188,11 @@ app.include_router(ws_router)
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
 
-# Ubuntu Talks Vast.ai integration is read-only until explicitly enabled.\nfrom app.api.endpoints.vast_status import router as vast_status_router\napp.include_router(vast_status_router)\n\n# Security boundary for the dedicated Render API origin: the frontend
+# Ubuntu Talks Vast.ai integration is read-only until explicitly enabled.
+from app.api.endpoints.vast_status import router as vast_status_router
+app.include_router(vast_status_router)
+
+# Security boundary for the dedicated Render API origin: the frontend
 # Nginx proxy authenticates the user and injects this server-side token.
 # This ASGI wrapper protects HTTP *and* WebSocket connections.
 from app.middleware.studio_gateway import StudioGateway
