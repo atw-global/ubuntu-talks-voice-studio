@@ -28,3 +28,19 @@ Render service configuration:
 - Never store Vast API credentials or studio passwords in Git.
 - Never deploy backend unauthenticated on the public internet.
 - No GPU instances, paid resources, or audio generation are initiated by this staging configuration.
+
+## 2026-11-16/17 deployment inventory
+
+The following *independent* ATW-Global Render resources have been created in Oregon:
+
+- Frontend: `ubuntu-talks-voice-studio` (service `srv-dbtql9ifngtc739uek90`), URL `https://ubuntu-talks-voice-studio.onrender.com`; public route protected by Nginx Basic Auth.
+- Backend: `ubuntu-talks-voice-studio-api` (service `srv-dbttr1psrm7s73e17im0`), URL `https://ubuntu-talks-voice-studio-api.onrender.com`; protects API and websocket endpoints with `X-Voice-Studio-Internal-Key` and includes `GET /health`.
+- PostgreSQL 17: `ubuntu-voice-studio-db` (`dpg-dbttmmek1f9s739nrs00-a`), free tier, expires **2026-12-17** unless upgraded.
+- Redis-compatible Valkey 8: `ubuntu-voice-studio-queue` (`red-dbttmmrm8hqs73dhbhi0`), free tier, 25 MB RAM, non-persistent.
+- The backend uses its own DB login and key; no existing Ubuntu curriculum database was migrated or altered.
+- API origin requires a secret gateway token; the frontend injects the matching token in Nginx, never into browser JavaScript.
+- `VAST_API_KEY` is **not yet verified present** on the dedicated backend. It must be stored only in backend environment, then validated using the read-only `/api/ubuntu/vast/status` route.
+- GPU worker is **not deployed**. On the backend `VOICE_STUDIO_GENERATION_ENABLED` defaults to false, which blocks mutating API endpoints rather than enqueueing jobs without workers.
+- Do not assume model registration implies runnable voices: no GPU checkpoint or native-language QA is complete.
+
+All plans above were created as free test resources. Backend/preview may restart or spin down. Do not enable generation until commercial voice licenses, compute pricing, storage, and audio persistence are verified.
