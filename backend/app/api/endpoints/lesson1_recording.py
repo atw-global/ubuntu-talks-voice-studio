@@ -20,7 +20,7 @@ from xml.sax.saxutils import escape
 
 import httpx
 from fastapi import APIRouter, HTTPException
-from fastapi.responses import StreamingResponse
+from fastapi.responses import StreamingResponse, Response
 from sqlalchemy import Column, Integer, LargeBinary, MetaData, String, Table, Text, DateTime, create_engine, select, func
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy.exc import SQLAlchemyError
@@ -185,6 +185,44 @@ async def start_recording():
     # Let the task start before returning; failures are recorded.
     await asyncio.sleep(0.02)
     return _progress()
+
+
+@router.get("/playlist")
+def playlist():
+    """Show source-locked ordered cues and whether each clip is ready."""
+    _init()
+    with engine.connect() as conn:
+        rows = conn.execute(select(recordings.c.clip_id, recordings.c.source_sha256)).all()
+    saved = dict(rows)
+    return {"lesson_id": MANIFEST["lesson_id"],
+            "total": len(CUES),
+            "recorded": sum(saved.get(c["clip_id"]) == _hash(c) for c in CUES),
+            "cues": [
+                {"order": c["order"], "clip_id": c["clip_id"], "speaker": c["speaker"],
+                 "voice": c["azure_voice"], "text": c["text_to_speak"],
+                 "available": saved.get(c["clip_id"]) == _hash(c)}
+                for c in CUES
+            ]}
+
+
+@router.get("/clips/{ordinal}")
+def play_clip(ordinal: int):
+    """Authenticated, source-verified clip for ordered full-lesson playback."""
+    if ordinal < 1 or ordinal > len(CUES):
+        raise HTTPException(404, detail="Invalid cue number")
+    cue = CUES[ordinal-1]
+    _init()
+    with engine.connect() as conn:
+        row = conn.execute(
+            select(recordings.c.source_sha256, recordings.c.mp3).where(
+                recordings.c.clip_id == cue["clip_id"]
+            )
+        ).first()
+    if not row or row[0] != _hash(cue):
+        raise HTTPException(404, detail="Audio not recorded for this cue")
+    return Response(content=bytes(row[1]), media_type="audio/mpeg",
+        headers={"Cache-Control": "private, max-age=600",
+                 "Content-Disposition": f'inline; filename="lesson1-{ordinal:04d}.mp3"'})
 
 
 @router.get("/export.zip")
