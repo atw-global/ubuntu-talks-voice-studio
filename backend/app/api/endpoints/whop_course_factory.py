@@ -115,7 +115,7 @@ def apply_approved_cover():
     with httpx.Client() as client:
         before = _product(client)
         gallery = before.get("gallery_images") or []
-        if any((entry.get("filename") == FILE_NAME) for entry in gallery):
+        if gallery and all(entry.get("id") != "file_YrbXTD2X1rWSC" for entry in gallery):
             return {"status": "already_present", "product_id": PRODUCT,
                     "product_visibility": "hidden"}
         blob = _load_approved_image(client)
@@ -141,8 +141,15 @@ def apply_approved_cover():
             put.raise_for_status()
         except httpx.HTTPError as exc:
             raise HTTPException(502, detail="Whop direct image upload did not complete") from exc
-        after_file = _request(client, "GET", "/files/" + file_id)
-        if after_file.get("id") != file_id or after_file.get("upload_status") != "ready":
+        import time
+        for attempt in range(12):
+            after_file = _request(client, "GET", "/files/" + file_id)
+            if after_file.get("id") == file_id and after_file.get("upload_status") == "ready":
+                break
+            if after_file.get("upload_status") == "failed":
+                raise HTTPException(502, detail="Whop image upload failed processing")
+            time.sleep(1)
+        else:
             raise HTTPException(502, detail="Whop image upload not yet verified ready")
         retained = [{"id": x["id"]} for x in gallery
                     if x.get("id") and x.get("id") != "file_YrbXTD2X1rWSC"]
