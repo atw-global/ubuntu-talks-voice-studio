@@ -235,6 +235,10 @@ app.include_router(lesson1_archive_router)
 from app.api.endpoints.lesson1_master import router as lesson1_master_router
 app.include_router(lesson1_master_router)
 
+# Internal source-verified greeting audio QA sample; StudioGateway protected.
+from app.api.endpoints.lesson1_sample import router as lesson1_sample_router
+app.include_router(lesson1_sample_router)
+
 # Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
 from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
 app.include_router(lesson1_recording_router)
