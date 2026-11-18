@@ -160,6 +160,14 @@
     "tax_exclusion": "Whop adds buyer-dependent tax",
     "main_lesson_media_attached": false,
     "public_audio_preview_playable": false,
-    "completed_sale_entitlement_test": false
+    "completed_sale_entitlement_test": false,
+    "whop_app_visibility": "product_gated",
+    "product_entitlement_selected": true,
+    "native_whop_strong_headings": "Verified Markdown **bold** renders as HTML STRONG in anonymous product view",
+    "azure_sample_service": "Render deploy dep-dbuscf0ae00c73ff5rn0 live source 023f954",
+    "sample_qa_endpoint_requires_studio_auth": true,
+    "audio_playback_test": "NOT_VERIFIED_BASIC_AUTH_401",
+    "end_to_end_entitlement_test": "NOT_COMPLETED",
+    "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer"
   }
 }
