@@ -129,7 +129,7 @@ def apply_approved_cover():
                 and isinstance(upload_url, str)):
             raise HTTPException(502, detail="Whop did not return a direct-upload file destination")
         parsed = urlparse(upload_url)
-        if parsed.scheme != "https" or not parsed.hostname:
+        if (parsed.scheme != "https" or not parsed.hostname or\n                not (parsed.hostname.endswith(".amazonaws.com") or\n                     parsed.hostname.endswith(".r2.cloudflarestorage.com") or\n                     parsed.hostname.endswith(".whop.com"))):
             raise HTTPException(502, detail="Invalid Whop presigned upload destination")
         # Do not forward the bearer API key to the presigned storage URL.
         upload_headers = file_info.get("upload_headers") or {}
