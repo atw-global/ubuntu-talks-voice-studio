@@ -1,0 +1,516 @@
+{
+  "lesson_key": "zulu-beginner-01",
+  "title": "Sounds, Greetings & Respect",
+  "mission": "Pronounce essential sounds and open and close a culturally appropriate greeting.",
+  "can_do": "I can greet someone appropriately and reproduce essential sound patterns.",
+  "source_set": [
+    "Lesson 1: A Guide to Pronunciation",
+    "Lesson 2: Greetings"
+  ],
+  "blocks": [
+    {
+      "id": "zulu-beginner-01-opening",
+      "kind": "opening",
+      "title": "Opening",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Welcome to Lesson 1: Sounds, Greetings & Respect."
+        },
+        {
+          "kind": "say",
+          "text": "In this lesson, you'll learn how to greet one person or a group, ask how someone is, answer politely, and close the conversation well."
+        },
+        {
+          "kind": "say",
+          "text": "Listen first. Then we'll practise the expressions together and use them in a short conversation."
+        },
+        {
+          "kind": "say",
+          "text": "Let's begin with the sounds you'll hear in today's greetings."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-sounds",
+      "kind": "sounds",
+      "title": "Sounds of isiZulu",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "isiZulu vowels are pure and steady: a, e, i, o, u. They don't glide the way many English vowels do, so keep each one clean."
+        },
+        {
+          "kind": "say",
+          "text": "isiZulu also has click sounds. You'll see them written with the letters c, q and x. You'll meet them in real words as the course goes on — for now, just listen for them."
+        },
+        {
+          "kind": "say",
+          "text": "Today, focus on clear vowels and a relaxed, even rhythm."
+        },
+        {
+          "kind": "cue",
+          "text": "Sound examples from the pronunciation guide: model each slowly, then naturally. Learner repeats after each one."
+        },
+        {
+          "kind": "model",
+          "zu": "uyise",
+          "en": "his/her father",
+          "delivery": "teach",
+          "label": "Example",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "amawele",
+          "en": "twins",
+          "delivery": "teach",
+          "label": "Example",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "cela",
+          "en": "ask",
+          "delivery": "teach",
+          "label": "Example",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "qamba",
+          "en": "make up",
+          "delivery": "teach",
+          "label": "Example",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "say",
+          "text": "Now let's greet someone."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-core",
+      "kind": "core",
+      "title": "Core Language — Hear & Understand",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Here are the key expressions for this lesson."
+        },
+        {
+          "kind": "say",
+          "text": "Listen to each one first. I'll say it slowly, then at a natural speed — and then it's your turn."
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona, unjani?",
+          "en": "Hello, how are you?",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila, wena unjani?",
+          "en": "I’m fine, and how are you?",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila",
+          "en": "Thank you, I am fine",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila. Sala kahle.",
+          "en": "Thank you, I am fine. Stay well.",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona",
+          "en": "Hello – singular",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sanibonani",
+          "en": "Hello – plural",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-repertoire",
+      "kind": "repertoire",
+      "title": "Core Language — Build the Repertoire",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Good. Now let's build on that with a few more expressions you'll use in the same situations."
+        },
+        {
+          "kind": "model",
+          "zu": "Unjani?",
+          "en": "How are you? – singular",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ninjani?",
+          "en": "How are you? – plural",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila",
+          "en": "I am fine.",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sisaphila",
+          "en": "We are fine.",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sanibonani, ninjani?",
+          "en": "Good day, how are you all?",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sisaphila, nina ninjani?",
+          "en": "We are well, and how are you all?",
+          "delivery": "teach",
+          "pauseSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-pronunciation",
+      "kind": "pronunciation",
+      "title": "Pronunciation & Native-Speed Modeling",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Let's sharpen your pronunciation."
+        },
+        {
+          "kind": "say",
+          "text": "I'll say each one slowly, then the way you'd hear it in a real conversation. Listen to the rhythm, then try it yourself."
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona, unjani?",
+          "en": "Hello, how are you?",
+          "delivery": "pronounce",
+          "pauseSeconds": 4,
+          "after": "Now you try."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila, wena unjani?",
+          "en": "I’m fine, and how are you?",
+          "delivery": "pronounce",
+          "pauseSeconds": 4,
+          "after": "Now you try."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila",
+          "en": "Thank you, I am fine",
+          "delivery": "pronounce",
+          "pauseSeconds": 4,
+          "after": "Now you try."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila. Sala kahle.",
+          "en": "Thank you, I am fine. Stay well.",
+          "delivery": "pronounce",
+          "pauseSeconds": 4,
+          "after": "Now you try."
+        },
+        {
+          "kind": "cue",
+          "text": "LIVE EXAMPLE SLOT — explain one sound or rhythm feature you hear as a native speaker. Keep it practical. Any new isiZulu wording must be flagged for language QA before the final cut."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-lab",
+      "kind": "lab",
+      "title": "Conversation Lab",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Now let's use these in a real exchange."
+        },
+        {
+          "kind": "say",
+          "text": "I'll perform the whole conversation once. Then we'll take it turn by turn — you'll play one part, and then we'll switch."
+        },
+        {
+          "kind": "cue",
+          "text": "Perform the exchange naturally once. Then take it turn by turn: the learner plays one role, then switches roles."
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona, unjani?",
+          "en": "Hello, how are you?",
+          "delivery": "dialogue",
+          "speaker": "Speaker A",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila, wena unjani?",
+          "en": "I’m fine, and how are you?",
+          "delivery": "dialogue",
+          "speaker": "Speaker B",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila. Sala kahle.",
+          "en": "Thank you, I am fine. Stay well.",
+          "delivery": "dialogue",
+          "speaker": "Speaker A",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sanibonani, ninjani?",
+          "en": "Good day, how are you all?",
+          "delivery": "dialogue",
+          "speaker": "Speaker A",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Sisaphila, nina ninjani?",
+          "en": "We are well, and how are you all?",
+          "delivery": "dialogue",
+          "speaker": "Speaker B",
+          "pauseSeconds": 3
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila",
+          "en": "I am fine.",
+          "delivery": "dialogue",
+          "speaker": "Speaker A",
+          "pauseSeconds": 3
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-retrieval",
+      "kind": "retrieval",
+      "title": "Retrieval Check",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Time to check what you remember."
+        },
+        {
+          "kind": "say",
+          "text": "I'll give you the English. Try to say it in isiZulu before I give you the answer."
+        },
+        {
+          "kind": "say",
+          "text": "How do you say “Hello, how are you?”"
+        },
+        {
+          "kind": "cue",
+          "text": "Pause 4 sec — let the learner answer before you reveal."
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona, unjani?",
+          "en": "Hello, how are you?",
+          "delivery": "reveal"
+        },
+        {
+          "kind": "say",
+          "text": "How do you say “I’m fine, and how are you?”"
+        },
+        {
+          "kind": "cue",
+          "text": "Pause 4 sec — let the learner answer before you reveal."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila, wena unjani?",
+          "en": "I’m fine, and how are you?",
+          "delivery": "reveal"
+        },
+        {
+          "kind": "say",
+          "text": "How do you say “Thank you, I am fine”?"
+        },
+        {
+          "kind": "cue",
+          "text": "Pause 4 sec — let the learner answer before you reveal."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila",
+          "en": "Thank you, I am fine",
+          "delivery": "reveal"
+        },
+        {
+          "kind": "say",
+          "text": "How do you say “Thank you, I am fine. Stay well”?"
+        },
+        {
+          "kind": "cue",
+          "text": "Pause 4 sec — let the learner answer before you reveal."
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila. Sala kahle.",
+          "en": "Thank you, I am fine. Stay well.",
+          "delivery": "reveal"
+        },
+        {
+          "kind": "say",
+          "text": "How do you say “Hello” to one person?"
+        },
+        {
+          "kind": "cue",
+          "text": "Pause 4 sec — let the learner answer before you reveal."
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona",
+          "en": "Hello – singular",
+          "delivery": "reveal"
+        },
+        {
+          "kind": "cue",
+          "text": "Feedback: acknowledge the meaning first, then model the exact source form and ask for one clean repeat."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-roleplay",
+      "kind": "roleplay",
+      "title": "Guided Role-Play",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Let's put it all together in a short role-play."
+        },
+        {
+          "kind": "say",
+          "text": "Picture this: you arrive at a friend's home and greet the family — first one person, then everyone together. Ask how they are, answer when they ask you, and close the conversation politely."
+        },
+        {
+          "kind": "cue",
+          "text": "Set the scene without giving a full answer script. The learner uses at least three approved forms. Change one detail or ask one follow-up so the learner retrieves rather than recites. If they're stuck, give the English meaning as a cue before showing the target form. Don't rescue too early."
+        },
+        {
+          "kind": "cue",
+          "text": "Support bank — show only if the learner is stuck:"
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona, unjani?",
+          "en": "Hello, how are you?",
+          "delivery": "bank"
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyaphila, wena unjani?",
+          "en": "I’m fine, and how are you?",
+          "delivery": "bank"
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila",
+          "en": "Thank you, I am fine",
+          "delivery": "bank"
+        },
+        {
+          "kind": "model",
+          "zu": "Ngiyabonga, ngiyaphila. Sala kahle.",
+          "en": "Thank you, I am fine. Stay well.",
+          "delivery": "bank"
+        },
+        {
+          "kind": "model",
+          "zu": "Sawubona",
+          "en": "Hello – singular",
+          "delivery": "bank"
+        },
+        {
+          "kind": "model",
+          "zu": "Sanibonani",
+          "en": "Hello – plural",
+          "delivery": "bank"
+        },
+        {
+          "kind": "cue",
+          "text": "LIVE EXAMPLE SLOT — add one authentic personal or community example and one cultural or register note. New isiZulu wording must be flagged for language QA before the final cut."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-canspeak",
+      "kind": "canspeak",
+      "title": "Can-Speak Challenge",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "Now it's your turn to speak on your own — no script this time."
+        },
+        {
+          "kind": "say",
+          "text": "Greet me as if we've just met in the street. Ask how I am, answer when I ask you, and close the conversation politely."
+        },
+        {
+          "kind": "cue",
+          "text": "Give a fresh variation of the lesson scenario. The learner must demonstrate: Pronounce essential sounds and open and close a culturally appropriate greeting.\nMinimum evidence: understandable response, relevant approved vocabulary, one follow-up turn, and an attempt to repair if communication breaks down.\nDo not provide a complete scripted answer before the attempt."
+        },
+        {
+          "kind": "cue",
+          "text": "Pause and let the learner perform. Then give one specific piece of coaching."
+        }
+      ]
+    },
+    {
+      "id": "zulu-beginner-01-closing",
+      "kind": "closing",
+      "title": "Closing & Next Lesson",
+      "beats": [
+        {
+          "kind": "say",
+          "text": "That's the end of Lesson 1. You can now greet someone, ask how they are, answer politely, and close the conversation — with one person or a whole group."
+        },
+        {
+          "kind": "say",
+          "text": "Before the next lesson, greet someone out loud at least three times. Say it slowly, then naturally."
+        },
+        {
+          "kind": "say",
+          "text": "In Lesson 2, we'll go one step further: introducing yourself, and learning someone else's name and where they're from."
+        }
+      ]
+    }
+  ]
+}
