@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Ubuntu Talks · isiZulu Native QA · Lesson 1</title>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;background:#fff9ef;color:#2e201a}
+*{box-sizing:border-box}body{margin:0}main{max-width:1100px;margin:auto;padding:24px}
+a{color:#0e655b}h1{font:700 clamp(27px,4vw,42px) Georgia,serif;line-height:1.13;margin:10px 0}h2{font:700 25px Georgia,serif}
+section{background:white;border:1px solid #e2d1b9;border-radius:16px;margin:16px 0;padding:22px}
+.warn{background:#fff0e4;border-left:4px solid #a83216;padding:14px;color:#7b2612}
+audio{width:100%;margin:10px 0}table{border-collapse:collapse;width:100%;font-size:14px}
+td,th{padding:10px;border-bottom:1px solid #eae1d6;text-align:left;vertical-align:top}
+th{background:#f7eee2;position:sticky;top:0}td:nth-child(3){min-width:280px}
+input,textarea,select{font:inherit;border:1px solid #c9ae91;border-radius:8px;padding:8px;background:#fff;width:100%}
+input[type=checkbox]{width:auto}textarea{min-height:50px}button{border:0;border-radius:10px;background:#0e655b;color:white;padding:11px 18px;font:600 14px system-ui;cursor:pointer}
+button.secondary{background:#3c2d26}button:disabled{opacity:.55;cursor:not-allowed}
+.row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}.row>*{flex:1}.micro{font-size:13px;color:#725f51}
+#status{font-weight:bold}.danger{color:#a83216}.small{font-size:12px}.checklist{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:6px}
+label{display:block}.checklist label{padding:10px;background:#f7f0e6;border-radius:9px}
+@media(max-width:700px){main{padding:12px}section{padding:13px}table{font-size:12px}td,th{padding:5px}td:nth-child(3){min-width:180px}}
+</style></head>
+<body><main>
+<a href="/ubuntu-lesson1-listen.html">← Private Voice Studio listening room</a>
+<p class="micro">UBUNTU TALKS · EVERYDAY ISIZULU · BEGINNER I · REVIEW CONTROL</p>
+<h1>Lesson 1 — Native isiZulu quality review</h1>
+<p><strong>Sounds, Greetings &amp; Respect</strong> · Leah / Thando / Themba · 139 source-locked cues</p>
+<p class="warn">Restricted internal F0 reference audio only. NOT a commercial audio master. A human approval report is required, and a separate paid-tier Azure S0 recording must be made and checked before Whop distribution.</p>
+<section>
+<h2>Listen and assess</h2>
+<p>Complete 139-cue reference master · approximately 10 minutes 17 seconds</p>
+<audio controls preload="none" src="/api/ubuntu/azure/lesson1/master/listen.mp3"></audio>
+<p>Greeting excerpt · approximately 85 seconds</p>
+<audio controls preload="none" src="/api/ubuntu/azure/lesson1/sample/qa-preview.mp3"></audio>
+<p class="micro">Audio streams are protected by Voice Studio authentication. If either player fails, check your Studio access; do not replace it with a publicly accessible recording.</p>
+</section>
+<section>
+<h2>Reviewer details</h2>
+<div class="row">
+<label>Name <input id="reviewer" autocomplete="name" placeholder="Qualified reviewer name"></label>
+<label>Qualification / isiZulu experience <input id="qualification" placeholder="Native-speaker role, education or experience"></label>
+</div>
+<div class="row">
+<label>Review date <input id="date" type="date"></label>
+<label>QA decision <select id="decision"><option value="NOT_READY">Draft / not ready</option><option value="PASS">Pass only if all 139 cues pass</option><option value="FIX_REQUIRED">Corrections required</option><option value="REJECT">Reject reference recording</option></select></label>
+</div>
+<label>Overall review notes<textarea id="notes" placeholder="Pacing, cultural usage, voices, stress and repairs needed"></textarea></label>
+<div class="checklist" id="checks"></div>
+<p class="micro">All six review dimensions and all 139 cues must be marked before a PASS report may be exported. A signed report does not automatically update the factory or authorize commercial release.</p>
+</section>
+<section>
+<div class="row"><h2>Cue-by-cue ledger</h2><span id="status">Loading approved cue index…</span></div>
+<div class="row"><button class="secondary" id="exportDraft" disabled>Export review draft</button><button id="exportPass" disabled>Export signed review report</button></div>
+<div style="overflow:auto"><table><thead><tr><th>#</th><th>Voice</th><th>Exact spoken text</th><th>Assessment</th><th>Corrections / timestamp</th></tr></thead><tbody id="cues"></tbody></table></div>
+</section>
+<p class="micro">Whop pilot cors_EYwVx1BwLtuXB · Lesson lesn_p61ZUtWXJkEie · This page stores nothing automatically and sends no results to third parties. Downloaded QA reports must be reviewed and attached to the course factory's production record.</p>
+</main>
+<script>
+"use strict";
+const dimensions=[
+"All spoken wording matches the approved source",
+"Vowel, syllable rhythm and sentence stress",
+"isiZulu c / q / x click quality and accuracy",
+"Singular/plural and respectful social register",
+"Leah, Thando, Themba voice and turn accuracy",
+"Natural learner pacing, pauses and clean audio"];
+const checks=document.getElementById("checks");
+for(const [i,label] of dimensions.entries()){
+ const x=document.createElement("label");x.textContent=label+" ";
+ const cb=document.createElement("input");cb.type="checkbox";cb.dataset.dimension=String(i);
+ x.prepend(cb);checks.appendChild(x);
+}
+const qs=(s)=>document.querySelector(s),all=(s)=>[...document.querySelectorAll(s)];
+const date=qs("#date");date.value=new Date().toISOString().slice(0,10);
+let source=[],errors=[];
+const status=qs("#status");
+function progress(){
+ const reviewed=all("select[data-cue]").filter(x=>x.value!=="PENDING").length;
+ status.textContent=reviewed+"/"+source.length+" cues reviewed";
+ qs("#exportPass").disabled=reviewed!==139||all("select[data-cue]").some(x=>x.value!=="PASS")||
+  all("input[data-dimension]").some(x=>!x.checked)||!qs("#reviewer").value.trim()||
+  !qs("#qualification").value.trim()||!date.value||qs("#decision").value!=="PASS";
+}
+function makeReport(){
+ return {
+  schema:"ubuntu-talks-lesson01-native-qa-v1",reference_only:true,commercial_release_approval:false,
+  course_id:"cors_EYwVx1BwLtuXB",lesson_id:"lesn_p61ZUtWXJkEie",
+  reference_sha256:"ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
+  submitted_at:new Date().toISOString(),
+  reviewer:{name:qs("#reviewer").value.trim(),qualification:qs("#qualification").value.trim(),date:date.value},
+  decision:qs("#decision").value,
+  dimensions:dimensions.map((label,i)=>({label,checked:all("input[data-dimension]")[i].checked})),
+  notes:qs("#notes").value.trim(),
+  cues:source.map(c=>({order:c.order,clip_id:c.clip_id,voice:c.voice,text:c.text,
+   result:qs('[data-cue="'+c.order+'"]').value,
+   notes:qs('[data-notes="'+c.order+'"]').value.trim()}))
+ };
+}
+function download(suffix){
+ const data=JSON.stringify(makeReport(),null,2)+"\n";
+ const url=URL.createObjectURL(new Blob([data],{type:"application/json"}));
+ const a=document.createElement("a");a.href=url;a.download="ubuntu-isizulu-lesson01-"+suffix+"-"+date.value+".json";
+ document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+qs("#exportDraft").onclick=()=>download("review-draft");
+qs("#exportPass").onclick=()=>download("native-signed-reference-qa");
+all("#reviewer,#qualification,#date,#decision").forEach(x=>x.addEventListener("input",progress));
+all("input[data-dimension]").forEach(x=>x.addEventListener("change",progress));
+(async()=>{
+ try{
+ const res=await fetch("/api/ubuntu/azure/lesson1/playlist",{credentials:"same-origin"});
+ if(!res.ok)throw Error("Voice Studio API returned "+res.status);
+ const j=await res.json();if(j.total!==139||!Array.isArray(j.cues)||j.cues.length!==139)throw Error("139 approved cue index unavailable");
+ source=j.cues;
+ const table=qs("#cues");
+ source.forEach(c=>{
+ const tr=document.createElement("tr");
+ const n=document.createElement("td");n.textContent=String(c.order).padStart(3,"0");
+ const v=document.createElement("td");v.textContent=c.voice;
+ const t=document.createElement("td");t.textContent=c.text;
+ const s=document.createElement("td");
+ const sel=document.createElement("select");sel.dataset.cue=String(c.order);
+ [["PENDING","Not checked"],["PASS","Pass"],["FIX","Needs correction"],["REJECT","Reject"]].forEach(([value,label])=>{
+ const op=document.createElement("option");op.value=value;op.textContent=label;sel.appendChild(op);
+ });
+ sel.onchange=progress;s.appendChild(sel);
+ const d=document.createElement("td");const note=document.createElement("textarea");note.dataset.notes=String(c.order);
+ note.placeholder="Time or correction detail";d.appendChild(note);
+ tr.append(n,v,t,s,d);table.appendChild(tr);
+ });qs("#exportDraft").disabled=false;progress();
+ }catch(e){status.textContent="Private cue index unavailable: "+e.message;status.className="danger"}
+})();
+</script></body></html>
