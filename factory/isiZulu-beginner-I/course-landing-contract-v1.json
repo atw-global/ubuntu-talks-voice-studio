@@ -68,7 +68,16 @@
     "hero": {
       "url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/368cf328-8c9c-4684-a8ed-c48e3911cb8e/image.png",
       "whop_file_id": "file_YrbXTD2X1rWSC",
-      "needs_full_resolution_replacement": true
+      "needs_full_resolution_replacement": true,
+      "approved_hd": {
+        "canva_media_id": "MAHbSkFb9Ro",
+        "width": 1672,
+        "height": 941,
+        "source_file": "ubuntu_talks_everyday_isizulu.png",
+        "status": "IMPORTED_IN_CANVA_FULL_RES_2026_11_18",
+        "whop_uploaded": false,
+        "whop_upload_blocker": "WHOP_VONI_BROWSER_REAUTH_REQUIRED"
+      }
     },
     "square_cover": {
       "url": null,
@@ -116,7 +125,13 @@
         "zu": "Ngiyaphila",
         "en": "I am fine"
       }
-    ]
+    ],
+    "qa_duration_seconds": 85.08,
+    "bytes": 1021292,
+    "sha256": "d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0",
+    "storage": "r2://ubuntu-talks-instructor-masters/courses/zu/beginner-i/lesson-01/v1/sample-greetings-85s-qa.mp3",
+    "technical_assembly": "PASS",
+    "commercial_release": "BLOCKED_NATIVE_QA_AND_LICENSE"
   },
   "benefits": [
     "10 progressive, guided lessons",
@@ -168,6 +183,8 @@
     "sample_qa_endpoint_requires_studio_auth": true,
     "audio_playback_test": "NOT_VERIFIED_BASIC_AUTH_401",
     "end_to_end_entitlement_test": "NOT_COMPLETED",
-    "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer"
+    "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer",
+    "whop_browser_auth": "EXPIRED_2026_11_18",
+    "whop_media_upload": "PENDING_REAUTH"
   }
 }
