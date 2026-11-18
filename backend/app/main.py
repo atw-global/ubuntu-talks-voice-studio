@@ -257,6 +257,10 @@ app.include_router(lesson1_master_router)
 from app.api.endpoints.lesson1_sample import router as lesson1_sample_router
 app.include_router(lesson1_sample_router)
 
+# Checksum-gated private QA archive for the approved greeting sample.
+from app.api.endpoints.lesson1_sample_archive import router as lesson1_sample_archive_router
+app.include_router(lesson1_sample_archive_router)
+
 # Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
 from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
 app.include_router(lesson1_recording_router)
