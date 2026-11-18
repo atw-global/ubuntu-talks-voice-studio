@@ -108,6 +108,43 @@ def status():
             "lesson_id": LESSON, "ready_for_cover_upload": True}
 
 
+@router.get("/release-preflight")
+def release_preflight():
+    """Read-only verification of the exact paid plan and lesson media binding.
+
+    No transaction, entitlement creation, file upload, or publication.
+    The checkout charge and actual learner access still require an authorized
+    test membership or completed buyer journey.
+    """
+    with httpx.Client() as client:
+        product = _product(client)
+        lesson = _request(client, "GET", "/course_lessons/" + LESSON)
+    if lesson.get("id") != LESSON:
+        raise HTTPException(409, detail="Whop lesson binding does not match pilot")
+    plans = product.get("variants") or []
+    expected = [x for x in plans if x.get("id") == "plan_KhrZ8JGb2YWRt"]
+    if len(expected) != 1:
+        raise HTTPException(409, detail="Expected $29.99 pilot plan is missing")
+    plan = expected[0]
+    if plan.get("billing_period") is not None:
+        raise HTTPException(409, detail="Expected one-time payment, found recurring billing")
+    amount = plan.get("initial_price")
+    if amount is None or abs(float(amount) - 29.99) > 0.001:
+        raise HTTPException(409, detail="Whop price differs from approved $29.99")
+    media = lesson.get("attachments") or []
+    return {"product_id": PRODUCT, "visibility": product.get("visibility"),
+            "course_lesson_id": LESSON, "lesson_type": lesson.get("lesson_type"),
+            "lesson_attachment_count": len(media),
+            "lesson_attachment_mimes": [str(x.get("content_type") or "") for x in media],
+            "approved_paid_plan_id": "plan_KhrZ8JGb2YWRt",
+            "price_usd": "29.99", "one_time": True,
+            "commercial_audio_attached": any((x.get("content_type") == "audio/mpeg") for x in media),
+            "native_qa_pass": False,
+            "azure_s0_release_master_verified": False,
+            "real_paid_entitlement_test_pass": False,
+            "commercial_release_allowed": False}
+
+
 @router.post("/cover/apply")
 def apply_approved_cover():
     """Explicitly invoked, narrow replacement of this single approved product cover.
