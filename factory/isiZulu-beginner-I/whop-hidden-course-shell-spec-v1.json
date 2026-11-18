@@ -1,0 +1,1131 @@
+{
+  "schema_version": "ubuntu-whop-institutional-course-shell-spec-v1",
+  "identity": {
+    "course_title": "Ubuntu Talks — isiZulu Beginner I — Instructor-Led",
+    "course_key": "isiZulu-beginner-I",
+    "whop_company_id": "biz_E1ClvLpPiPOdSj",
+    "whop_experience_id": "exp_ZVznpY7tUX6BAm",
+    "whop_course_id": null,
+    "visibility": "hidden",
+    "creation_guard": "BRIDGE_MARKER_REQUIRED"
+  },
+  "methodology": "Source-locked seven-stage complete lesson, not speech-only",
+  "audience": "Internal production and authorized testing only",
+  "source": {
+    "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+    "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json"
+  },
+  "lessons": [
+    {
+      "lesson_key": "zulu-beginner-01",
+      "number": 1,
+      "title": "Sounds, Greetings & Respect",
+      "mission": "Pronounce essential sounds and open and close a culturally appropriate greeting.",
+      "can_do": "I can greet someone appropriately and reproduce essential sound patterns.",
+      "chapter_order": 1,
+      "chapter_title": "Lesson 01 — Sounds, Greetings & Respect",
+      "whop_course_lesson": {
+        "title": "Lesson 01 — Sounds, Greetings & Respect",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can greet someone appropriately and reproduce essential sound patterns."
+          },
+          {
+            "type": "mission",
+            "value": "Pronounce essential sounds and open and close a culturally appropriate greeting."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-01"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-01/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-02",
+      "number": 2,
+      "title": "Introduce Yourself & Learn About Someone",
+      "mission": "Exchange names, origin, and basic identity in a short getting-acquainted conversation.",
+      "can_do": "I can introduce myself and exchange simple personal information.",
+      "chapter_order": 2,
+      "chapter_title": "Lesson 02 — Introduce Yourself & Learn About Someone",
+      "whop_course_lesson": {
+        "title": "Lesson 02 — Introduce Yourself & Learn About Someone",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can introduce myself and exchange simple personal information."
+          },
+          {
+            "type": "mission",
+            "value": "Exchange names, origin, and basic identity in a short getting-acquainted conversation."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-02"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-02/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-03",
+      "number": 3,
+      "title": "People, Family & Community",
+      "mission": "Talk simply about family, familiar people, and community relationships.",
+      "can_do": "I can give simple information about family and familiar people.",
+      "chapter_order": 3,
+      "chapter_title": "Lesson 03 — People, Family & Community",
+      "whop_course_lesson": {
+        "title": "Lesson 03 — People, Family & Community",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can give simple information about family and familiar people."
+          },
+          {
+            "type": "mission",
+            "value": "Talk simply about family, familiar people, and community relationships."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-03"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-03/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-04",
+      "number": 4,
+      "title": "Needs, Requests & Asking for Help",
+      "mission": "Express immediate needs, request help, and repair a misunderstanding.",
+      "can_do": "I can make a simple request, ask for help, and ask for clarification.",
+      "chapter_order": 4,
+      "chapter_title": "Lesson 04 — Needs, Requests & Asking for Help",
+      "whop_course_lesson": {
+        "title": "Lesson 04 — Needs, Requests & Asking for Help",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can make a simple request, ask for help, and ask for clarification."
+          },
+          {
+            "type": "mission",
+            "value": "Express immediate needs, request help, and repair a misunderstanding."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-04"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-04/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-05",
+      "number": 5,
+      "title": "Food, Home & Everyday Action",
+      "mission": "Handle simple interactions about food, home, and daily actions.",
+      "can_do": "I can use simple language about food, home, and routine actions.",
+      "chapter_order": 5,
+      "chapter_title": "Lesson 05 — Food, Home & Everyday Action",
+      "whop_course_lesson": {
+        "title": "Lesson 05 — Food, Home & Everyday Action",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can use simple language about food, home, and routine actions."
+          },
+          {
+            "type": "mission",
+            "value": "Handle simple interactions about food, home, and daily actions."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-05"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-05/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-06",
+      "number": 6,
+      "title": "Numbers, Time, Dates & Simple Plans",
+      "mission": "Exchange practical number, day/date, and time information and make a simple plan.",
+      "can_do": "I can exchange simple information involving numbers, days, dates, and familiar schedules.",
+      "chapter_order": 6,
+      "chapter_title": "Lesson 06 — Numbers, Time, Dates & Simple Plans",
+      "whop_course_lesson": {
+        "title": "Lesson 06 — Numbers, Time, Dates & Simple Plans",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can exchange simple information involving numbers, days, dates, and familiar schedules."
+          },
+          {
+            "type": "mission",
+            "value": "Exchange practical number, day/date, and time information and make a simple plan."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-06"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-06/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-07",
+      "number": 7,
+      "title": "Places, Directions & Transportation",
+      "mission": "Ask about locations and communicate basic movement or travel needs.",
+      "can_do": "I can ask for or respond to basic location and travel information.",
+      "chapter_order": 7,
+      "chapter_title": "Lesson 07 — Places, Directions & Transportation",
+      "whop_course_lesson": {
+        "title": "Lesson 07 — Places, Directions & Transportation",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can ask for or respond to basic location and travel information."
+          },
+          {
+            "type": "mission",
+            "value": "Ask about locations and communicate basic movement or travel needs."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-07"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-07/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-08",
+      "number": 8,
+      "title": "Shopping, Prices & Transactions",
+      "mission": "Ask for an item, quantity, or price and complete a simple transaction.",
+      "can_do": "I can make a simple purchase and ask about price or quantity.",
+      "chapter_order": 8,
+      "chapter_title": "Lesson 08 — Shopping, Prices & Transactions",
+      "whop_course_lesson": {
+        "title": "Lesson 08 — Shopping, Prices & Transactions",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can make a simple purchase and ask about price or quantity."
+          },
+          {
+            "type": "mission",
+            "value": "Ask for an item, quantity, or price and complete a simple transaction."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-08"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-08/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-09",
+      "number": 9,
+      "title": "Weather, Seasons & Social Small Talk",
+      "mission": "Describe basic weather and seasons and use them for a short everyday social exchange.",
+      "can_do": "I can describe simple weather conditions, name familiar seasons, and use them in brief small talk.",
+      "chapter_order": 9,
+      "chapter_title": "Lesson 09 — Weather, Seasons & Social Small Talk",
+      "whop_course_lesson": {
+        "title": "Lesson 09 — Weather, Seasons & Social Small Talk",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can describe simple weather conditions, name familiar seasons, and use them in brief small talk."
+          },
+          {
+            "type": "mission",
+            "value": "Describe basic weather and seasons and use them for a short everyday social exchange."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-09"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-09/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    },
+    {
+      "lesson_key": "zulu-beginner-10",
+      "number": 10,
+      "title": "Beginner Conversation Capstone",
+      "mission": "Integrate familiar functions in an unrehearsed supported conversation.",
+      "can_do": "I can interact simply on several familiar everyday topics with support as needed.",
+      "chapter_order": 10,
+      "chapter_title": "Lesson 10 — Beginner Conversation Capstone",
+      "whop_course_lesson": {
+        "title": "Lesson 10 — Beginner Conversation Capstone",
+        "lesson_type": "multi",
+        "visibility": "hidden",
+        "content_blocks": [
+          {
+            "type": "learning_goal",
+            "value": "I can interact simply on several familiar everyday topics with support as needed."
+          },
+          {
+            "type": "mission",
+            "value": "Integrate familiar functions in an unrehearsed supported conversation."
+          },
+          {
+            "type": "learning_stage",
+            "stage": "HEAR",
+            "order": 1,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "UNDERSTAND",
+            "order": 2,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "IMITATE",
+            "order": 3,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "MANIPULATE",
+            "order": 4,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "RETRIEVE",
+            "order": 5,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "CONVERSE",
+            "order": 6,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "learning_stage",
+            "stage": "ASSESS",
+            "order": 7,
+            "lesson_source_ref": {
+              "repository": "atw-global/ubuntu-spark-forge-573b8ece",
+              "path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+              "lesson_key": "zulu-beginner-10"
+            },
+            "content_status": "SOURCE_PENDING_QA_NO_PUBLISH"
+          },
+          {
+            "type": "audio",
+            "object_key": "courses/zu/beginner-i/lesson-10/v1/master.mp3",
+            "media_status": "NOT_ATTACHED"
+          },
+          {
+            "type": "assessment",
+            "status": "QA_NOT_APPROVED"
+          }
+        ]
+      }
+    }
+  ],
+  "release_gates": [
+    "source_approved",
+    "media_generated",
+    "native_qa_pass",
+    "file_hash_verified",
+    "media_private_and_persistent",
+    "whop_record_readback",
+    "entitlement_playback_progress_verified",
+    "commercial_terms_cleared",
+    "owner_publish_approval"
+  ]
+}
