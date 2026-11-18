@@ -22,9 +22,10 @@ router = APIRouter(prefix="/api/ubuntu/azure/lesson1/sample", tags=["ubuntu-less
 
 # Source-order excerpt from the approved, recorded greetings demonstration.
 # No invented spoken lines or replacement voice recordings.
-ORDINALS = tuple(range(3, 27))
-MIN_SECONDS = 45
+ORDINALS = tuple(range(3, 86))
+MIN_SECONDS = 55
 MAX_SECONDS = 120
+TARGET_SECONDS = 85
 
 
 def _read_verified():
@@ -52,14 +53,42 @@ def _read_verified():
 
 
 def _assemble(audio):
+    """Build a natural, source-ordered excerpt without chopping a spoken cue."""
     with tempfile.TemporaryDirectory(prefix="ubuntu_lesson01_sample_") as tmp:
         root = pathlib.Path(tmp)
+        pause = root / "pause.mp3"
+        subprocess.run(
+            ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
+             "-f", "lavfi", "-i", "anullsrc=r=24000:cl=mono",
+             "-t", "0.35", "-c:a", "libmp3lame", "-b:a", "96k",
+             "-y", str(pause)],
+            check=True, capture_output=True, timeout=15,
+        )
         playlist = []
+        total_seconds = 0.0
+        selected = []
         for n in ORDINALS:
             path = root / f"cue_{n:03d}.mp3"
             path.write_bytes(audio[n])
+            proc = subprocess.run(
+                ["ffprobe", "-v", "error", "-show_entries", "format=duration",
+                 "-of", "default=noprint_wrappers=1:nokey=1", str(path)],
+                check=True, capture_output=True, text=True, timeout=15,
+            )
+            cue_seconds = float(proc.stdout.strip())
+            if total_seconds >= MIN_SECONDS and total_seconds + cue_seconds + 0.35 > TARGET_SECONDS:
+                break
+            if selected:
+                playlist.append("file 'pause.mp3'")
+                total_seconds += 0.35
             playlist.append(f"file '{path.name}'")
-        (root / "playlist.txt").write_text("\n".join(playlist) + "\n", encoding="utf-8")
+            selected.append(n)
+            total_seconds += cue_seconds
+            if total_seconds >= TARGET_SECONDS:
+                break
+        if total_seconds < MIN_SECONDS or total_seconds > MAX_SECONDS:
+            raise HTTPException(409, "Source sample outside 55-120s; requires editorial selection")
+        (root / "playlist.txt").write_text("\\n".join(playlist) + "\\n", encoding="utf-8")
         dest = root / "sample.mp3"
         subprocess.run(
             ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
@@ -74,11 +103,8 @@ def _assemble(audio):
         )
         seconds = float(proc.stdout.strip())
         if not (MIN_SECONDS <= seconds <= MAX_SECONDS):
-            raise HTTPException(
-                409, "Sample duration outside approved 45-120 second QA range"
-            )
-        return dest.read_bytes(), round(seconds, 2)
-
+            raise HTTPException(409, "Sample duration out of QA range")
+        return dest.read_bytes(), round(seconds, 2), selected
 
 @router.get("/qa-status")
 def qa_status():
@@ -100,14 +126,14 @@ def qa_preview():
     """Authenticated internal greeting sample; never a public sales embed."""
     audio = _read_verified()
     try:
-        blob, seconds = _assemble(audio)
+        blob, seconds, selected = _assemble(audio)
     except (subprocess.CalledProcessError, subprocess.TimeoutExpired, ValueError):
         raise HTTPException(502, "Unable to assemble source-verified QA sample")
     return Response(
         content=blob, media_type="audio/mpeg",
         headers={
             "Cache-Control": "private, no-store",
-            "X-Ubuntu-Sample-Duration-Seconds": str(seconds),
+            "X-Ubuntu-Sample-Duration-Seconds": str(seconds),\n            "X-Ubuntu-Source-Cue-Count": str(len(selected)),
             "X-Ubuntu-Sample-SHA256": hashlib.sha256(blob).hexdigest(),
             "Content-Disposition": 'inline; filename="UbuntuTalks_EverydayIsiZulu_Lesson01_QA_Sample.mp3"',
         },
