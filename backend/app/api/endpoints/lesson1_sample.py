@@ -88,7 +88,7 @@ def _assemble(audio):
                 break
         if total_seconds < MIN_SECONDS or total_seconds > MAX_SECONDS:
             raise HTTPException(409, "Source sample outside 55-120s; requires editorial selection")
-        (root / "playlist.txt").write_text("\\n".join(playlist) + "\\n", encoding="utf-8")
+        (root / "playlist.txt").write_text("\n".join(playlist) + "\n", encoding="utf-8")
         dest = root / "sample.mp3"
         subprocess.run(
             ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
