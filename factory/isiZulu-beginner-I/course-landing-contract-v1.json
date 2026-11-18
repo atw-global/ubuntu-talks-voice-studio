@@ -66,9 +66,9 @@
   },
   "assets": {
     "hero": {
-      "url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/368cf328-8c9c-4684-a8ed-c48e3911cb8e/image.png",
-      "whop_file_id": "file_YrbXTD2X1rWSC",
-      "needs_full_resolution_replacement": true,
+      "url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/42e9bc43-6f59-468b-8a03-ec8fe8cd7d7e/image.png",
+      "whop_file_id": "file_Iyt9BMNqWLNWr",
+      "needs_full_resolution_replacement": false,
       "approved_hd": {
         "canva_media_id": "MAHbSkFb9Ro",
         "width": 1672,
@@ -78,9 +78,10 @@
         "shopify_media_id": "gid://shopify/MediaImage/46985808576621",
         "source_bytes": 2637013,
         "status": "HD_SOURCE_VERIFIED_2026_11_18",
-        "whop_uploaded": false,
-        "whop_upload_blocker": "Whop browser authentication expired",
-        "bytes": 2637013
+        "whop_uploaded": true,
+        "whop_upload_blocker": null,
+        "bytes": 2637013,
+        "whop_file_id": "file_Iyt9BMNqWLNWr"
       }
     },
     "square_cover": {
@@ -188,11 +189,13 @@
     "audio_playback_test": "NOT_VERIFIED_BASIC_AUTH_401",
     "end_to_end_entitlement_test": "NOT_COMPLETED",
     "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer",
-    "whop_browser_auth": "EXPIRED_2026_11_18",
-    "whop_media_upload": "BLOCKED_INTERMITTENT_WHOP_OAUTH_SESSION",
+    "whop_browser_auth": "NOT_REQUIRED_FOR_BACKEND_INTEGRATION",
+    "whop_media_upload": "PASS_2026_11_18",
     "public_hd_asset_reachable_in_voni": "PASS_1672x941_2637013_BYTES",
     "whop_media_upload_attempt": "Whop editor rendered once, but reverted to Google login before gallery file input could receive HD asset",
     "native_speaker_qa": "NOT_PERFORMED",
-    "paid_purchase_entitlement": "NOT_TESTED_NO_CUSTOMER_CHARGE"
+    "paid_purchase_entitlement": "NOT_TESTED_NO_CUSTOMER_CHARGE",
+    "whop_company_api": "PASS_PRODUCT_HIDDEN_CONFIRMED",
+    "whop_cover_incognito": "PASS_NEW_HD_ASSET_RENDERED"
   }
 }
