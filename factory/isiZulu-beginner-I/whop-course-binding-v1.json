@@ -240,5 +240,23 @@
   "legacy_courses_untouched": true,
   "binding_verified_at": "2026-11-18",
   "audio_master_archive": "VERIFIED_PRIVATE_2026_11_18",
-  "last_verified_at": "2026-11-18"
+  "last_verified_at": "2026-11-18",
+  "media_release_state": {
+    "verified_at": "2026-11-18",
+    "source_master": "R2_PRIVATE_HASH_VERIFIED",
+    "sample_excerpt": "R2_PRIVATE_HASH_VERIFIED",
+    "hd_cover_source": "SHOPIFY_CDN_FULL_RES_VERIFIED",
+    "whop_cover": "STILL_OLD_LOW_RES_IMAGE",
+    "whop_lesson_1_audio_embed": "NONE",
+    "whop_anonymous_preview_audio": "NONE",
+    "pricing": "USD_29_99_ONE_TIME",
+    "visibility": "HIDDEN",
+    "primary_blockers": [
+      "Whop browser admin OAuth session unavailable for media upload",
+      "native-speaker approval not recorded",
+      "Azure commercial audio licensing approval not recorded",
+      "whop paid learner entitlement not tested"
+    ],
+    "publish_allowed": false
+  }
 }
