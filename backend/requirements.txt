@@ -67,3 +67,6 @@ ruff>=0.4.0
 #
 # Kokoro:
 #   pip install kokoro soundfile
+
+# Secure, server-side Cloudflare R2 S3-compatible upload of approved QA masters
+boto3>=1.35.0,<2
