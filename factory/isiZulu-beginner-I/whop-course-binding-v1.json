@@ -205,7 +205,18 @@
     "whop_gallery_file_id": "file_YrbXTD2X1rWSC",
     "whop_gallery_url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/368cf328-8c9c-4684-a8ed-c48e3911cb8e/image.png",
     "full_resolution_replacement_pending": true,
-    "checkout_custom_image_supported_verified": false
+    "checkout_custom_image_supported_verified": false,
+    "approved_hd": {
+      "width": 1672,
+      "height": 941,
+      "format": "PNG",
+      "sha256": null,
+      "url": "https://cdn.shopify.com/s/files/1/0712/9500/8877/files/ubuntu-talks-everyday-isizulu-beginner-i-hd.png?v=1795026974",
+      "source": "Ubuntu Talks Marketplace permanent CDN",
+      "status": "VERIFIED_HD_ASSET",
+      "whop_cover_replacement": "PENDING_AUTHORIZED_UPLOAD"
+    },
+    "canva_master_media_id": "MAHbSkFb9Ro"
   },
   "course_factory_source_of_truth": "factory/isiZulu-beginner-I/whop-course-binding-v1.json",
   "sample_audio": {
