@@ -81,7 +81,7 @@ def _load_approved_image(client: httpx.Client):
         raise HTTPException(502, detail="Approved HD image source unavailable") from exc
     if not (MIN_IMAGE_BYTES <= len(blob) <= MAX_IMAGE_BYTES):
         raise HTTPException(422, detail="Image size outside verified HD cover limits")
-    if not blob.startswith(b"\\x89PNG\\r\\n\\x1a\\n"):
+    if not blob.startswith(bytes.fromhex("89504e470d0a1a0a")):
         raise HTTPException(422, detail="Artwork source is not PNG")
     width, height = struct.unpack(">II", blob[16:24])
     if (width, height) != (EXPECTED_WIDTH, EXPECTED_HEIGHT):
@@ -129,7 +129,10 @@ def apply_approved_cover():
                 and isinstance(upload_url, str)):
             raise HTTPException(502, detail="Whop did not return a direct-upload file destination")
         parsed = urlparse(upload_url)
-        if (parsed.scheme != "https" or not parsed.hostname or\n                not (parsed.hostname.endswith(".amazonaws.com") or\n                     parsed.hostname.endswith(".r2.cloudflarestorage.com") or\n                     parsed.hostname.endswith(".whop.com"))):
+        if (parsed.scheme != "https" or not parsed.hostname or
+                not (parsed.hostname.endswith(".amazonaws.com") or
+                parsed.hostname.endswith(".r2.cloudflarestorage.com") or
+                parsed.hostname.endswith(".whop.com"))):
             raise HTTPException(502, detail="Invalid Whop presigned upload destination")
         # Do not forward the bearer API key to the presigned storage URL.
         upload_headers = file_info.get("upload_headers") or {}
