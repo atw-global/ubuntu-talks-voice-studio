@@ -34,10 +34,14 @@
       "asset_uri": "r2://ubuntu-talks-instructor-masters/courses/zu/beginner-i/lesson-01/v1/master.mp3",
       "sha256": "ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
       "audio_review": "TECHNICAL_MASTER_PASS_NATIVE_QA_PENDING",
-      "native_qa": "PENDING",
-      "publishing_state": "HIDDEN_MEDIA_ARCHIVED_NOT_ATTACHED",
+      "native_qa": "PENDING_QUALIFIED_REVIEWER_SIGNOFF",
+      "publishing_state": "HIDDEN_F0_REFERENCE_PRIVATE_NATIVE_QA_S0_RE_RECORD_PENDING",
       "duration_seconds": 617,
-      "bytes": 7401068
+      "bytes": 7401068,
+      "commercial_audio_rights": "F0_REFERENCE_ONLY_S0_RE_RECORD_REQUIRED",
+      "commercial_master_uri": null,
+      "public_sample_uri": null,
+      "whop_audio_attachment_count": 0
     },
     {
       "canonical_lesson_id": "ZB1-02",
@@ -233,7 +237,7 @@
     "technical_assembly": "PASS_2026_11_18_RENDER_STARTUP_LOG",
     "r2_upload": "VERIFIED_PRIVATE_2026_11_18",
     "native_qa": "PENDING",
-    "rights": "PENDING",
+    "rights": "F0_REFERENCE_ONLY_NO_PUBLICATION",
     "public_url": null,
     "whop_preview_attached": false,
     "commercial_release_approved": false
@@ -248,7 +252,7 @@
     "sample_excerpt": "R2_PRIVATE_HASH_VERIFIED",
     "hd_cover_source": "SHOPIFY_CDN_FULL_RES_VERIFIED",
     "whop_cover": "HD_COVER_VERIFIED_PRODUCT_API_AND_ANONYMOUS_WEB",
-    "whop_lesson_1_audio_embed": "NONE",
+    "whop_lesson_1_audio_embed": "ZERO_ATTACHMENTS_CONFIRMED",
     "whop_anonymous_preview_audio": "NONE",
     "pricing": "USD_29_99_ONE_TIME",
     "visibility": "HIDDEN",
@@ -260,6 +264,12 @@
     ],
     "publish_allowed": false,
     "whop_api_key": "CONNECTED_SERVER_SIDE",
-    "whop_browser_login_required_for_ordinary_media": "NO"
+    "whop_browser_login_required_for_ordinary_media": "NO",
+    "native_qa": "PENDING_QUALIFIED_SIGNOFF",
+    "azure_commercial_rights": "F0_NOT_CLEARED_REQUIRES_S0_REGENERATED_V2",
+    "review_page_path": "/api/ubuntu/azure/lesson1/release-review/review",
+    "release_status_path": "/api/ubuntu/azure/lesson1/release-review/status",
+    "buyer_checkout": "API_PREFLIGHT_ONE_TIME_29_99_PASS",
+    "buyer_real_entitlement": "PENDING_TEST_TRANSACTION_OR_SAFE_TEST_MEMBERSHIP"
   }
 }
