@@ -227,6 +227,10 @@ app.include_router(ws_router)
 # OpenAI-compatible API (mounted at root so /v1/audio/speech works)
 app.include_router(openai_compat_router)
 
+# Source-verified private Cloudflare R2 archive, no public access.
+from app.api.endpoints.lesson1_archive import router as lesson1_archive_router
+app.include_router(lesson1_archive_router)
+
 # Full 139-cue private audio master, preserving all native isiZulu speech.
 from app.api.endpoints.lesson1_master import router as lesson1_master_router
 app.include_router(lesson1_master_router)
