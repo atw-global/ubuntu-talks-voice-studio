@@ -11,7 +11,7 @@
   "source_repository": "atw-global/ubuntu-spark-forge-573b8ece",
   "source_path": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
   "media_source": "atw-global/ubuntu-talks-voice-studio",
-  "media_storage": "Cloudflare R2 production bucket, not ephemeral Render URL",
+  "media_storage": "Cloudflare R2 existing bucket ubuntu-talks-instructor-masters (FOH Sub Accounts); private verified upload pending",
   "drive_archive_folder": "https://drive.google.com/drive/folders/1iM5Re19ZLRUqCvAz9Q64WfdsmG9_FSqD",
   "lesson_count": 10,
   "stages": [
@@ -30,12 +30,14 @@
       "title": "Sounds, Greetings & Respect",
       "whop_chapter_id": null,
       "whop_lesson_id": null,
-      "asset_version": null,
+      "asset_version": "english-instructor-v1",
       "asset_uri": null,
-      "sha256": null,
-      "audio_review": "PENDING",
+      "sha256": "ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
+      "audio_review": "TECHNICAL_MASTER_PASS_NATIVE_QA_PENDING",
       "native_qa": "PENDING",
-      "publishing_state": "HIDDEN_NO_PUBLIC_ACCESS"
+      "publishing_state": "HIDDEN_NO_PUBLIC_ACCESS",
+      "duration_seconds": 617,
+      "bytes": 7401068
     },
     {
       "canonical_lesson_id": "ZB1-02",
@@ -163,5 +165,13 @@
     "learner_entitlement_and_completion_test_pass",
     "commercial_tts_rights_confirmed",
     "explicit_owner_publication_approval"
-  ]
+  ],
+  "r2": {
+    "cloudflare_account_id": "4776967df1db80c2a31141343cd113c1",
+    "bucket": "ubuntu-talks-instructor-masters",
+    "key_prefix": "courses/zu/beginner-i/lesson-01/v1/",
+    "object_key": "courses/zu/beginner-i/lesson-01/v1/master.mp3",
+    "upload_status": "NOT_UPLOADED",
+    "access_policy": "PRIVATE_ACCESS_GATED"
+  }
 }
