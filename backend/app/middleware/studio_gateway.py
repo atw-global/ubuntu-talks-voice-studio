@@ -45,7 +45,7 @@ class StudioGateway:
         # installed and explicitly enabled. This prevents orphaned Celery jobs.
         if typ == "http" and scope.get("path", "").startswith(("/api/", "/v1/")):
             if scope.get("method", "GET").upper() not in {"GET", "HEAD", "OPTIONS"}:
-                if (scope.get("path", "") not in {"/api/ubuntu/azure/audition/leah", "/api/ubuntu/azure/audition/thando", "/api/ubuntu/azure/audition/themba", "/api/ubuntu/azure/lesson1/start", "/api/ubuntu/azure/lesson1/master/start", "/api/ubuntu/azure/lesson1/archive/upload", "/api/ubuntu/azure/pronunciation-fix/1", "/api/ubuntu/azure/pronunciation-fix/2", "/api/ubuntu/azure/lesson1-english-guidance-demo"} and os.environ.get("VOICE_STUDIO_GENERATION_ENABLED", "false").lower() != "true"):
+                if (scope.get("path", "") not in {"/api/ubuntu/azure/audition/leah", "/api/ubuntu/azure/audition/thando", "/api/ubuntu/azure/audition/themba", "/api/ubuntu/azure/lesson1/start", "/api/ubuntu/azure/lesson1/master/start", "/api/ubuntu/azure/lesson1/archive/upload", "/api/ubuntu/azure/lesson1/sample/archive/upload", "/api/ubuntu/azure/pronunciation-fix/1", "/api/ubuntu/azure/pronunciation-fix/2", "/api/ubuntu/azure/lesson1-english-guidance-demo"} and os.environ.get("VOICE_STUDIO_GENERATION_ENABLED", "false").lower() != "true"):
                     return await JSONResponse(
                         {"error": "Speech generation is not enabled; GPU worker is not connected."},
                         status_code=503,
