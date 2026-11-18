@@ -150,6 +150,27 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private R2 archival setup FAILED type=%s", type(exc).__name__)
         _archive_asyncio.create_task(_private_lesson01_archive(), name="ubuntu-lesson01-secure-r2-archive")
+    # Company API key check runs inside Render without exposing any bearer token.
+    # Explicitly approved single-product cover update is opt-in and idempotent.
+    if _envos.environ.get("WHOP_API_KEY", "").strip():
+        import asyncio as _whop_asyncio
+        async def _check_whop_pilot():
+            try:
+                from app.api.endpoints.whop_course_factory import status as _whop_status
+                result = await _whop_asyncio.to_thread(_whop_status)
+                logger.info("Ubuntu Whop company API CHECK PASS product=%s visibility=%s gallery=%s",
+                            result.get("product_id"), result.get("product_visibility"), result.get("product_gallery_file_ids"))
+                if _envos.environ.get("UBUNTU_WHOP_APPROVED_COVER_APPLY", "").lower() == "true":
+                    from app.api.endpoints.whop_course_factory import apply_approved_cover
+                    outcome = await _whop_asyncio.to_thread(apply_approved_cover)
+                    logger.info("Ubuntu Whop HD COVER APPLY RESULT status=%s product=%s file=%s",
+                                outcome.get("status"), outcome.get("product_id"), outcome.get("new_file_id"))
+            except Exception as error:
+                logger.error("Ubuntu Whop company API check/apply FAILED type=%s detail=%s",
+                             type(error).__name__, getattr(error, "detail", "internal_failure"))
+        _whop_asyncio.create_task(_check_whop_pilot(), name="ubuntu-whop-private-company-api-check")
+    else:
+        logger.info("Ubuntu Whop company API key NOT CONFIGURED; hidden pilot unchanged")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
