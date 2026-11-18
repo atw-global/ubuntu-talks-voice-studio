@@ -111,6 +111,24 @@ async def lifespan(_app: FastAPI):
             except Exception:
                 logger.exception("Ubuntu Lesson 1 sample self-test FAIL")
         _verify_asyncio.create_task(_check_lesson1_demo(), name="ubuntu-lesson1-demo-selftest")
+    # Verify source-matched Lesson 1 sample assembly within the protected
+    # server process. The test logs only size/duration/hash, never audio bytes.
+    if _envos.environ.get("UBUNTU_LESSON1_SAMPLE_SELFTEST", "true").lower() == "true":
+        import asyncio as _sample_asyncio
+        import hashlib as _sample_hashlib
+        async def _sample_selftest():
+            try:
+                from app.api.endpoints.lesson1_sample import _read_verified, _assemble
+                def verify():
+                    blob, duration, selected = _assemble(_read_verified())
+                    return len(blob), duration, len(selected), _sample_hashlib.sha256(blob).hexdigest()
+                size, duration, cues, digest = await _sample_asyncio.to_thread(verify)
+                logger.info("Ubuntu private Lesson 1 greeting sample SELFTEST PASS: bytes=%d duration_sec=%.2f cues=%d sha256=%s release=BLOCKED",
+                            size, duration, cues, digest)
+            except Exception as error:
+                logger.error("Ubuntu private Lesson 1 greeting sample SELFTEST FAIL: type=%s", type(error).__name__)
+                logger.exception("Private lesson sample failed internal technical verification")
+        _sample_asyncio.create_task(_sample_selftest(), name="ubuntu-lesson01-sample-technical-qa")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
