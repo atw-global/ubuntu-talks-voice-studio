@@ -1,0 +1,165 @@
+{
+  "schema_version": "1.0",
+  "course_key": "zu-beginner-i",
+  "language": "zu-ZA",
+  "course_name": "Everyday isiZulu",
+  "level": "Beginner I",
+  "brand": "Ubuntu Talks",
+  "source_of_truth": "factory/isiZulu-beginner-I/whop-course-binding-v1.json",
+  "platform_owned_repo": "atw-global/ubuntu-talks-whop",
+  "implementation_scope": "Course sales content/media binding only. Custom React storefront changes are owned by separate platform agent.",
+  "whop": {
+    "business_id": "biz_E1ClvLpPiPOdSj",
+    "product_id": "prod_EBSCxcpCQvcgI",
+    "course_id": "cors_EYwVx1BwLtuXB",
+    "experience_id": "exp_N2y6r4fBZQ7qOv",
+    "lesson_01_id": "lesn_p61ZUtWXJkEie",
+    "visibility": "hidden",
+    "public_sales_approved": false,
+    "product_url": "https://whop.com/ubuntu-talks/ubuntu-talks-isizulu-beginner-i-instructor-led/",
+    "plan_id": "plan_KhrZ8JGb2YWRt",
+    "checkout_url": "https://whop.com/checkout/plan_KhrZ8JGb2YWRt"
+  },
+  "offer": {
+    "currency": "USD",
+    "price": 29.99,
+    "regular_price": 49,
+    "discount_amount": 19.01,
+    "discount_percent_rounded": 39,
+    "charge_type": "one_time",
+    "free_testing_plan_hidden": true,
+    "no_subscription": true,
+    "tax_note": "Taxes may be added by Whop based on purchaser location",
+    "sale_banner": "INTRODUCTORY OFFER — SAVE 39%",
+    "launch_state": "HIDDEN_QA_PILOT"
+  },
+  "design": {
+    "hero_title": "SAWUBONA!",
+    "hero_subtitle": "Your first real isiZulu conversation starts here.",
+    "eyebrow": "UBUNTU TALKS · EVERYDAY ISIZULU · BEGINNER I",
+    "section_titles": [
+      "WHY THIS COURSE WORKS",
+      "TRY LESSON 1 — FREE AUDIO PREVIEW",
+      "WHAT YOU'LL LEARN",
+      "INTRODUCTORY OFFER",
+      "START SPEAKING TODAY"
+    ],
+    "primary_cta": "Start speaking — $29.99",
+    "secondary_cta": "Listen to a free sample",
+    "primary_checkout_behavior": "Direct paid Whop checkout; no cart detour",
+    "secondary_cta_behavior": "Play approved public sample in-page, no email wall",
+    "brand_colors": {
+      "cream": "#FFF9EF",
+      "cocoa": "#2E201A",
+      "terracotta": "#A83216",
+      "bronze": "#B67C39",
+      "teal": "#0E655B"
+    },
+    "style_rules": [
+      "Bold distinct section headings and restrained whitespace",
+      "Prominent hero image and one primary buying CTA",
+      "Sticky checkout CTA on mobile only after sample section",
+      "Show struck-through $49 and $29.99 exactly; do not claim 50% off",
+      "No false countdown, invented social proof or accreditation claims",
+      "Clearly label QA pilot until release gate passes"
+    ]
+  },
+  "assets": {
+    "hero": {
+      "url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/368cf328-8c9c-4684-a8ed-c48e3911cb8e/image.png",
+      "whop_file_id": "file_YrbXTD2X1rWSC",
+      "needs_full_resolution_replacement": true
+    },
+    "square_cover": {
+      "url": null,
+      "state": "PENDING_EXPLICIT_IMAGE_EXPORT"
+    },
+    "lesson_thumbnail": {
+      "url": null,
+      "state": "PENDING"
+    },
+    "checkout_asset": {
+      "url": null,
+      "state": "NATIVE_WHOP_CHECKOUT_ONLY_SHOWS_COMPANY_IMAGE;CUSTOM_CHECKOUT_OWNED_BY_PLATFORM_AGENT"
+    }
+  },
+  "preview": {
+    "heading": "Lesson 1 — Greetings & Respect",
+    "promised_length_range_seconds": [
+      60,
+      120
+    ],
+    "qa_target_seconds": 85,
+    "recording_source": "Approved 139 cue Azure Lesson 1 (Leah/Thando/Themba)",
+    "secure_qa_endpoint": "/api/ubuntu/azure/lesson1/sample/qa-preview.mp3",
+    "master_sha256": "ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
+    "public_audio_url": null,
+    "qa_status": "NOT_PLAYBACK_VERIFIED",
+    "native_language_qa": "PENDING",
+    "commercial_tts_rights": "PENDING",
+    "whop_uploaded": false,
+    "render_player_if": "public_audio_url not null and native_language_qa PASS and commercial_tts_rights PASS and independent playback PASS",
+    "fallback_sample": [
+      {
+        "zu": "Sawubona",
+        "en": "Hello (one person)"
+      },
+      {
+        "zu": "Sanibonani",
+        "en": "Hello (a group)"
+      },
+      {
+        "zu": "Unjani?",
+        "en": "How are you? (one person)"
+      },
+      {
+        "zu": "Ngiyaphila",
+        "en": "I am fine"
+      }
+    ]
+  },
+  "benefits": [
+    "10 progressive, guided lessons",
+    "Source-grounded dialogues and real speaking practice",
+    "Beginner-friendly hear–repeat–respond cycle",
+    "Seven-stage active-learning and Can-Speak challenges"
+  ],
+  "curriculum_topics": [
+    "greetings and respect",
+    "introductions",
+    "people, family and community",
+    "help and requests",
+    "food and home",
+    "numbers, dates and planning",
+    "places and directions",
+    "shopping and transactions",
+    "social small talk",
+    "conversation capstone"
+  ],
+  "related_products_policy": "Only show live, genuinely existing isiZulu courses after separate legacy audit. Hide irrelevant language cross-sells and invented courses.",
+  "factory": {
+    "master_source_repository": "atw-global/ubuntu-spark-forge-573b8ece",
+    "source": "content/zulu/instructor-master/zulu-beginner-i-master-v2.json",
+    "asset_bucket": "ubuntu-talks-instructor-masters",
+    "asset_prefix": "courses/zu/beginner-i/lesson-XX/v1/",
+    "lesson_count": 10,
+    "approval_gates": [
+      "source-locked and native language review",
+      "technical cue/audio hash verification",
+      "Azure commercial licensing",
+      "permanent private R2/Drive archive",
+      "media bound to verified Whop lesson IDs",
+      "anonymous sample playback",
+      "paid Whop entitlement and completion testing",
+      "explicit owner publication approval"
+    ]
+  },
+  "verification": {
+    "product_page_incognito": "PASS",
+    "price_checkout_one_time": "PASS",
+    "tax_exclusion": "Whop adds buyer-dependent tax",
+    "main_lesson_media_attached": false,
+    "public_audio_preview_playable": false,
+    "completed_sale_entitlement_test": false
+  }
+}
