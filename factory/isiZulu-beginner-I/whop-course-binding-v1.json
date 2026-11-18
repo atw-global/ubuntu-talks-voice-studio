@@ -202,9 +202,9 @@
     "public_launch_approved": false
   },
   "brand_assets": {
-    "whop_gallery_file_id": "file_YrbXTD2X1rWSC",
-    "whop_gallery_url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/368cf328-8c9c-4684-a8ed-c48e3911cb8e/image.png",
-    "full_resolution_replacement_pending": true,
+    "whop_gallery_file_id": "file_Iyt9BMNqWLNWr",
+    "whop_gallery_url": "https://assets-2-prod.whop.com/public/uploads/2026-11-18/42e9bc43-6f59-468b-8a03-ec8fe8cd7d7e/image.png",
+    "full_resolution_replacement_pending": false,
     "checkout_custom_image_supported_verified": false,
     "approved_hd": {
       "width": 1672,
@@ -214,7 +214,8 @@
       "url": "https://cdn.shopify.com/s/files/1/0712/9500/8877/files/ubuntu-talks-everyday-isizulu-beginner-i-hd.png?v=1795026974",
       "source": "Ubuntu Talks Marketplace permanent CDN",
       "status": "VERIFIED_HD_ASSET",
-      "whop_cover_replacement": "PENDING_AUTHORIZED_UPLOAD"
+      "whop_cover_replacement": "VERIFIED_WHOP_AND_ANONYMOUS_VIEW_2026_11_18",
+      "whop_file_id": "file_Iyt9BMNqWLNWr"
     },
     "canva_master_media_id": "MAHbSkFb9Ro"
   },
@@ -246,7 +247,7 @@
     "source_master": "R2_PRIVATE_HASH_VERIFIED",
     "sample_excerpt": "R2_PRIVATE_HASH_VERIFIED",
     "hd_cover_source": "SHOPIFY_CDN_FULL_RES_VERIFIED",
-    "whop_cover": "STILL_OLD_LOW_RES_IMAGE",
+    "whop_cover": "HD_COVER_VERIFIED_PRODUCT_API_AND_ANONYMOUS_WEB",
     "whop_lesson_1_audio_embed": "NONE",
     "whop_anonymous_preview_audio": "NONE",
     "pricing": "USD_29_99_ONE_TIME",
@@ -257,6 +258,8 @@
       "Azure commercial audio licensing approval not recorded",
       "whop paid learner entitlement not tested"
     ],
-    "publish_allowed": false
+    "publish_allowed": false,
+    "whop_api_key": "CONNECTED_SERVER_SIDE",
+    "whop_browser_login_required_for_ordinary_media": "NO"
   }
 }
