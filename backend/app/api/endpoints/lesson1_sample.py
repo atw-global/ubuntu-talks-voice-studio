@@ -133,7 +133,8 @@ def qa_preview():
         content=blob, media_type="audio/mpeg",
         headers={
             "Cache-Control": "private, no-store",
-            "X-Ubuntu-Sample-Duration-Seconds": str(seconds),\n            "X-Ubuntu-Source-Cue-Count": str(len(selected)),
+            "X-Ubuntu-Sample-Duration-Seconds": str(seconds),
+            "X-Ubuntu-Source-Cue-Count": str(len(selected)),
             "X-Ubuntu-Sample-SHA256": hashlib.sha256(blob).hexdigest(),
             "Content-Disposition": 'inline; filename="UbuntuTalks_EverydayIsiZulu_Lesson01_QA_Sample.mp3"',
         },
