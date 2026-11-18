@@ -195,13 +195,24 @@
   "course_factory_source_of_truth": "factory/isiZulu-beginner-I/whop-course-binding-v1.json",
   "sample_audio": {
     "qa_api_path": "/api/ubuntu/azure/lesson1/sample/qa-preview.mp3",
-    "qa_only": true,
-    "public_url": null,
-    "whop_embedded": false,
+    "qa_status_path": "/api/ubuntu/azure/lesson1/sample/qa-status",
+    "private_r2_archive_status_path": "/api/ubuntu/azure/lesson1/sample/archive/status",
+    "private_r2_archive_upload_path": "/api/ubuntu/azure/lesson1/sample/archive/upload",
+    "sample_private_r2_key": "courses/zu/beginner-i/lesson-01/v1/sample-greetings-85s-qa.mp3",
+    "duration_seconds": 85.08,
+    "source_cue_count": 25,
+    "bytes": 1021292,
+    "sha256": "d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0",
+    "technical_assembly": "PASS_2026_11_18_RENDER_STARTUP_LOG",
+    "r2_upload": "NOT_UPLOADED_MISSING_CREDENTIALS",
     "native_qa": "PENDING",
     "rights": "PENDING",
-    "status": "CODE_DEPLOYED_PENDING_RECORDING_TEST"
+    "public_url": null,
+    "whop_preview_attached": false,
+    "commercial_release_approved": false
   },
   "legacy_courses_untouched": true,
-  "binding_verified_at": "2026-11-18"
+  "binding_verified_at": "2026-11-18",
+  "audio_master_archive": "NOT_UPLOADED_R2_VARIABLES_MISSING",
+  "last_verified_at": "2026-11-18"
 }
