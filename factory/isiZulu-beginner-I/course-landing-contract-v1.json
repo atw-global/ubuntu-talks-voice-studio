@@ -79,7 +79,8 @@
         "source_bytes": 2637013,
         "status": "HD_SOURCE_VERIFIED_2026_11_18",
         "whop_uploaded": false,
-        "whop_upload_blocker": "Whop browser authentication expired"
+        "whop_upload_blocker": "Whop browser authentication expired",
+        "bytes": 2637013
       }
     },
     "square_cover": {
@@ -188,7 +189,10 @@
     "end_to_end_entitlement_test": "NOT_COMPLETED",
     "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer",
     "whop_browser_auth": "EXPIRED_2026_11_18",
-    "whop_media_upload": "PENDING_REAUTH_IMAGE_PRESTAGED_IN_VONI_SESSION",
-    "public_hd_asset_reachable_in_voni": "PASS_1672x941_2637013_BYTES"
+    "whop_media_upload": "BLOCKED_INTERMITTENT_WHOP_OAUTH_SESSION",
+    "public_hd_asset_reachable_in_voni": "PASS_1672x941_2637013_BYTES",
+    "whop_media_upload_attempt": "Whop editor rendered once, but reverted to Google login before gallery file input could receive HD asset",
+    "native_speaker_qa": "NOT_PERFORMED",
+    "paid_purchase_entitlement": "NOT_TESTED_NO_CUSTOMER_CHARGE"
   }
 }
