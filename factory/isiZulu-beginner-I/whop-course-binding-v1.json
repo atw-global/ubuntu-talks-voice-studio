@@ -270,6 +270,17 @@
     "review_page_path": "/api/ubuntu/azure/lesson1/release-review/review",
     "release_status_path": "/api/ubuntu/azure/lesson1/release-review/status",
     "buyer_checkout": "API_PREFLIGHT_ONE_TIME_29_99_PASS",
-    "buyer_real_entitlement": "PENDING_TEST_TRANSACTION_OR_SAFE_TEST_MEMBERSHIP"
+    "buyer_real_entitlement": "PENDING_TEST_TRANSACTION_OR_SAFE_TEST_MEMBERSHIP",
+    "reviewer_portal": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-lesson1-native-qa.html",
+    "reviewer_portal_deployment": "LIVE_RENDER_DEP_dbv2cc2jnfac73cd219g",
+    "reviewer_portal_access": "BASIC_AUTH_REQUIRED_401_ANONYMOUS_VERIFIED",
+    "review_submission": "NOT_RECEIVED",
+    "qualified_native_speaker_signoff": "PENDING",
+    "azure_tts_paid_tier": "NOT_VERIFIED",
+    "s0_generation": "NOT_STARTED",
+    "whop_lesson_media": "NO_ATTACHMENT",
+    "paid_checkout_preflight": "USD_29_99_ONE_TIME_PASS",
+    "buyer_access_test": "NOT_COMPLETED",
+    "public_sample": "NOT_PUBLISHED"
   }
 }
