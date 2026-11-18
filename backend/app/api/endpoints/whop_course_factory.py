@@ -17,7 +17,9 @@ from fastapi import APIRouter, HTTPException
 
 router = APIRouter(prefix="/api/ubuntu/whop/course-factory", tags=["ubuntu-whop-course-factory"])
 log = logging.getLogger(__name__)
-# Signed storage-upload URLs may contain short-lived query credentials.\n# Never emit them through generic HTTP client request logging.\nlogging.getLogger("httpx").setLevel(logging.WARNING)
+# Signed storage-upload URLs may contain short-lived query credentials.
+# Never emit them through generic HTTP client request logging.
+logging.getLogger("httpx").setLevel(logging.WARNING)
 
 ACCOUNT = "biz_E1ClvLpPiPOdSj"
 PRODUCT = "prod_EBSCxcpCQvcgI"
