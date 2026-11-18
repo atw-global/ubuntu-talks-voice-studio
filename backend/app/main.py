@@ -129,6 +129,27 @@ async def lifespan(_app: FastAPI):
                 logger.error("Ubuntu private Lesson 1 greeting sample SELFTEST FAIL: type=%s", type(error).__name__)
                 logger.exception("Private lesson sample failed internal technical verification")
         _sample_asyncio.create_task(_sample_selftest(), name="ubuntu-lesson01-sample-technical-qa")
+    # Private, source-hash-gated master and greeting excerpt archival.
+    # Runs only when BOTH dedicated bucket credentials exist. No public URLs,
+    # no Whop publication, and no overwrite of inconsistent existing objects.
+    if (_envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and
+            _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY")):
+        import asyncio as _archive_asyncio
+        async def _private_lesson01_archive():
+            try:
+                from app.api.endpoints.lesson1_archive import _archive as _archive_master
+                from app.api.endpoints.lesson1_sample_archive import _archive_sample
+                for label, operation in (("master", _archive_master), ("greeting_sample", _archive_sample)):
+                    try:
+                        result = await _archive_asyncio.to_thread(operation)
+                        logger.info("Ubuntu private R2 Lesson01 %s ARCHIVE VERIFIED sha256=%s bytes=%d public_url=NONE",
+                                    label, result["sha256"], result["bytes"])
+                    except Exception as exc:
+                        logger.error("Ubuntu private R2 Lesson01 %s ARCHIVE FAILED type=%s", label, type(exc).__name__)
+                        logger.exception("Protected archive requires manual operator review")
+            except Exception as exc:
+                logger.error("Ubuntu private R2 archival setup FAILED type=%s", type(exc).__name__)
+        _archive_asyncio.create_task(_private_lesson01_archive(), name="ubuntu-lesson01-secure-r2-archive")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
