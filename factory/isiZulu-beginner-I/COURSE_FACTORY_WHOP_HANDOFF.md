@@ -46,3 +46,11 @@ Attempt to create independent **hidden** `Ubuntu Talks — isiZulu Beginner I �
 3. Obtain documented Whop bridge migration marker precondition; create only a hidden course if authorized. If not, stop writes and report actual blocker. Keep existing visible and hidden courses unchanged.
 4. Construct 10 lesson/chapter identities from canonical JSON; readback actual Whop IDs into binding registry. Attach only versioned audio in the appropriate 10-lesson Whop shell.
 5. Test locked learner course from Whop before sale. Preserve seven stages and assessment gate across every language.
+
+## 2026-11-17/18 — executed factory storage preflight
+
+- Read back and verified full 139-cue internal master from Render logs: `ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a`, 7,401,068 bytes, duration 617 seconds; this is **technical** validation only, not native-language certification.
+- Connected Cloudflare account `FOH Sub Accounts` (`4776967df1db80c2a31141343cd113c1`) already owns private R2 bucket `ubuntu-talks-instructor-masters`; do not create another bucket.
+- Created and R2-list-verified `courses/zu/beginner-i/lesson-01/v1/qa-manifest.json` (488 bytes, R2 ETag `a437f9d12d02171ab85bc12b03d8ffd7`). It records SHA/duration and expressly says audio `MASTER_GENERATED_NOT_UPLOADED`, native QA pending, commercial release false, no Whop course ID.
+- **The actual MP3 is not uploaded** to this R2 prefix. Browser/Render-only access to the 7.4 MB MP3 and the Cloudflare administration connector are separate; no verified secure binary transfer bridge is configured. Avoid replacing this gap with an external unauthenticated URL or fictional upload receipt. Integrate a server-to-server R2 upload credential/bridge with least-privilege and verify returned object `Content-Type: audio/mpeg`, size and SHA before marking archived.
+- Prepared the complete ten-lesson, seven-stage hidden shell template: `factory/isiZulu-beginner-I/whop-hidden-course-shell-spec-v1.json`. Existing Whop courses were inventoried; the protected Whop bridge continues to reject creation with `Migration marker required`. No new course or lessons were created, and no existing Whop content was modified. Resolve the bridge's documented migration allowlist with its administrator rather than guessing markers or writing into unrelated existing courses.
