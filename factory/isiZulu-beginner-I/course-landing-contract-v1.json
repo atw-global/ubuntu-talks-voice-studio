@@ -74,9 +74,12 @@
         "width": 1672,
         "height": 941,
         "source_file": "ubuntu_talks_everyday_isizulu.png",
-        "status": "IMPORTED_IN_CANVA_FULL_RES_2026_11_18",
+        "source_url": "https://cdn.shopify.com/s/files/1/0712/9500/8877/files/ubuntu-talks-everyday-isizulu-beginner-i-hd.png?v=1795026974",
+        "shopify_media_id": "gid://shopify/MediaImage/46985808576621",
+        "source_bytes": 2637013,
+        "status": "HD_SOURCE_VERIFIED_2026_11_18",
         "whop_uploaded": false,
-        "whop_upload_blocker": "WHOP_VONI_BROWSER_REAUTH_REQUIRED"
+        "whop_upload_blocker": "Whop browser authentication expired"
       }
     },
     "square_cover": {
@@ -185,6 +188,7 @@
     "end_to_end_entitlement_test": "NOT_COMPLETED",
     "product_faq_paid_checkout": "Updated to accurate $29.99 pilot offer",
     "whop_browser_auth": "EXPIRED_2026_11_18",
-    "whop_media_upload": "PENDING_REAUTH"
+    "whop_media_upload": "PENDING_REAUTH_IMAGE_PRESTAGED_IN_VONI_SESSION",
+    "public_hd_asset_reachable_in_voni": "PASS_1672x941_2637013_BYTES"
   }
 }
