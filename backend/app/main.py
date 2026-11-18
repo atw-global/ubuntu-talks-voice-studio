@@ -160,6 +160,16 @@ async def lifespan(_app: FastAPI):
                 result = await _whop_asyncio.to_thread(_whop_status)
                 logger.info("Ubuntu Whop company API CHECK PASS product=%s visibility=%s gallery=%s",
                             result.get("product_id"), result.get("product_visibility"), result.get("product_gallery_file_ids"))
+                try:
+                    from app.api.endpoints.whop_course_factory import release_preflight as _release_preflight
+                    preflight = await _whop_asyncio.to_thread(_release_preflight)
+                    logger.info("Ubuntu Whop LIVE PILOT PREFLIGHT price=%s one_time=%s lesson_media_count=%d commercial_release=%s",
+                                preflight["price_usd"], preflight["one_time"],
+                                preflight["lesson_attachment_count"], preflight["commercial_release_allowed"])
+                except Exception as preflight_error:
+                    logger.warning("Ubuntu Whop PILOT PREFLIGHT blocked type=%s detail=%s",
+                                   type(preflight_error).__name__,
+                                   getattr(preflight_error, "detail", "internal_error"))
                 if _envos.environ.get("UBUNTU_WHOP_APPROVED_COVER_APPLY", "").lower() == "true":
                     from app.api.endpoints.whop_course_factory import apply_approved_cover
                     outcome = await _whop_asyncio.to_thread(apply_approved_cover)
