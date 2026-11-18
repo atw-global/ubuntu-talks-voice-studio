@@ -282,7 +282,7 @@ app.include_router(lesson1_sample_router)
 from app.api.endpoints.lesson1_sample_archive import router as lesson1_sample_archive_router
 app.include_router(lesson1_sample_archive_router)
 
-# Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
+# Server-side Whop company-key integration; guarded by StudioGateway.\nfrom app.api.endpoints.whop_course_factory import router as whop_course_factory_router\napp.include_router(whop_course_factory_router)\n\n# Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
 from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
 app.include_router(lesson1_recording_router)
 
