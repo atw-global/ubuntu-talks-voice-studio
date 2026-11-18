@@ -31,11 +31,11 @@
       "whop_chapter_id": "chap_fRGQRlLwmFHfJ",
       "whop_lesson_id": "lesn_p61ZUtWXJkEie",
       "asset_version": "english-instructor-v1",
-      "asset_uri": null,
+      "asset_uri": "r2://ubuntu-talks-instructor-masters/courses/zu/beginner-i/lesson-01/v1/master.mp3",
       "sha256": "ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
       "audio_review": "TECHNICAL_MASTER_PASS_NATIVE_QA_PENDING",
       "native_qa": "PENDING",
-      "publishing_state": "HIDDEN_QA_NOT_READY",
+      "publishing_state": "HIDDEN_MEDIA_ARCHIVED_NOT_ATTACHED",
       "duration_seconds": 617,
       "bytes": 7401068
     },
@@ -171,8 +171,23 @@
     "bucket": "ubuntu-talks-instructor-masters",
     "key_prefix": "courses/zu/beginner-i/lesson-01/v1/",
     "object_key": "courses/zu/beginner-i/lesson-01/v1/master.mp3",
-    "upload_status": "NOT_VERIFIED",
-    "access_policy": "PRIVATE_ACCESS_GATED"
+    "upload_status": "VERIFIED_PRIVATE_2026_11_18",
+    "access_policy": "PRIVATE_ACCESS_GATED",
+    "verified_master": {
+      "key": "courses/zu/beginner-i/lesson-01/v1/master.mp3",
+      "bytes": 7401068,
+      "sha256": "ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a",
+      "mime": "audio/mpeg",
+      "public_url": null
+    },
+    "verified_preview": {
+      "key": "courses/zu/beginner-i/lesson-01/v1/sample-greetings-85s-qa.mp3",
+      "bytes": 1021292,
+      "sha256": "d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0",
+      "mime": "audio/mpeg",
+      "public_url": null
+    },
+    "verified_from": "Render backend source SHA + R2 private object listing readback"
   },
   "whop_product_id": "prod_EBSCxcpCQvcgI",
   "owner_visibility": "hidden",
@@ -204,7 +219,7 @@
     "bytes": 1021292,
     "sha256": "d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0",
     "technical_assembly": "PASS_2026_11_18_RENDER_STARTUP_LOG",
-    "r2_upload": "NOT_UPLOADED_MISSING_CREDENTIALS",
+    "r2_upload": "VERIFIED_PRIVATE_2026_11_18",
     "native_qa": "PENDING",
     "rights": "PENDING",
     "public_url": null,
@@ -213,6 +228,6 @@
   },
   "legacy_courses_untouched": true,
   "binding_verified_at": "2026-11-18",
-  "audio_master_archive": "NOT_UPLOADED_R2_VARIABLES_MISSING",
+  "audio_master_archive": "VERIFIED_PRIVATE_2026_11_18",
   "last_verified_at": "2026-11-18"
 }
