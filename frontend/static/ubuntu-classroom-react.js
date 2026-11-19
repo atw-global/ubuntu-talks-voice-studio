@@ -37,7 +37,7 @@ function useMedia(){
  },[time,manifest]);
  useEffect(()=>{
   const el=cardRefs.current[active];
-  if(el&&rail.current&&playing){el.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});}
+  if(el&&rail.current&&playing){const node=rail.current;const target=el.offsetLeft-node.offsetLeft-(node.clientWidth-el.offsetWidth)/2;node.scrollTo({left:Math.max(0,target),behavior:'smooth'});}
  },[active,playing]);
  async function toggle(){
   const a=audio.current;if(!a||!manifest)return;
@@ -74,7 +74,7 @@ function SideNav({onUnlock,onNavigate,open,onClose}){
  return h("aside",{className:"side "+(open?"side-open":""),"aria-label":"Course navigation"},
    h("div",{className:"side-brand"},h("div",{className:"side-badge"},"UT"),h("div",null,h("strong",null,"Ubuntu Talks"),h("small",null,"EVERYDAY ISIZULU")),h("button",{className:"mobile-close",onClick:onClose,"aria-label":"Close course menu"},"×")),
    h("div",{className:"course-thumb"},h("img",{src:IMG,alt:"Decorated African roundhouse course artwork"}),h("div",null,h("span",null,"BEGINNER I"),h("strong",null,"Everyday isiZulu"))),
-   h("p",{className:"side-kicker"},"YOUR COURSE"),h("div",{className:"progress-rail"},h("span",{style:{width:"10%"}})),h("p",{className:"side-progress"},"Lesson 1 of 10 · Preview access"),
+   h("p",{className:"side-kicker"},"YOUR COURSE"),h("div",{className:"progress-rail"},h("span",{style:{width:"10%"}})),h("p",{className:"side-progress"},"Lesson 1 of 10 · Excerpt access"),
    h("nav",{className:"lesson-nav","aria-label":"Course lessons"},LESSONS.map((name,i)=>h("button",{type:"button",key:name,className:"lesson-button "+(i===0?"current":"locked"),onClick:()=>{onClose();i===0?onNavigate():onUnlock();}},
     h("span",{className:"lesson-number"},String(i+1).padStart(2,"0")),
     h("span",{className:"lesson-name"},name),
@@ -114,13 +114,13 @@ function App(){
     h("main",{className:"content",ref:contentRef,id:"hear"},
      h("nav",{className:"breadcrumbs","aria-label":"Breadcrumb"},h("span",null,"Your classroom"),h("span",null,"›"),h("span",null,"Lesson 01")),
      h("section",{className:"hero-banner"},
-      h("div",{className:"hero-writing"},h("span",{className:"hero-kicker"},"UBUNTU TALKS  /  BEGINNER I"),h("h1",null,"Greetings &",h("span",null," Respect")),h("p",null,"One greeting opens a conversation. Let's begin."),h("div",{className:"hero-meta"},h("span",null,"◉  Lesson 01"),h("span",null,"◷  Your first speaking experience"))),
+      h("div",{className:"hero-writing"},h("span",{className:"hero-kicker"},"UBUNTU TALKS  /  LESSON 01 EXCERPT"),h("h1",null,"Greetings &",h("span",null," Respect")),h("p",null,"One greeting opens a conversation. Let's begin."),h("div",{className:"hero-meta"},h("span",null,"◉  Lesson 01"),h("span",null,"◷  Short interactive excerpt"))),
       h("div",{className:"hero-visual"},h("img",{src:IMG,alt:"Traditional African roundhouse with vibrant geometric artwork in golden light"})),
       h("div",{className:"banner-trim","aria-hidden":"true"})),
-     h("div",{className:"welcome-line"},h("div",null,h("span",{className:"eyebrow"},"YOU ARE INSIDE THE COURSE"),h("h2",null,"Start speaking in isiZulu."),h("p",null,"Explore the first part of Lesson 1. Hear real examples, follow the dialogue, and try your first greeting. The remaining stages unlock when you enroll.")),h("button",{className:"tip-card",onClick:()=>setTip(true)},"✦",h("span",null,h("strong",null,"Did you know?"),h("small",null,"See a quick cultural insight")))),
+     h("div",{className:"welcome-line"},h("div",null,h("span",{className:"eyebrow"},"EXPERIENCE THE FIRST STEP"),h("h2",null,"Try the opening of Lesson 1."),h("p",null,"This short interactive excerpt introduces the Hear stage—not the complete Lesson 1. Listen to native speakers, follow the conversation, and try one speaking challenge. The full learning pathway is visible but locked.")),h("button",{className:"tip-card",onClick:()=>setTip(true)},"✦",h("span",null,h("strong",null,"Did you know?"),h("small",null,"See a quick cultural insight")))),
      h("div",{className:"lesson-workspace"},h("div",{className:"lesson-main"},
       h("section",{className:"lesson-step"},
-       h("div",{className:"stage-heading"},h("div",null,h("span",{className:"eyebrow"},"01 / 07  ·  HEAR"),h("h2",null,"Listen to the conversation.")),h("span",{className:"preview-tag"},"OPEN PREVIEW")),
+       h("div",{className:"stage-heading"},h("div",null,h("span",{className:"eyebrow"},"01 / 07  ·  HEAR"),h("h2",null,"Listen to the conversation.")),h("span",{className:"preview-tag"},"FREE EXCERPT")),
        h("p",{className:"stage-intro"},"Listen once, following Thando and Themba. Then replay any phrase and repeat it aloud. The highlighted card moves with the audio."),
        h("div",{className:"audio-player"},
         h("div",{className:"audio-controls"},h("button",{className:"play-main",disabled:!media.ready,onClick:media.toggle,"aria-label":media.playing?"Pause audio":"Play lesson audio"},media.playing?"Ⅱ":"▶"),
@@ -140,12 +140,12 @@ function App(){
           cue.meaning?h("span",{className:"meaning"},cue.meaning):h("span",{className:"meaning"},"Listen, then repeat.")))||h("p",{className:"loading"},"Preparing verified dialogue…")),
        h("p",{className:"gesture-hint"},"↔  Swipe to explore · Cards highlight automatically as the audio plays."),
        h(GreetingChallenge,{onUnlock:()=>setPaywall(true)}))),
-     h("div",{className:"lesson-right"},h("section",{className:"path-card"},h("span",{className:"eyebrow"},"YOUR LEARNING PATH"),h("h3",null,"Seven steps to speaking"),h("p",null,"A clear journey from listening to using the language confidently."),h(StageBar,{onUnlock:()=>setPaywall(true)})),
+     h("div",{className:"lesson-right"},h("section",{className:"path-card"},h("span",{className:"eyebrow"},"YOUR LEARNING PATH"),h("h3",null,"Seven stages of Lesson 1"),h("p",null,"A clear journey from listening to using the language confidently."),h(StageBar,{onUnlock:()=>setPaywall(true)})),
       h("div",{className:"sidebar-invite"},h("span",null,"✦"),h("strong",null,"Learn in context"),h("p",null,"Practice, retrieve and speak naturally. The full classroom continues after this free first step."),h("button",{onClick:()=>setPaywall(true)},"Unlock all seven stages →")))),
     h("section",{className:"closing-cta"},h("div",null,h("span",{className:"eyebrow"},"THE NEXT CONVERSATION STARTS HERE"),h("h2",null,"Ready to speak with confidence?"),h("p",null,"Join the guided course for the remaining activities, practice and speaking assessment.")),h("button",{className:"button button-primary",onClick:()=>setPaywall(true)},"Explore enrollment  →")),
     h("footer",null,"Ubuntu Talks · Language connects us  ·  Private Lesson 1 staging review")))),
   tip?h(Modal,{onClose:()=>setTip(false)}):null,
-  paywall?h("div",{className:"modal-backdrop",onClick:()=>setPaywall(false),role:"presentation"},h("section",{className:"modal paywall",role:"dialog","aria-modal":"true","aria-labelledby":"unlock-title",onClick:e=>e.stopPropagation()},h("button",{className:"modal-close",onClick:()=>setPaywall(false),"aria-label":"Close enrollment dialog"},"×"),h("span",{className:"eyebrow"},"CONTINUE YOUR LEARNING"),h("h2",{id:"unlock-title"},"Your next six learning stages are waiting."),h("p",null,"You’ve explored the Hear stage. Enrolling opens the intended learning path: Understand, Imitate, Manipulate, Retrieve, Converse and Assess."),h("p",{className:"commercial-note"},"This is a private production preview. The full commercial course has not yet been released; do not purchase solely to test."),h("a",{className:"button button-primary",href:CHECKOUT,target:"_blank",rel:"noopener noreferrer"},"Review $29.99 checkout ↗"),h("button",{className:"button button-outline",onClick:()=>setPaywall(false)},"Continue the preview"))):null
+  paywall?h("div",{className:"modal-backdrop",onClick:()=>setPaywall(false),role:"presentation"},h("section",{className:"modal paywall",role:"dialog","aria-modal":"true","aria-labelledby":"unlock-title",onClick:e=>e.stopPropagation()},h("button",{className:"modal-close",onClick:()=>setPaywall(false),"aria-label":"Close enrollment dialog"},"×"),h("span",{className:"eyebrow"},"CONTINUE YOUR LEARNING"),h("h2",{id:"unlock-title"},"Continue beyond this free excerpt."),h("p",null,"This excerpt covers part of the Hear stage. The complete Lesson 1 will guide you through Hear, Understand, Imitate, Manipulate, Retrieve, Converse and Assess when the course is released."),h("p",{className:"commercial-note"},"This is a private production preview. The full commercial course has not yet been released; do not purchase solely to test."),h("a",{className:"button button-primary",href:CHECKOUT,target:"_blank",rel:"noopener noreferrer"},"Review $29.99 checkout ↗"),h("button",{className:"button button-outline",onClick:()=>setPaywall(false)},"Continue the preview"))):null
  );
 }
 createRoot(document.getElementById("app")).render(h(App));
