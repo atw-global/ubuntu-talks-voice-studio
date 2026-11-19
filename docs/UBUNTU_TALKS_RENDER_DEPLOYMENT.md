@@ -44,3 +44,13 @@ The following *independent* ATW-Global Render resources have been created in Ore
 - Do not assume model registration implies runnable voices: no GPU checkpoint or native-language QA is complete.
 
 All plans above were created as free test resources. Backend/preview may restart or spin down. Do not enable generation until commercial voice licenses, compute pricing, storage, and audio persistence are verified.
+
+## MCP client credentials
+
+The versioned endpoint is `POST /api/ubuntu/mcp/v1` on the existing API origin. It does not use `STUDIO_BACKEND_GATEWAY_TOKEN`. Machine credentials are environment variables on `ubuntu-talks-voice-studio-api` only:
+
+- `UBUNTU_MCP_BOOTSTRAP_TOKEN` — read and verify
+- `UBUNTU_MCP_READ_TOKENS` — additional read and verify credentials, comma-separated
+- `UBUNTU_MCP_ADMIN_TOKEN` — separate admin credential; publication remains gated
+
+Do not commit the values. The specification is `docs/VOICE_STUDIO_MCP.md`.

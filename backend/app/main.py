@@ -406,6 +406,10 @@ app.include_router(azure_audition_router)
 from app.api.endpoints.vast_status import router as vast_status_router
 app.include_router(vast_status_router)
 
+# Versioned MCP endpoint. Its own credentials apply; the gateway token does not.
+from app.api.endpoints.mcp_v1 import router as mcp_v1_router
+app.include_router(mcp_v1_router)
+
 # Security boundary for the dedicated Render API origin: the frontend
 # Nginx proxy authenticates the user and injects this server-side token.
 # This ASGI wrapper protects HTTP *and* WebSocket connections.
