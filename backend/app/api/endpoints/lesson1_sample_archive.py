@@ -90,3 +90,36 @@ async def upload_sample():
             _cached.update({"state": "failed", "error": type(exc).__name__})
             log.exception("Private R2 greetings QA archive failed")
             raise HTTPException(502, detail="Private sample archival check failed") from exc
+
+
+@router.get("/private-preview.mp3")
+def play_private_archived_sample():
+    """Play immutable F0 reference in the already Basic-auth + gateway-locked Studio.
+
+    Unlike qa-preview.mp3, no database clip lookup or ffmpeg rebuild happens
+    during playback. This NEVER creates a public R2 URL or licenses the clip.
+    """
+    from fastapi.responses import Response
+    try:
+        obj = _r2_client().get_object(Bucket=BUCKET, Key=KEY)
+        meta = obj.get("Metadata") or {}
+        if (obj.get("ContentLength") != EXPECTED_BYTES
+                or meta.get("sha256") != EXPECTED_SHA256):
+            raise ValueError("Private R2 sample metadata mismatch")
+        body = obj["Body"].read(EXPECTED_BYTES + 1)
+        if len(body) != EXPECTED_BYTES or hashlib.sha256(body).hexdigest() != EXPECTED_SHA256:
+            raise ValueError("Private R2 sample hash mismatch")
+    except (ClientError, BotoCoreError, ValueError) as exc:
+        log.error("Private preview read failed type=%s", type(exc).__name__)
+        raise HTTPException(502, detail="Private reference sample not available") from exc
+    return Response(
+        content=body, media_type="audio/mpeg",
+        headers={
+            "Cache-Control": "private, no-store, max-age=0",
+            "Content-Disposition": 'inline; filename="UbuntuTalks_Lesson1_InternalReview.mp3"',
+            "Accept-Ranges": "none",
+            "X-Ubuntu-Preview-Reference": "F0-private-QA-only",
+            "X-Ubuntu-Preview-Seconds": "85.08",
+            "X-Robots-Tag": "noindex, nofollow",
+        },
+    )
