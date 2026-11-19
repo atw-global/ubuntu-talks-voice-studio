@@ -252,7 +252,7 @@
     "sample_excerpt": "R2_PRIVATE_HASH_VERIFIED",
     "hd_cover_source": "SHOPIFY_CDN_FULL_RES_VERIFIED",
     "whop_cover": "HD_COVER_VERIFIED_PRODUCT_API_AND_ANONYMOUS_WEB",
-    "whop_lesson_1_audio_embed": "ZERO_ATTACHMENTS_CONFIRMED",
+    "whop_lesson_1_audio_embed": "NOT_ATTACHED",
     "whop_anonymous_preview_audio": "NONE",
     "pricing": "USD_29_99_ONE_TIME",
     "visibility": "HIDDEN",
@@ -291,7 +291,10 @@
     "voice_cast": "LOCKED_3_APPROVED_SPEAKERS",
     "f0_commercial_release": "NOT_ALLOWED",
     "staging_proxy_result": "HTTP_200_TRANSCRIPT_HTTP_206_AUDIO_OBSERVED_AFTER_WARMUP",
-    "staging_header": "CANONICAL_SITE_NAV_MATCHED"
+    "staging_header": "CANONICAL_SITE_NAV_MATCHED",
+    "native_only_preview": "STAGED_F0_PRIVATE",
+    "sample_production_gate": "S0_AND_NATIVE_QA_REMAIN",
+    "commercial_release_allowed": false
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
@@ -314,8 +317,8 @@
     "audio_source": "R2_IMMUTABLE_85S_F0_REFERENCE",
     "audio_server_selftest": "PASS_HTTP_200_SHA_VERIFIED_1021292_BYTES_AND_HTTP_206_RANGE",
     "audio_backend_commit": "d6046cafc316fe8d7e7add459deb9c40012e972b",
-    "frontend_deploy": "dep-dbv7jo1srm7s73blpoa0",
-    "backend_deploy": "dep-dbv6sjrrjlhs73b377v0",
+    "frontend_deploy": "dep-dbv7rr3m8hqs7397ira0",
+    "backend_deploy": "dep-dbv7tumk1f9s73bo8rcg",
     "authenticated_browser_playback": "PENDING_USER_ACCEPTANCE_TEST",
     "introduced_sample": {
       "source": "approved F0 source cues with Mrs Ubuntu cue 2 introduction",
@@ -333,7 +336,7 @@
     "curriculum_status_labels": "REMOVED_FROM_LEARNER_UI",
     "sample_policy": "ONE_LANDING_PAGE_LESSON_1_SAMPLE_ONLY",
     "mrs_ubuntu_voice": "SAME_APPROVED_LEAH_NEURAL; NEXT_S0_A_B_NATURAL_PROSODY_TEST_PEND",
-    "browser_playback": "PENDING_USER_REVIEW",
+    "browser_playback": "PENDING_AUTHENTICATED_OWNER_CONFIRMATION",
     "site_header": "MATCHED_CANONICAL_UBUNTU_TALKS_HEADER_NAV_WITH_MOBILE_MENU",
     "header_source": "atw-global/ubuntu-talks-whop/app/src/components/Chrome.tsx_READ_ONLY",
     "backend_proxy": "PUBLIC_URL_WITH_RETRY_PRIVATE_HOSTNAME_NOT_YET_AVAILABLE",
@@ -345,6 +348,24 @@
     "confirmed_audio_bytes": 1079180,
     "confirmed_browser_media_play_end_to_end": "NOT_VERIFIED_HEARD_BY_OWNER",
     "transcript_retry": "ENABLED",
-    "release_status": "PRIVATE_F0_REFERENCE_ONLY"
+    "release_status": "PRIVATE_F0_REFERENCE_ONLY",
+    "immersive_shell": "SAME_LAYOUT_LANDING_AND_SEVEN_STAGE_CLASSROOM",
+    "african_course_design": "FOREST_GREEN_OCHRE_GEOMETRIC_TRIM_ROUNDHOUSE_HERO",
+    "horizontal_dialogue": "SCROLLBAR_HIDDEN_MOBILE_SWIPE_AND_DESKTOP_HIGHLIGHT",
+    "auto_track": "SOURCE_MP3_CUE_TIMINGS_DRIVEN_BY_AUDIO_CURRENT_TIME",
+    "english_instructor_transcript": "HIDDEN_FROM_PREVIEW",
+    "english_instructor_audio": "EXCLUDED_FROM_NATIVE_ONLY_V3",
+    "voice_cast_approved_preserved": true,
+    "native_only_sample": {
+      "duration_seconds": 69.096,
+      "bytes": 829484,
+      "sha256": "9a1e00829c77c6f2dc7646184bd4ad5afae096713f6b3245fe4ef85b57687f3b",
+      "cue_count": 28,
+      "r2_key": "courses/zu/beginner-i/lesson-01/v3-stage/native-voices-only.mp3",
+      "manifest_key": "courses/zu/beginner-i/lesson-01/v3-stage/native-voices-only-timed.json",
+      "rights": "INTERNAL_F0_REFERENCE_ONLY",
+      "stage_status": "ARCHIVED_PRIVATE",
+      "public_whop_audio_attached": false
+    }
   }
 }
