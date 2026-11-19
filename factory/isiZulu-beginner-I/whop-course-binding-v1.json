@@ -285,7 +285,11 @@
     "learner_style_staging_preview": "PREMIUM_MOBILE_FRONTEND_DEPLOYED",
     "whop_native_landing_audio": "NOT_ATTACHED",
     "anonymous_audio": "NOT_PUBLIC",
-    "secure_sample_playback": "R2_ROUTE_AND_MOBILE_RANGE_SELFTEST_PASS"
+    "secure_sample_playback": "R2_ROUTE_AND_MOBILE_RANGE_SELFTEST_PASS",
+    "learner_preview_audio": "INTRODUCED_89_9S_PRIVATE_REFERENCE",
+    "transcript": "SOURCE_MATCHED_22_CUES",
+    "voice_cast": "LOCKED_3_APPROVED_SPEAKERS",
+    "f0_commercial_release": "NOT_ALLOWED"
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
@@ -303,13 +307,30 @@
       "zu-ZA-ThandoNeural",
       "zu-ZA-ThembaNeural"
     ],
-    "frontend_commit": "35657f2f8e46fb88358cdd657ba1cf56cc481d88",
+    "frontend_commit": "d7b3037bb5918929e53f4fcf4dcf9e692dd89e08",
     "audio_path": "/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3",
     "audio_source": "R2_IMMUTABLE_85S_F0_REFERENCE",
     "audio_server_selftest": "PASS_HTTP_200_SHA_VERIFIED_1021292_BYTES_AND_HTTP_206_RANGE",
     "audio_backend_commit": "d6046cafc316fe8d7e7add459deb9c40012e972b",
-    "frontend_deploy": "dep-dbv6js6k1f9s73bk70lg",
-    "backend_deploy": "dep-dbv6l75g1s2s73ebv3j0",
-    "authenticated_browser_playback": "PENDING_USER_ACCEPTANCE_TEST"
+    "frontend_deploy": "dep-dbv6skl6e07s73audasg",
+    "backend_deploy": "dep-dbv6sjrrjlhs73b377v0",
+    "authenticated_browser_playback": "PENDING_USER_ACCEPTANCE_TEST",
+    "introduced_sample": {
+      "source": "approved F0 source cues with Mrs Ubuntu cue 2 introduction",
+      "seconds": 89.9,
+      "bytes": 1079180,
+      "sha256": "5317a857d149a44ee4b0770c115fa639abb96d2e4010dee6cc51a6593718299d",
+      "cue_count": 22,
+      "r2_key": "courses/zu/beginner-i/lesson-01/v2-stage/mrs-ubuntu-introduced-reference.mp3",
+      "r2_manifest": "courses/zu/beginner-i/lesson-01/v2-stage/selected-cues.json",
+      "private": true,
+      "commercial_rights": "NOT_CLEARED",
+      "state": "VERIFIED_R2_STAGED"
+    },
+    "transcript": "SOURCE_MATCHED_DYNAMIC_WITH_SPEAKER_LABELS",
+    "curriculum_status_labels": "REMOVED_FROM_LEARNER_UI",
+    "sample_policy": "ONE_LANDING_PAGE_LESSON_1_SAMPLE_ONLY",
+    "mrs_ubuntu_voice": "SAME_APPROVED_LEAH_NEURAL; NEXT_S0_A_B_NATURAL_PROSODY_TEST_PEND",
+    "browser_playback": "PENDING_USER_REVIEW"
   }
 }
