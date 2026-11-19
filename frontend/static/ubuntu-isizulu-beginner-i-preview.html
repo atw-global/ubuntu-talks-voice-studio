@@ -85,24 +85,35 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 .course-entry-copy{padding:clamp(25px,4vw,43px)}.course-entry-copy .eyebrow{margin:0 0 10px}.course-entry-copy .section-title{max-width:500px}
 .course-entry-copy .section-intro{max-width:600px}.course-entry-copy .fine{max-width:500px;margin:12px 0 0}
 .course-entry-art{position:relative;overflow:hidden;min-height:315px;background:#1d594d}
-.course-entry-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:24% center}
+.course-entry-art img{display:none}
 .course-entry-art:after{content:'';position:absolute;bottom:0;left:0;right:0;height:7px;background:repeating-linear-gradient(105deg,#c98441 0 22px,#f6dc95 22px 31px,#195f51 31px 48px,#f1ead8 48px 62px)}
 @media(max-width:820px){.preview-entry{grid-template-columns:1fr}.course-entry-art{min-height:220px;height:220px}.course-entry-copy{padding:25px}}
 @media(max-width:550px){.preview-entry{margin-top:33px}.course-entry-art{height:180px;min-height:180px}.course-entry-copy .btn{width:100%}}
+.course-entry-art{background:#174739;color:#fff;display:flex;flex-direction:column;min-height:315px;padding:25px 28px;justify-content:space-between}
+.journey-top,.journey-bottom{font-size:10px;font-weight:800;letter-spacing:.12em;color:#eac58a;display:flex;justify-content:space-between;gap:12px}
+.journey-flow{padding:14px 0;display:flex;flex-direction:column;align-items:stretch;max-width:380px;gap:4px}
+.journey-step{display:flex;gap:14px;align-items:center;min-height:52px}.journey-symbol{width:41px;height:41px;border-radius:50%;flex:0 0 41px;display:flex;align-items:center;justify-content:center;border:1px solid #cb9e61;color:#f8e2b6;font-size:18px}
+.journey-step strong{display:block;font:600 17px Georgia,serif}.journey-step small{display:block;color:#c9dfd0;font-size:11px;margin-top:5px}
+.journey-connector{height:18px;border-left:1px solid #be9858;margin-left:20px}
+.more-menu{position:relative;display:block}.more-menu summary{list-style:none;cursor:pointer;padding:10px 0;font-size:13px;font-weight:650}.more-menu summary::-webkit-details-marker{display:none}
+.more-items{position:absolute;top:100%;right:0;min-width:240px;background:white;border:1px solid var(--stroke);border-radius:12px;box-shadow:0 16px 28px #16372824;padding:7px;z-index:30;display:flex;flex-direction:column}
+.more-items a{padding:10px 13px!important;font-size:13px!important;white-space:nowrap;border-radius:7px}.more-items a:hover{background:#f2f5f0}
+@media(max-width:850px){.more-menu{width:100%}.more-items{position:static;box-shadow:none;min-width:0;border:0;background:#f8f7f2}.more-menu summary{padding:10px 14px}}
 </style></head><body>
 <header class="header"><div class="wrap">
 <a class="brand" href="https://ubuntu-talks.whop.site/" aria-label="Ubuntu Talks home">
 <img src="https://ubuntu-talks.whop.site/imported/3c1c35df76f2-ubuntu-talks-official-transparent-BYLFrLfn.png" alt="Ubuntu Talks" onerror="this.style.display='none';this.parentElement.append('Ubuntu Talks')">
 </a>
-<nav id="site-nav" class="header-links" aria-label="Ubuntu Talks main navigation">
+<nav id="site-nav" class="header-links" aria-label="Learner navigation">
 <a href="https://ubuntu-talks.whop.site/">Home</a>
 <a href="https://ubuntu-talks.whop.site/#languages">Languages</a>
+<a href="https://ubuntu-talks.whop.site/dashboard">My learning</a>
 <a href="https://ubuntu-talks.whop.site/tutoring">Tutors</a>
-<a href="https://ubuntu-talks.whop.site/become-tutor">Become a Tutor</a>
-<a href="https://ubuntu-talks.whop.site/dashboard">Dashboard</a>
+<details class="more-menu"><summary>More <span aria-hidden="true">⌄</span></summary><div class="more-items">
+<a href="https://ubuntu-talks.whop.site/">Translation &amp; language services</a>
 <a href="https://ubuntu-talks.whop.site/shop">Shop</a>
 <a href="https://ubuntu-talks.whop.site/about">About</a>
-<a href="https://ubuntu-talks.whop.site/help">Help</a>
+<a href="https://ubuntu-talks.whop.site/help">Help</a></div></details>
 <a class="signin" href="https://ubuntu-talks.whop.site/signin">Sign in</a>
 </nav>
 <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false" type="button">☰</button>
@@ -115,7 +126,7 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 <p class="eyebrow">Everyday isiZulu · Beginner I</p>
 <h1>Your first real <em>isiZulu</em> conversation starts here.</h1>
 <p class="lead">A practical, instructor-led introduction to everyday isiZulu. Hear it, say it, and build the confidence to speak naturally.</p>
-<div class="actions"><a class="btn primary" href="/ubuntu-isizulu-beginner-i-classroom.html" id="heroClassroom">Enter the classroom · Free preview</a><a class="btn light" href="#curriculum">Explore the curriculum</a></div>
+<div class="actions"><a class="btn primary" href="/ubuntu-isizulu-beginner-i-classroom.html" id="heroClassroom">Try a free Lesson 1 excerpt</a><a class="btn light" href="#curriculum">Explore the curriculum</a></div>
 </div>
 <aside class="price-card"><span class="price-label">One-time enrollment</span><h2>Everyday isiZulu — Beginner I</h2>
 <div class="price"><strong>$29.99</strong><del>$49</del><span class="badge">Save 39%</span></div>
@@ -126,13 +137,21 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 </section>
 <section id="preview" class="preview-entry" aria-label="Experience the first lesson">
  <div class="course-entry-copy">
- <p class="eyebrow">A real first lesson, not a trailer</p>
- <h2 class="section-title">Step inside the classroom.</h2>
- <p class="section-intro">Discover the learning journey firsthand. Follow an isiZulu conversation as you listen, then try your first speaking challenge. The next learning stages and lessons appear inside the classroom, ready to unlock after enrollment.</p>
- <a class="btn primary" href="/ubuntu-isizulu-beginner-i-classroom.html">Enter the free Lesson 1 experience ↗</a>
- <p class="fine">Private production preview · Native-speaker sample · No payment needed to explore the Hear stage.</p>
+ <p class="eyebrow">An interactive excerpt from Lesson 1</p>
+ <h2 class="section-title">Experience the way you will learn.</h2>
+ <p class="section-intro">Experience a guided excerpt from Lesson 1 inside the course interface. Hear the native speakers, follow each phrase and try one speaking challenge. This is a short preview—not the complete lesson.</p>
+ <a class="btn primary" href="/ubuntu-isizulu-beginner-i-classroom.html">Try the interactive excerpt ↗</a>
+ <p class="fine">Private production preview · Native-speaker sample · No purchase required to explore this excerpt.</p>
  </div>
- <div class="course-entry-art"><img src="https://cdn.shopify.com/s/files/1/0712/9500/8877/files/ubuntu-talks-everyday-isizulu-beginner-i-hd.png?v=1795026974" alt="Ubuntu Talks Everyday isiZulu course illustration"></div>
+ <div class="course-entry-art" aria-label="Three steps inside the learner classroom">
+<div class="journey-top"><span>YOUR FIRST EXPERIENCE</span><span>01 / 07</span></div>
+<div class="journey-flow"><div class="journey-step"><span class="journey-symbol">◉</span><div><strong>Hear the language</strong><small>Thando &amp; Themba · Native voices</small></div></div>
+<div class="journey-connector"></div>
+<div class="journey-step"><span class="journey-symbol">↔</span><div><strong>Follow the conversation</strong><small>Real-time synchronized phrases</small></div></div>
+<div class="journey-connector"></div>
+<div class="journey-step"><span class="journey-symbol">✦</span><div><strong>Try your first greeting</strong><small>Guided practice with feedback</small></div></div></div>
+<div class="journey-bottom">UBUNTU TALKS · LANGUAGE CONNECTS US</div>
+</div>
 </section>
 <section class="under"><div><h2>Built for real conversations.</h2><p>Each lesson follows a clear learning rhythm: hear the language, notice the meaning, imitate, retrieve, practise a conversation, and demonstrate what you can say.</p></div><a href="/ubuntu-isizulu-beginner-i-classroom.html" class="btn light">Explore Lesson 1 ↗</a></section>
 <section class="curriculum" id="curriculum"><p class="eyebrow">The learning path</p><h2 class="section-title">10 progressive lessons</h2><p class="section-intro">One introductory audio sample on this page. The remaining lessons form the progression after enrollment and will be released as they are completed and approved.</p><div class="course-list">
