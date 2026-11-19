@@ -54,3 +54,5 @@ The versioned endpoint is `POST /api/ubuntu/mcp/v1` on the existing API origin. 
 - `UBUNTU_MCP_ADMIN_TOKEN` — separate admin credential; publication remains gated
 
 Do not commit the values. The specification is `docs/VOICE_STUDIO_MCP.md`.
+
+ChatGPT OAuth uses a separate owner secret on the same API service. Set `UBUNTU_MCP_OAUTH_OWNER_SECRET` there after this OAuth commit is deployed. Do not copy the gateway token or `UBUNTU_MCP_BOOTSTRAP_TOKEN` into that variable, and do not add it to the frontend service. The connector URL remains `https://ubuntu-talks-voice-studio-api.onrender.com/api/ubuntu/mcp/v1` with OAuth selected. The consent page is served by this API. No new Render service is required.

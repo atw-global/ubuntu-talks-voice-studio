@@ -14,9 +14,25 @@ Transport: Streamable HTTP. `POST` a single JSON-RPC message with `Accept` of `a
 
 The internal header `X-Voice-Studio-Internal-Key` is not accepted as an MCP credential and is not sent to the client.
 
+## ChatGPT OAuth
+
+ChatGPT custom MCP connectors can use OAuth or no authentication. This service implements OAuth 2.1 authorization code with PKCE. It does not accept the gateway token or the bootstrap token as an OAuth secret.
+
+Discovery, without a gateway header:
+
+- `GET /.well-known/oauth-protected-resource`
+- `GET /.well-known/oauth-protected-resource/api/ubuntu/mcp/v1`
+- `GET /.well-known/oauth-authorization-server`
+
+An unauthenticated `POST /api/ubuntu/mcp/v1` returns 401 and `WWW-Authenticate` with `resource_metadata` pointing at the protected-resource document. ChatGPT registers a public client at `POST /oauth/register`. Only `https://chatgpt.com/` and `https://chat.openai.com/` redirect URLs are accepted unless `UBUNTU_MCP_OAUTH_REDIRECTS` sets a stricter comma-separated prefix list. Registration does not grant access.
+
+The owner opens the consent page and enters `UBUNTU_MCP_OAUTH_OWNER_SECRET`. A wrong secret issues no code. The granted scopes are only `read` and `verify`. Access tokens expire after one hour. Refresh tokens expire after 14 days and rotate on use. `POST /oauth/revoke` revokes the token's family. MCP sessions still expire. Audit rows record the client id and result, not the token or the owner secret.
+
+Set `UBUNTU_MCP_OAUTH_OWNER_SECRET` on the existing API service `ubuntu-talks-voice-studio-api` (`srv-dbttr1psrm7s73e17im0`) before asking ChatGPT to connect. Leave it unset on the website service. Do not put it in GitHub. Optional `UBUNTU_MCP_PUBLIC_ORIGIN` overrides the issuer when it is not `https://ubuntu-talks-voice-studio-api.onrender.com`. Deploy this commit to that same service. Do not create a service. In ChatGPT, add the MCP URL above and choose OAuth. When the consent page opens, enter the owner secret. ChatGPT should then call `studio_health`.
+
 ## Authentication
 
-Send `Authorization: Bearer <token>`. The API stores only the SHA-256 of each token in `ubuntu_mcp_credentials` on the existing Postgres database. Audit rows go to `ubuntu_mcp_audit` and record the credential id, tool, and result. They do not record the token.
+Send `Authorization: Bearer <token>`. An OAuth access token or one of the machine tokens below is accepted. The API stores only the SHA-256 of each token in `ubuntu_mcp_credentials` on the existing Postgres database. Audit rows go to `ubuntu_mcp_audit` and record the credential id, tool, and result. They do not record the token.
 
 Set the token values on the API service in Render. Do not put them in GitHub, in this repository, or in a browser cookie.
 

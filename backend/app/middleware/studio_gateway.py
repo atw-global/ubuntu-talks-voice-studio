@@ -25,9 +25,10 @@ class StudioGateway:
         if typ == "http" and scope.get("path") == "/health":
             return await self.application(scope, receive, send)
 
-        # The MCP client uses its own credential. It must not receive or send
-        # the internal gateway token. Every other route keeps that check.
-        if typ == "http" and scope.get("path") == "/api/ubuntu/mcp/v1":
+        # The MCP client uses its own credential. OAuth discovery and the
+        # authorization-code routes use that credential flow too. Neither
+        # receives the internal gateway token. Every other route keeps that check.
+        if typ == "http" and _mcp_or_oauth(scope.get("path", "")):
             return await self.application(scope, receive, send)
 
         expected = os.environ.get("STUDIO_BACKEND_GATEWAY_TOKEN", "")
@@ -57,3 +58,18 @@ class StudioGateway:
                     )(scope, receive, send)
 
         return await self.application(scope, receive, send)
+
+
+def _mcp_or_oauth(path: str) -> bool:
+    if path == "/api/ubuntu/mcp/v1":
+        return True
+    if path in {
+        "/.well-known/oauth-protected-resource",
+        "/.well-known/oauth-authorization-server",
+        "/oauth/register",
+        "/oauth/authorize",
+        "/oauth/token",
+        "/oauth/revoke",
+    }:
+        return True
+    return path == "/.well-known/oauth-protected-resource/api/ubuntu/mcp/v1"

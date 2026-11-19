@@ -118,6 +118,10 @@ def sync_credentials() -> None:
 def authenticate(token: str) -> dict | None:
     if not token:
         return None
+    from app.mcp.oauth import access_credential
+    oauth = access_credential(token)
+    if oauth:
+        return oauth
     sync_credentials()
     digest = token_hash(token)
     with _engine().connect() as conn:
