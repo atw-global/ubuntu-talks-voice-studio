@@ -1,18 +1,35 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#173f34"><title>Greetings &amp; Respect · Ubuntu Talks Classroom Preview</title>
-<link rel="stylesheet" href="/ubuntu-classroom.css?v=20261119-1154">
-<link rel="preconnect" href="https://unpkg.com" crossorigin>
-</head><body>
-<div id="app"><main style="max-width:900px;margin:70px auto;font-family:system-ui;padding:24px"><h1 style="color:#173f34;font:600 36px Georgia,serif">Ubuntu Talks · Everyday isiZulu</h1><p>Opening your private Lesson 1 classroom…</p><p><a href="/ubuntu-isizulu-beginner-i-preview.html">Return to the course overview</a></p></main></div>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#14362d">
+<title>Greetings &amp; Respect · Ubuntu Talks</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,500&family=Fraunces:ital,opsz,wght@0,9..144,560;0,9..144,640;1,9..144,560&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/classroom/classroom.js"></script>
+  <link rel="stylesheet" crossorigin href="/classroom/classroom.css">
+</head>
+<body>
+<div id="app">
+<main class="boot">
+<p class="boot-kicker">Ubuntu Talks · Everyday isiZulu</p>
+<h1>Greetings &amp; Respect</h1>
+<p>Opening the lesson…</p>
+</main>
+</div>
+<noscript><p>This lesson needs JavaScript to play audio and follow the phrases.</p></noscript>
 <script>
-window.addEventListener('load',function(){
-  setTimeout(function(){
-    if(document.querySelector('.app-shell'))return;
-    var root=document.getElementById('app');
-    if(root)root.innerHTML='<main style="max-width:650px;margin:70px auto;padding:25px;color:#173f34;font-family:system-ui"><h1 style="font:600 32px Georgia,serif">Your lesson preview could not open</h1><p>The interactive classroom did not finish loading. Please refresh this page, or return to the course overview.</p><a style="color:#185c50;font-weight:700" href="/ubuntu-isizulu-beginner-i-preview.html">Back to Everyday isiZulu</a></main>';
-  },2000);
+window.addEventListener('load', function () {
+  setTimeout(function () {
+    if (document.querySelector('.app-shell')) return;
+    var root = document.getElementById('app');
+    if (!root) return;
+    root.innerHTML = '<main class="boot"><h1>The lesson did not finish opening</h1><p>Refresh this page. If it still stops here, return to the course page.</p><p><a href="/ubuntu-isizulu-beginner-i-preview.html">Everyday isiZulu</a></p></main>';
+  }, 5000);
 });
 </script>
-<script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
-<script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
-<script defer src="/ubuntu-classroom-react.js?v=20261119-1154"></script>
-</body></html>
+</body>
+</html>

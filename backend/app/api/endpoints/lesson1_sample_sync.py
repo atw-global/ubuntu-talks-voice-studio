@@ -10,15 +10,16 @@ import hashlib
 import json
 import logging
 import pathlib
-import re
 import subprocess
 import tempfile
+import threading
 from fastapi import APIRouter, HTTPException, Request
 from fastapi.responses import Response
 from botocore.exceptions import ClientError, BotoCoreError
 from sqlalchemy import select
 from app.api.endpoints.lesson1_archive import BUCKET, _r2_client
 from app.api.endpoints.lesson1_recording import CUES, recordings, engine, _hash
+from app.lesson_audio import clip_audio
 
 router = APIRouter(prefix="/api/ubuntu/azure/lesson1/sample", tags=["ubuntu-lesson1-synced-dialogue"])
 log = logging.getLogger(__name__)
@@ -152,43 +153,44 @@ def _manifest():
     except (ClientError,BotoCoreError,ValueError) as exc:
         raise HTTPException(503,detail="Native-only private sample not yet staged") from exc
 
+_PACKAGE_LOCK = threading.Lock()
+_PACKAGE: dict | None = None
+
+def _verified_package():
+    """Checksum the MP3 once, then serve every range from that buffer.
+
+    A browser seek used to download and hash the whole object again. That
+    path produced intermittent 502 responses while storage was slow.
+    """
+    global _PACKAGE
+    with _PACKAGE_LOCK:
+        if _PACKAGE is not None:
+            return _PACKAGE
+        data = _manifest()
+        expected = int(data["audio_bytes"])
+        try:
+            obj = _r2_client().get_object(Bucket=BUCKET, Key=KEY)
+            blob = obj["Body"].read(expected + 1)
+            if len(blob) != expected or hashlib.sha256(blob).hexdigest() != data["audio_sha256"]:
+                raise ValueError("Native sample MP3 checksum mismatch")
+        except (ClientError, BotoCoreError, ValueError) as exc:
+            raise HTTPException(502, detail="Private native dialogue not available") from exc
+        _PACKAGE = {"manifest": data, "audio": blob}
+        return _PACKAGE
+
 @router.get("/synced-dialogue")
 def synced_dialogue():
-    return _manifest()
+    return _verified_package()["manifest"]
 
 @router.get("/native-only.mp3")
-def native_only_audio(request:Request):
-    data=_manifest()
-    try:
-        expected=int(data["audio_bytes"])
-        obj=_r2_client().get_object(Bucket=BUCKET,Key=KEY)
-        blob=obj["Body"].read(expected+1)
-        if len(blob)!=expected or hashlib.sha256(blob).hexdigest()!=data["audio_sha256"]:
-            raise ValueError("Native sample MP3 checksum mismatch")
-    except (ClientError,BotoCoreError,ValueError) as exc:
-        raise HTTPException(502,detail="Private native dialogue not available") from exc
-    headers={"Cache-Control":"private, no-store, max-age=0",
-        "Accept-Ranges":"bytes","X-Robots-Tag":"noindex, nofollow",
-        "X-Ubuntu-Release":"F0-private-review-only"}
-    raw=request.headers.get("range","")
-    if raw:
-        found=re.fullmatch(r"bytes=(\d*)-(\d*)",raw.strip())
-        if not found or not (found.group(1) or found.group(2)):
-            return Response(status_code=416,headers={**headers,
-                "Content-Range":f"bytes */{len(blob)}"})
-        first,last=found.groups()
-        if first:
-            start=int(first);stop=int(last) if last else len(blob)-1
-        else:
-            suffix=int(last)
-            if suffix==0:return Response(status_code=416,headers={**headers,
-                "Content-Range":f"bytes */{len(blob)}"})
-            start=max(0,len(blob)-suffix);stop=len(blob)-1
-        stop=min(stop,len(blob)-1)
-        if start>=len(blob) or start>stop:
-            return Response(status_code=416,headers={**headers,
-                "Content-Range":f"bytes */{len(blob)}"})
-        return Response(content=blob[start:stop+1],media_type="audio/mpeg",
-            status_code=206,headers={**headers,
-            "Content-Range":f"bytes {start}-{stop}/{len(blob)}"})
-    return Response(content=blob,media_type="audio/mpeg",headers=headers)
+def native_only_audio(request: Request):
+    blob = _verified_package()["audio"]
+    status, body, extra = clip_audio(blob, request.headers.get("range"))
+    headers = {
+        "Cache-Control": "private, no-store, max-age=0",
+        "Accept-Ranges": "bytes",
+        "X-Robots-Tag": "noindex, nofollow",
+        "X-Ubuntu-Release": "F0-private-review-only",
+        **extra,
+    }
+    return Response(content=body, media_type="audio/mpeg", status_code=status, headers=headers)

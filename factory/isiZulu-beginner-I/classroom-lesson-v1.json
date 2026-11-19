@@ -1,0 +1,29 @@
+{
+  "id": "ubuntu-classroom-lesson-v1",
+  "course_id": "cors_EYwVx1BwLtuXB",
+  "lesson_id": "lesn_p61ZUtWXJkEie",
+  "product_id": "prod_EBSCxcpCQvcgI",
+  "plan_id": "plan_KhrZ8JGb2YWRt",
+  "stages": ["hear", "understand", "imitate", "manipulate", "retrieve", "converse", "assess"],
+  "activity_types": ["choice", "match", "order", "self_check"],
+  "audio": {
+    "kind": "mp3",
+    "manifest": "/api/ubuntu/azure/lesson1/sample/synced-dialogue",
+    "media": "/api/ubuntu/azure/lesson1/sample/native-only.mp3",
+    "voices": ["zu-ZA-ThandoNeural", "zu-ZA-ThembaNeural"],
+    "instructor_audio_in_sample": false
+  },
+  "access": {
+    "catalog": "/api/ubuntu/azure/lesson1/classroom/access",
+    "stage": "/api/ubuntu/azure/lesson1/classroom/stages/{stage_id}",
+    "membership_header": "X-Ubuntu-Membership-Id",
+    "free_stages": ["hear"]
+  },
+  "rules": [
+    "Dialogue cards render only the verified MP3 manifest.",
+    "Activity strings are copied from the approved cue list.",
+    "Paid stage bodies are omitted until Whop confirms this product and plan.",
+    "self_check must not claim automatic pronunciation scoring.",
+    "Lessons 2-10 stay not_authored until their own manifests exist."
+  ]
+}

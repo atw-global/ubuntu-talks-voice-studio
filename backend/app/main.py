@@ -370,6 +370,10 @@ app.include_router(lesson1_master_router)
 from app.api.endpoints.lesson1_sample_sync import router as lesson1_sample_sync_router
 app.include_router(lesson1_sample_sync_router)
 
+# Lesson 1 classroom access. Paid stages require a verified Whop membership.
+from app.api.endpoints.lesson1_classroom import router as lesson1_classroom_router
+app.include_router(lesson1_classroom_router)
+
 # Internal source-verified greeting audio QA sample; StudioGateway protected.
 from app.api.endpoints.lesson1_sample import router as lesson1_sample_router
 app.include_router(lesson1_sample_router)
