@@ -410,6 +410,11 @@ app.include_router(vast_status_router)
 from app.api.endpoints.mcp_v1 import router as mcp_v1_router
 app.include_router(mcp_v1_router)
 
+# OAuth 2.1 discovery and authorization code + PKCE for ChatGPT. The owner
+# secret is checked before a code is issued. The gateway token is not used.
+from app.api.endpoints.oauth import router as oauth_router
+app.include_router(oauth_router)
+
 # Security boundary for the dedicated Render API origin: the frontend
 # Nginx proxy authenticates the user and injects this server-side token.
 # This ASGI wrapper protects HTTP *and* WebSocket connections.

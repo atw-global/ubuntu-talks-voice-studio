@@ -143,7 +143,10 @@ def _bearer(header: str) -> str:
 
 
 def _auth_headers() -> dict[str, str]:
-    return {"content-type": "application/json", "www-authenticate": 'Bearer realm="ubuntu-talks-voice-studio"'}
+    origin = os.environ.get("UBUNTU_MCP_PUBLIC_ORIGIN", "https://ubuntu-talks-voice-studio-api.onrender.com").strip().rstrip("/")
+    metadata = origin + "/.well-known/oauth-protected-resource"
+    challenge = f'Bearer realm="ubuntu-talks-voice-studio", resource_metadata="{metadata}"'
+    return {"content-type": "application/json", "www-authenticate": challenge}
 
 
 def _error(request_id, code: int, message: str) -> dict:
