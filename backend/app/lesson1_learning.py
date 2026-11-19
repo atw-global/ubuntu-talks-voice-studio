@@ -30,8 +30,8 @@ PHRASES = {
 }
 
 SELF_CHECK = (
-    "I could follow the model",
-    "I need to listen again",
+    "I could follow the greeting",
+    "I want to hear it again",
 )
 
 LESSONS = (
@@ -92,7 +92,7 @@ _STAGES = (
         "index": 2,
         "title": "Understand",
         "free": False,
-        "intent": "Match each model line to the meaning and the person it addresses.",
+        "intent": "Match each greeting to its meaning and to the person it addresses.",
         "activities": [
             {
                 "id": "understand-match",
@@ -123,12 +123,12 @@ _STAGES = (
         "index": 3,
         "title": "Imitate",
         "free": False,
-        "intent": "Say the model aloud and compare it with what you heard. Pronunciation is not scored automatically.",
+        "intent": "Say the greeting aloud and compare it with what you heard. This is your own check, not a pronunciation score.",
         "activities": [
             {
                 "id": "imitate-one",
                 "type": "self_check",
-                "prompt": "Replay Sawubona. Say it aloud, then record what you noticed.",
+                "prompt": "Play Sawubona again. Say it aloud, then note what you noticed.",
                 "choices": list(SELF_CHECK),
                 "note": "This is your own check. The classroom does not grade pronunciation.",
                 "replay_text": "Sawubona.",
@@ -137,7 +137,7 @@ _STAGES = (
             {
                 "id": "imitate-group",
                 "type": "self_check",
-                "prompt": "Replay Sanibonani. Say it aloud, then record what you noticed.",
+                "prompt": "Play Sanibonani again. Say it aloud, then note what you noticed.",
                 "choices": list(SELF_CHECK),
                 "note": "This is your own check. The classroom does not grade pronunciation.",
                 "replay_text": "Sanibonani.",
@@ -208,12 +208,12 @@ _STAGES = (
         "index": 6,
         "title": "Converse",
         "free": False,
-        "intent": "Choose the model line that fits the turn you were given.",
+        "intent": "Choose the greeting that fits the turn you were given.",
         "activities": [
             {
                 "id": "converse-ask",
                 "type": "choice",
-                "prompt": "Thando has said Sawubona. Which model asks how that one person is?",
+                "prompt": "Thando has said Sawubona. Which line asks how that one person is?",
                 "choices": ["Unjani?", "Ninjani?"],
                 "correct": 0,
                 "success": "Unjani? asks one person how they are.",
@@ -223,7 +223,7 @@ _STAGES = (
             {
                 "id": "converse-reply",
                 "type": "choice",
-                "prompt": "Themba asks Unjani? Which model says you are fine and asks the question back?",
+                "prompt": "Themba asks Unjani? Which line says you are fine and asks the question back?",
                 "choices": ["Ngiyaphila, wena unjani?", "Sisaphila, nina ninjani?"],
                 "correct": 0,
                 "success": "That reply is for one person.",
@@ -233,9 +233,9 @@ _STAGES = (
             {
                 "id": "converse-order",
                 "type": "order",
-                "prompt": "Put these model lines in the order they are first taught.",
+                "prompt": "Put these greetings in the order they are first taught.",
                 "items": ["Sawubona.", "Sanibonani.", "Unjani?", "Ninjani?"],
-                "success": "That is the order of the first four models.",
+                "success": "That is the order of the first four greetings.",
                 "retry": "The recording teaches the one-person line, then the group line.",
             },
         ],
@@ -300,6 +300,8 @@ def access_catalog() -> dict:
             "media": None,
             "script_status": "proposed_not_source_locked",
             "audition": "factory/isiZulu-beginner-I/MRS_UBUNTU_VOICE_CASTING_SHORTLIST_2026-11-19.md",
+            "legacy_asset": "courses/zu/beginner-i/lesson-01/v2-stage/mrs-ubuntu-introduced-reference.mp3",
+            "legacy_asset_scope": "Private mixed sample. English introduction plus native dialogue. Not separable stage narration, and not cleared for the learner player.",
         },
         "lessons": [dict(item) for item in LESSONS],
         "stages": [

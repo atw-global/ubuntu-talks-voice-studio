@@ -88,6 +88,24 @@ record('dialogue-seek', sought > 0.4, `currentTime ${sought.toFixed(2)}`)
 const active = await page.locator('.dialogue-card.is-active strong').innerText()
 record('dialogue-highlight', active === 'Sanibonani.', active)
 
+async function seekTo(value) {
+  await page.locator('.seek').evaluate((node, next) => {
+    const input = node
+    const setter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set
+    setter?.call(input, String(next))
+    input.dispatchEvent(new Event('input', { bubbles: true }))
+    input.dispatchEvent(new Event('change', { bubbles: true }))
+  }, value)
+  await page.waitForTimeout(120)
+}
+await page.getByRole('button', { name: 'Pause audio' }).click()
+await seekTo(0.45)
+const held = await page.locator('.dialogue-card.is-active strong').innerText()
+record('sync-holds-through-gap', held === 'Sawubona.', held)
+await seekTo(0.62)
+const advanced = await page.locator('.dialogue-card.is-active strong').innerText()
+record('sync-advances-on-spoken-line', advanced === 'Sanibonani.', advanced)
+
 await page.locator('.choice', { hasText: 'Sawubona.' }).click()
 await page.getByRole('button', { name: 'Check answer' }).click()
 await page.getByText('Sawubona greets one person. Listen again for the group form.').waitFor()

@@ -40,10 +40,15 @@ Passed: mount, banner ratio 1.63, vertically centered banner text, cover crop, n
 
 Not passed: audible playback of the private R2 MP3 in the deployed Render classroom. The public staging URL still answers 401 without the studio password, and this session cannot deploy Render.
 
+## Premium pass
+
+Panels, cards, and the guide use softer elevation and stronger type. Learner copy no longer says “model.” Mrs Ubuntu’s written guidance changes as the learner listens, practises, finishes Hear, or meets a locked stage. Her legacy voice file is the private mixed sample `mrs-ubuntu-introduced-reference.mp3`. It is not attached, because it is not a set of English guide clips and it is not cleared for the player. Cue highlighting holds a line until that line’s end, and the served manifest realigns cue times to detected speech when the recording separates into the same number of lines. Local Chromium checked the gap hold, the advance, play, seek, the enrollment lock, and no overflow at 1440, 1024, 768, 390, and 360. That run used a generated tone, not the private MP3.
+
 ## Still blocked
 
 - Qualified native-speaker sign-off.
 - Azure S0 commercial rights and a new rendered master. The F0 reference must not be sold.
 - A real Whop membership on this plan, then a learner playback and progress test.
 - Owner authorization to publish.
-- A Render deployment of `main` at `1e28e9c85d281e6b8962f2a9c90530f8e7e22cc4`. Pull request #1 merged at 13:25 UTC on 19 November 2026. GitHub recorded no deployment and no Render status for that commit. The live classroom still answers 401, and this session has neither the studio password nor a Render API key, so the running service was not opened and the private MP3 was not played.
+- A Render deployment of this classroom. The live URL still answers 401 without the studio password. No Render API key is available in this session, so a deploy cannot be started from here and the private MP3 cannot be played from the browser.
+- A Whop sandbox key. Sandbox exists at `https://sandbox.whop.com`, but this connection is the production company and the product still has 0 memberships. No test charge was created.

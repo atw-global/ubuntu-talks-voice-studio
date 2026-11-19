@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { SAMPLE, loadManifest } from './api'
+import { activeCueIndex } from './cueSync'
 import type { Manifest } from './types'
-
-function activeIndex(manifest: Manifest, time: number) {
-  const cues = manifest.cues
-  const found = cues.findIndex((cue, index) => time >= cue.start && time < (cues[index + 1]?.start ?? manifest.duration_seconds + 1))
-  if (found >= 0) return found
-  return time >= cues[cues.length - 1].start ? cues.length - 1 : 0
-}
 
 export function useLessonAudio(retryToken: number) {
   const audioRef = useRef<HTMLAudioElement>(null)
@@ -17,6 +11,7 @@ export function useLessonAudio(retryToken: number) {
   const [status, setStatus] = useState('Loading the lesson audio…')
   const [error, setError] = useState(false)
   const [playing, setPlaying] = useState(false)
+  const [ended, setEnded] = useState(false)
   const [time, setTime] = useState(0)
   const [active, setActive] = useState(0)
   const [ready, setReady] = useState(false)
@@ -30,7 +25,7 @@ export function useLessonAudio(retryToken: number) {
         setManifest(body)
         setReady(true)
         setError(false)
-        setStatus('Ready. The highlighted phrase follows the recording.')
+        setStatus('Ready. The highlighted line follows the recording.')
       } catch {
         if (cancel) return
         if (attempt < 1) {
@@ -52,7 +47,7 @@ export function useLessonAudio(retryToken: number) {
 
   useEffect(() => {
     if (!manifest) return
-    const next = activeIndex(manifest, time)
+    const next = activeCueIndex(manifest.cues, time)
     if (next !== active) setActive(next)
   }, [time, manifest, active])
 
@@ -78,6 +73,18 @@ export function useLessonAudio(retryToken: number) {
     return () => rail.removeEventListener('wheel', onWheel)
   }, [ready])
 
+  useEffect(() => {
+    if (!playing) return
+    let frame = 0
+    const tick = () => {
+      const node = audioRef.current
+      if (node) setTime(node.currentTime)
+      frame = requestAnimationFrame(tick)
+    }
+    frame = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(frame)
+  }, [playing])
+
   async function toggle() {
     const audio = audioRef.current
     if (!audio) return
@@ -87,7 +94,8 @@ export function useLessonAudio(retryToken: number) {
     }
     try {
       setError(false)
-      setStatus('Playing the greeting models.')
+      setEnded(false)
+      setStatus('Playing the greetings.')
       await audio.play()
     } catch {
       setError(true)
@@ -99,6 +107,7 @@ export function useLessonAudio(retryToken: number) {
     const audio = audioRef.current
     if (!audio) return
     audio.currentTime = start
+    setEnded(false)
     setTime(start)
     setActive(index)
     try {
@@ -123,11 +132,12 @@ export function useLessonAudio(retryToken: number) {
 
   const events = {
     onTimeUpdate: (event: React.SyntheticEvent<HTMLAudioElement>) => setTime(event.currentTarget.currentTime),
-    onPlay: () => setPlaying(true),
+    onPlay: () => { setPlaying(true); setEnded(false) },
     onPause: () => setPlaying(false),
     onEnded: () => {
       setPlaying(false)
-      setStatus('You have heard the models. Try the greeting challenge.')
+      setEnded(true)
+      setStatus('You have heard the greetings. Try them yourself.')
     },
     onError: () => {
       setError(true)
@@ -144,6 +154,7 @@ export function useLessonAudio(retryToken: number) {
     status,
     error,
     playing,
+    ended,
     time,
     active,
     ready,

@@ -34,6 +34,9 @@
     "contains_target_language": false,
     "media": null,
     "script_status": "proposed_not_source_locked",
+    "guide_beats": ["welcome", "listening", "heard", "practice", "done", "locked"],
+    "legacy_asset": "courses/zu/beginner-i/lesson-01/v2-stage/mrs-ubuntu-introduced-reference.mp3",
+    "legacy_asset_scope": "Private mixed F0 sample: English introduction plus native dialogue. It is not a set of stage clips and is not attached to the learner player.",
     "proposed_audition_script": "Welcome. I'm Mrs Ubuntu, and I'll guide you as you learn. Today you'll hear two neighbours greeting one another. First, listen. Notice how the greeting changes when one person speaks to a group. After that, it's your turn. Ready? Let's begin.",
     "audition_record": "factory/isiZulu-beginner-I/MRS_UBUNTU_VOICE_CASTING_SHORTLIST_2026-11-19.md",
     "replacement_policy": "Keep en-ZA-LeahNeural until a separate owner approval names another voice. Do not synthesize this script into the lesson."

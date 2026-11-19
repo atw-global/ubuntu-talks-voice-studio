@@ -1,5 +1,7 @@
 """Lesson 1 audio ranges and enrollment decisions. No network and no R2."""
-from app.lesson_audio import clip_audio
+import array
+
+from app.lesson_audio import align_spoken_cues, clip_audio
 from app.lesson1_learning import (
     PHRASES,
     SELF_CHECK,
@@ -11,6 +13,33 @@ from app.lesson1_learning import (
 
 PRODUCT = "prod_EBSCxcpCQvcgI"
 PLAN = "plan_KhrZ8JGb2YWRt"
+
+
+def _tone(start: float, end: float, seconds: float = 2.6, rate: int = 16000) -> bytes:
+    samples = array.array("h", [0] * int(seconds * rate))
+    for index in range(int(start * rate), int(end * rate)):
+        samples[index] = 9000
+    return samples.tobytes()
+
+
+def test_alignment_moves_early_cues_onto_the_voice():
+    rate = 16000
+    samples = array.array("h", [0] * int(2.6 * rate))
+    for start, end in ((0.40, 0.70), (1.10, 1.40), (1.90, 2.20)):
+        for index in range(int(start * rate), int(end * rate)):
+            samples[index] = 9000
+    cues = [
+        {"text": "Sawubona.", "start": 0.10, "end": 0.50},
+        {"text": "Sanibonani.", "start": 0.80, "end": 1.20},
+        {"text": "Unjani?", "start": 1.60, "end": 2.00},
+    ]
+    aligned = align_spoken_cues(samples.tobytes(), rate, cues)
+    assert aligned is not None
+    assert aligned[0]["text"] == "Sawubona."
+    assert abs(aligned[0]["start"] - 0.40) < 0.05
+    assert abs(aligned[1]["start"] - 1.10) < 0.05
+    assert abs(aligned[2]["start"] - 1.90) < 0.05
+    assert align_spoken_cues(_tone(0.2, 1.0), 16000, cues) is None
 
 
 def test_full_audio_response_has_no_range_header():

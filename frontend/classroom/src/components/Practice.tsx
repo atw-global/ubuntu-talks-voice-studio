@@ -19,10 +19,12 @@ export function PracticeEngine({
   stage,
   onComplete,
   onReplay,
+  onEngage,
 }: {
   stage: StagePayload
   onComplete: (results: Result[]) => void
   onReplay: (text: string) => void
+  onEngage?: () => void
 }) {
   const [index, setIndex] = useState(0)
   const [choice, setChoice] = useState<number | null>(null)
@@ -72,6 +74,7 @@ export function PracticeEngine({
   const passed = isPassed(activity, choice, order, matches, shuffled)
 
   function check() {
+    onEngage?.()
     if (activity.type === 'self_check') {
       if (choice == null) return
       setChecked(true)
@@ -168,13 +171,13 @@ export function PracticeEngine({
       {checked && (
         <p className={(activity.type === 'self_check' ? choice === 0 : passed) ? 'feedback ok' : 'feedback retry'} role="status">
           {activity.type === 'self_check'
-            ? (choice === 0 ? 'You noted that you could follow the model.' : 'Replay the model and say the line once more. Nothing here scores your pronunciation.')
+            ? (choice === 0 ? 'You noted that you could follow the greeting.' : 'Listen again and say the line once more. This check does not score your pronunciation.')
             : (passed ? (activity.success || 'Noted.') : (activity.retry || 'Try another response.'))}
         </p>
       )}
       <div className="practice-actions">
         {activity.replay_text && (
-          <button type="button" className="text-button" onClick={() => onReplay(activity.replay_text || '')}>Replay this model</button>
+          <button type="button" className="text-button" onClick={() => onReplay(activity.replay_text || '')}>Play the greeting again</button>
         )}
         {!checked || !passed ? (
           <button type="button" className="button button-dark" onClick={check} disabled={!canCheck(activity, choice, order, matches, shuffled)}>

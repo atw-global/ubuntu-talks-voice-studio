@@ -19,7 +19,7 @@ from botocore.exceptions import ClientError, BotoCoreError
 from sqlalchemy import select
 from app.api.endpoints.lesson1_archive import BUCKET, _r2_client
 from app.api.endpoints.lesson1_recording import CUES, recordings, engine, _hash
-from app.lesson_audio import clip_audio
+from app.lesson_audio import align_spoken_cues, clip_audio
 
 router = APIRouter(prefix="/api/ubuntu/azure/lesson1/sample", tags=["ubuntu-lesson1-synced-dialogue"])
 log = logging.getLogger(__name__)
@@ -175,8 +175,32 @@ def _verified_package():
                 raise ValueError("Native sample MP3 checksum mismatch")
         except (ClientError, BotoCoreError, ValueError) as exc:
             raise HTTPException(502, detail="Private native dialogue not available") from exc
-        _PACKAGE = {"manifest": data, "audio": blob}
+        _PACKAGE = {"manifest": _with_spoken_timing(blob, data), "audio": blob}
         return _PACKAGE
+
+
+def _with_spoken_timing(blob: bytes, manifest: dict) -> dict:
+    """Serve cue times that follow the voice. The stored MP3 is unchanged."""
+    cues = manifest.get("cues")
+    if not isinstance(cues, list) or not cues:
+        return manifest
+    try:
+        decoded = subprocess.run(
+            ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
+             "-i", "pipe:0", "-f", "s16le", "-ac", "1", "-ar", "16000", "pipe:1"],
+            input=blob, capture_output=True, timeout=40, check=True,
+        )
+        aligned = align_spoken_cues(decoded.stdout, 16000, cues)
+    except (subprocess.SubprocessError, ValueError):
+        log.warning("Lesson 1 kept the stored cue timings")
+        return manifest
+    if not aligned:
+        log.info("Lesson 1 kept the stored cue timings")
+        return manifest
+    served = dict(manifest)
+    served["cues"] = aligned
+    served["timing_method"] = "speech_onset_aligned_to_verified_mp3"
+    return served
 
 @router.get("/synced-dialogue")
 def synced_dialogue():
