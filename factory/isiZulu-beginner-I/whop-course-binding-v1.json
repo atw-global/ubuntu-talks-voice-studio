@@ -282,18 +282,19 @@
     "paid_checkout_preflight": "USD_29_99_ONE_TIME_PASS",
     "buyer_access_test": "NOT_COMPLETED",
     "public_sample": "NOT_PUBLISHED",
-    "learner_style_staging_preview": "LIVE_AUTH_PROTECTED_2026_11_18",
+    "learner_style_staging_preview": "PREMIUM_MOBILE_FRONTEND_DEPLOYED",
     "whop_native_landing_audio": "NOT_ATTACHED",
-    "anonymous_audio": "NOT_PUBLIC"
+    "anonymous_audio": "NOT_PUBLIC",
+    "secure_sample_playback": "R2_ROUTE_AND_MOBILE_RANGE_SELFTEST_PASS"
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
-    "state": "DEPLOYED_RESTRICTED_REVIEW_ONLY",
+    "state": "DEPLOYED_PREMIUM_MOBILE_REVIEW_ONLY",
     "deploy_id": "dep-dbv697d6e07s73asnaog",
     "commit": "6d5dd82a32d893b46ff39d7a4e968ab9fe39319f",
     "review_sample_path": "/api/ubuntu/azure/lesson1/sample/qa-preview.mp3",
     "audio_visibility": "BASIC_AUTH_GATEWAY_ONLY",
-    "anonymous_access": "401_VERIFIED",
+    "anonymous_access": "BLOCKED_BASIC_AUTH",
     "native_whop_product_page_sample": "NOT_PUBLIC_PUBLISHED",
     "playback_authenticated": "NOT_YET_VERIFIED",
     "commercial_publication": "NOT_APPROVED",
@@ -301,6 +302,14 @@
       "en-ZA-LeahNeural",
       "zu-ZA-ThandoNeural",
       "zu-ZA-ThembaNeural"
-    ]
+    ],
+    "frontend_commit": "35657f2f8e46fb88358cdd657ba1cf56cc481d88",
+    "audio_path": "/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3",
+    "audio_source": "R2_IMMUTABLE_85S_F0_REFERENCE",
+    "audio_server_selftest": "PASS_HTTP_200_SHA_VERIFIED_1021292_BYTES_AND_HTTP_206_RANGE",
+    "audio_backend_commit": "d6046cafc316fe8d7e7add459deb9c40012e972b",
+    "frontend_deploy": "dep-dbv6js6k1f9s73bk70lg",
+    "backend_deploy": "dep-dbv6l75g1s2s73ebv3j0",
+    "authenticated_browser_playback": "PENDING_USER_ACCEPTANCE_TEST"
   }
 }
