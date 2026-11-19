@@ -281,6 +281,26 @@
     "whop_lesson_media": "NO_ATTACHMENT",
     "paid_checkout_preflight": "USD_29_99_ONE_TIME_PASS",
     "buyer_access_test": "NOT_COMPLETED",
-    "public_sample": "NOT_PUBLISHED"
+    "public_sample": "NOT_PUBLISHED",
+    "learner_style_staging_preview": "LIVE_AUTH_PROTECTED_2026_11_18",
+    "whop_native_landing_audio": "NOT_ATTACHED",
+    "anonymous_audio": "NOT_PUBLIC"
+  },
+  "staging_preview": {
+    "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
+    "state": "DEPLOYED_RESTRICTED_REVIEW_ONLY",
+    "deploy_id": "dep-dbv697d6e07s73asnaog",
+    "commit": "6d5dd82a32d893b46ff39d7a4e968ab9fe39319f",
+    "review_sample_path": "/api/ubuntu/azure/lesson1/sample/qa-preview.mp3",
+    "audio_visibility": "BASIC_AUTH_GATEWAY_ONLY",
+    "anonymous_access": "401_VERIFIED",
+    "native_whop_product_page_sample": "NOT_PUBLIC_PUBLISHED",
+    "playback_authenticated": "NOT_YET_VERIFIED",
+    "commercial_publication": "NOT_APPROVED",
+    "approved_speaker_cast": [
+      "en-ZA-LeahNeural",
+      "zu-ZA-ThandoNeural",
+      "zu-ZA-ThembaNeural"
+    ]
   }
 }
