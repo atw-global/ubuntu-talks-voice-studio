@@ -46,4 +46,4 @@ Not passed: audible playback of the private R2 MP3 in the deployed Render classr
 - Azure S0 commercial rights and a new rendered master. The F0 reference must not be sold.
 - A real Whop membership on this plan, then a learner playback and progress test.
 - Owner authorization to publish.
-- Render deploy of this branch. Staging remains the previous deployment until that happens.
+- A Render deployment of `main` at `1e28e9c85d281e6b8962f2a9c90530f8e7e22cc4`. Pull request #1 merged at 13:25 UTC on 19 November 2026. GitHub recorded no deployment and no Render status for that commit. The live classroom still answers 401, and this session has neither the studio password nor a Render API key, so the running service was not opened and the private MP3 was not played.
