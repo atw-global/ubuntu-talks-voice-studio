@@ -155,10 +155,23 @@ function showLines(cues){transcript.replaceChildren();for(const cue of cues){
  if(glossary[cue.text]){const meaning=document.createElement('span');meaning.className='meaning';meaning.textContent=glossary[cue.text];text.appendChild(meaning)}
  line.append(who,text);transcript.appendChild(line);
  }}
+async function fetchTranscriptWithRetry(url){
+  let lastError;
+  for(let attempt=0;attempt<5;attempt++){
+    try{
+      const response=await fetch(url,{credentials:'same-origin',cache:'no-store'});
+      if(response.ok)return response;
+      if(response.status===401||response.status===403)throw new Error('Sign-in required');
+      lastError=new Error('Preview audio service warming up ('+response.status+')');
+    }catch(err){lastError=err;if(String(err.message).includes('Sign-in required'))break}
+    if(attempt<4)await new Promise(resolve=>setTimeout(resolve,1800*(attempt+1)));
+  }
+  throw lastError;
+}
 async function configure(){
  try{
-  const response=await fetch('/api/ubuntu/azure/lesson1/sample/intro-stage/transcript',{credentials:'same-origin',cache:'no-store'});
-  if(!response.ok)throw Error('Introduced sample not yet available');
+  transcriptNote.textContent='Connecting to the private Lesson 1 preview…';
+  const response=await fetchTranscriptWithRetry('/api/ubuntu/azure/lesson1/sample/intro-stage/transcript');
   const data=await response.json();
   if(!Array.isArray(data.cues)||data.cues[0].order!==2||data.commercial_release!==false)throw Error('Wrong source manifest');
   audio.src=introduced;expectedLength=Number(data.audio_seconds)||90;seek.max=String(expectedLength);
@@ -173,10 +186,23 @@ async function configure(){
   refresh();
  }
 }
-async function toggle(){if(busy)return;if(!audio.paused){audio.pause();refresh();return}busy=true;play.disabled=true;status.className='status';status.textContent='Loading private sample…';try{await audio.play();status.textContent='Playing the Lesson 1 source-locked reference for private review. Commercial release is not authorized.'}catch(err){status.className='status error';status.textContent='Audio did not start. Check the Voice Studio sign-in and retry.'}finally{busy=false;play.disabled=false;refresh()}}
+async function toggle(){
+ if(busy)return;
+ if(!audio.paused){audio.pause();refresh();return}
+ busy=true;play.disabled=true;status.className='status';
+ status.textContent='Connecting to Lesson 1 audio…';
+ try{
+  if(audio.error)audio.load();
+  await audio.play();
+  status.textContent='Playing the private Lesson 1 sample for review. Commercial publication remains locked.';
+ }catch(err){
+  status.className='status error';
+  status.textContent='The audio service may still be waking up. Press Play again to retry. If it continues, refresh the page.';
+ }finally{busy=false;play.disabled=false;refresh()}
+}
 play.onclick=toggle;hero.onclick=()=>{section.scrollIntoView({behavior:'smooth',block:'start'});toggle()};
 audio.addEventListener('loadedmetadata',refresh);audio.addEventListener('timeupdate',refresh);audio.addEventListener('play',refresh);audio.addEventListener('pause',refresh);
-audio.addEventListener('error',()=>{if(reported)return;reported=true;status.className='status error';status.textContent='The audio source could not load. Refresh the page to retry.'});
+audio.addEventListener('error',()=>{status.className='status error';status.textContent='Audio is temporarily unavailable. Press Play again to retry or refresh the page.';});
 audio.addEventListener('ended',()=>{seek.value='0';refresh()});
 seek.addEventListener('input',()=>{if(audio.readyState>=1)audio.currentTime=Number(seek.value);refresh()});
 configure();
