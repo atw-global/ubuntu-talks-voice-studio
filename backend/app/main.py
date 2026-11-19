@@ -202,6 +202,19 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
         _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
+    # Produce immutable instructor-introduced private sample once; unchanged
+    # approved voices and exact source cue text, no public rights implied.
+    if _envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY"):
+        import asyncio as _intro_asyncio
+        async def _stage_intro_sample():
+            try:
+                from app.api.endpoints.lesson1_sample_intro_stage import stage_once
+                result = await _intro_asyncio.to_thread(stage_once)
+                logger.info("Ubuntu introduced 85-95s PRIVATE sample STAGED state=%s duration=%s cues=%s",
+                            result["state"], result["duration"], result["cues"])
+            except Exception as exc:
+                logger.error("Ubuntu introduced PRIVATE sample STAGING FAILED type=%s", type(exc).__name__)
+        _intro_asyncio.create_task(_stage_intro_sample(), name="ubuntu-private-instructor-intro-stager")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
@@ -330,11 +343,23 @@ app.include_router(lesson1_master_router)
 from app.api.endpoints.lesson1_sample import router as lesson1_sample_router
 app.include_router(lesson1_sample_router)
 
-# Private Lesson 1 native-language review; audio never made public.\nfrom app.api.endpoints.lesson1_release_review import router as lesson1_release_review_router\napp.include_router(lesson1_release_review_router)\n\n# Checksum-gated private QA archive for the approved greeting sample.
+# Private Lesson 1 native-language review; audio never made public.
+from app.api.endpoints.lesson1_release_review import router as lesson1_release_review_router
+app.include_router(lesson1_release_review_router)
+
+# Source-exact, instructor-introduced F0 preview for private staging.
+from app.api.endpoints.lesson1_sample_intro_stage import router as lesson1_sample_intro_router
+app.include_router(lesson1_sample_intro_router)
+
+# Checksum-gated private QA archive for the approved greeting sample.
 from app.api.endpoints.lesson1_sample_archive import router as lesson1_sample_archive_router
 app.include_router(lesson1_sample_archive_router)
 
-# Server-side Whop company-key integration; guarded by StudioGateway.\nfrom app.api.endpoints.whop_course_factory import router as whop_course_factory_router\napp.include_router(whop_course_factory_router)\n\n# Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
+# Server-side Whop company-key integration; guarded by StudioGateway.
+from app.api.endpoints.whop_course_factory import router as whop_course_factory_router
+app.include_router(whop_course_factory_router)
+
+# Approved 139-block isiZulu Lesson 1 resumable Azure recorder.
 from app.api.endpoints.lesson1_recording import router as lesson1_recording_router
 app.include_router(lesson1_recording_router)
 
