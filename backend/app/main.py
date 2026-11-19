@@ -181,6 +181,21 @@ async def lifespan(_app: FastAPI):
         _whop_asyncio.create_task(_check_whop_pilot(), name="ubuntu-whop-private-company-api-check")
     else:
         logger.info("Ubuntu Whop company API key NOT CONFIGURED; hidden pilot unchanged")
+    # Internal-only playback self-test. Uses the same authenticated R2 route
+    # handler as the staging audio player; never logs or exposes audio bytes.
+    if _envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY"):
+        import asyncio as _audio_check_asyncio
+        async def _check_private_sample_playback():
+            try:
+                from app.api.endpoints.lesson1_sample_archive import play_private_archived_sample
+                result = await _audio_check_asyncio.to_thread(play_private_archived_sample)
+                from app.api.endpoints.lesson1_sample_archive import EXPECTED_BYTES
+                if result.status_code != 200 or result.media_type != "audio/mpeg" or len(result.body) != EXPECTED_BYTES:
+                    raise RuntimeError("Unexpected private sample response identity")
+                logger.info("Ubuntu private Lesson01 R2 PLAYER SELFTEST PASS HTTP=200 mime=audio/mpeg bytes=%d commercial_publication=BLOCKED", len(result.body))
+            except Exception as exc:
+                logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
+        _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
     # Explicitly authorized isiZulu Lesson 1 Azure recording. Auto-resume
     # from PostgreSQL checkpoints after Render free-service restarts.
     # Opt-in only; no worker/GPU. Recording never publishes course content.
