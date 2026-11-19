@@ -56,3 +56,32 @@ User listened to Lesson 1 and reported Mrs Ubuntu pronounces the word **isiZulu*
 A text-preserving alternate code-switch audition was implemented in `backend/app/api/endpoints/azure_audition.py`, `POST /api/ubuntu/azure/pronunciation-fix/1` and `/2`, and a listening comparison added to `frontend/static/ubuntu-lesson1-listen.html`. This sends English portions through Leah and only the exact substring `isiZulu` through native-locale Thando. It does NOT overwrite any existing recording. Deployment initiated; check Render live status before claiming samples work. Voice switching may produce an audible timbre change; native speaker must evaluate. If audible voice switching is unsuitable, try SSML pronunciation lexicon and retest within same narrator, keeping the exact source text.
 
 **Do not publish** the lesson until narrator term pronunciation is accepted and actual isiZulu dialogue receives native speaker QA. All existing 139 source cues remain unchanged. User's reported defect is to be preserved in subsequent agent handoffs.
+
+## 2026-11-19 — voice recovery, recording, and classroom (not a completion)
+
+Inspected without generating audio, changing the approved voice, or attaching a file to Whop.
+
+- Original ElevenLabs voice ID `BcpjRWrYhDBHmOnetmBl` is the Mrs Ubuntu / Thandi English guide. The classroom narrator is still Azure `en-ZA-LeahNeural`. The ID does not establish ownership or a commercial license.
+- The curriculum repository contains real MP3 objects at `public/audio/guides/`, including `L01A/L01A_slide_1_pre.mp3`. The committed manifest text is a Chitonga alphabet introduction ("Discovering Chitonga"), 270,045 bytes, and the object begins with an ID3 header written by Lavf 60.16.100. Those files are not the isiZulu Lesson 1 script and were not copied into this lesson. A clean local decode was not possible from this workspace: the curriculum repository is not available to this agent's git credential, and the file viewer did not return an intact binary. R2 prefix checks recorded on this date found no `audio/guides/` objects. Restoration of the isiZulu narration without a new recording is therefore not available.
+- The 139-cue Azure master is documented from an earlier Render readback as 7,401,068 bytes, 617 seconds, SHA-256 `ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a`, cue count 139. This session did not re-download the PostgreSQL master, the ZIP, or `courses/zu/beginner-i/lesson-01/v1/master.mp3`. Do not treat that earlier readback as a new verification. The native-only learner sample remains the separate R2 object `v3-stage/native-voices-only.mp3` (28 cues, SHA-256 `9a1e00829c77c6f2dc7646184bd4ad5afae096713f6b3245fe4ef85b57687f3b`). Its private bytes were not played here.
+- Reported mismatch: the recording says "Sanibonani" while the screen shows "Ninjani?". In the approved manifest those are orders 4 and 6, with "Unjani?" between them. The caption list is not swapped. The likely cause is concat timing that moves the highlight ahead of the voice. Alignment now joins a breath inside one line when the gap is shorter than the 0.35 second pause between lines, and it still refuses to rewrite timings when the number of spoken regions does not match the cue count. This is not verified against the private MP3.
+- Mrs Ubuntu's introduction in the classroom is written and separate from the native greeting recording. Her spoken line does not use personal names or the language name. The approved cue texts, including orders 1 and 2, were not edited.
+- Whop course `cors_EYwVx1BwLtuXB`, lesson `lesn_p61ZUtWXJkEie`, still has no verified audio attachment. None was added. Commercial release remains blocked on native-language QA, Azure S0 rights, and owner approval.
+
+## 2026-11-19 — retrieval attempt for the 139-cue master
+
+The historical reference remains version `english-instructor-v1`, SHA-256 `ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a`, 7,401,068 bytes, 617 seconds, 139 cues. In code, that version replaces orders 1 and 2 with revised English narration and leaves orders 3–139 unchanged. It was not retrieved, decoded, or hashed in this session.
+
+Access blockers, checked directly:
+
+- `GET https://ubuntu-talks-voice-studio-api.onrender.com/health` returned 200.
+- `GET /api/ubuntu/azure/lesson1/status` returned 403: “Not authorized to access the Ubuntu Talks Voice Studio backend.” This workspace has no `STUDIO_BACKEND_GATEWAY_TOKEN`.
+- `GET https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-classroom.html` returned 401 from nginx basic auth. No studio password is available here.
+- No `UBUNTU_R2_ACCESS_KEY_ID` or `UBUNTU_R2_SECRET_ACCESS_KEY` is present, so `courses/zu/beginner-i/lesson-01/v1/master.mp3` in bucket `ubuntu-talks-instructor-masters` could not be read. The Render Postgres resource `dpg-dbttmmek1f9s739nrs00-a` is also unreachable from this workspace. The only named database secret here is `UBUNTU_STAGING_DB`, and its value is not available to this machine.
+- No replacement audio was generated. `POST /api/ubuntu/azure/lesson1/master/start` was not called.
+
+Whop readback the same day: course `cors_EYwVx1BwLtuXB` is `hidden`; lesson `lesn_p61ZUtWXJkEie` has `attachments: []`, `video_asset: null`, and `embed_id: null`; product `prod_EBSCxcpCQvcgI` is `hidden` with `member_count` 0; memberships for that product total 0. Nothing was uploaded or published.
+
+Mrs Ubuntu: no isiZulu introduction MP3 was found to evaluate. The Chitonga guide files were not copied in. Narration audio stays pending. Voice ID `BcpjRWrYhDBHmOnetmBl` stays the historical reference. Leah remains the assigned Azure narrator.
+
+Orders 4, 5, and 6 were not played from the private MP3. If speech-region detection later fails on a retrieved file, the served manifest sets `timing_review_required` and `timing_status: manual_review` instead of treating the stored timestamps as confirmed.

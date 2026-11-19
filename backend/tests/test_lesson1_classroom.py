@@ -1,7 +1,7 @@
 """Lesson 1 audio ranges and enrollment decisions. No network and no R2."""
 import array
 
-from app.lesson_audio import align_spoken_cues, clip_audio
+from app.lesson_audio import align_spoken_cues, apply_timing_result, clip_audio
 from app.lesson1_learning import (
     PHRASES,
     SELF_CHECK,
@@ -40,6 +40,54 @@ def test_alignment_moves_early_cues_onto_the_voice():
     assert abs(aligned[1]["start"] - 1.10) < 0.05
     assert abs(aligned[2]["start"] - 1.90) < 0.05
     assert align_spoken_cues(_tone(0.2, 1.0), 16000, cues) is None
+
+
+def test_alignment_joins_a_breath_without_crossing_the_next_line():
+    rate = 16000
+    samples = array.array("h", [0] * int(2.4 * rate))
+    for start, end in ((0.20, 0.45), (0.67, 0.90), (1.40, 1.70)):
+        for index in range(int(start * rate), int(end * rate)):
+            samples[index] = 9000
+    cues = [
+        {"text": "Sanibonani.", "start": 0.00, "end": 0.40},
+        {"text": "Ninjani?", "start": 0.50, "end": 0.90},
+    ]
+    aligned = align_spoken_cues(samples.tobytes(), rate, cues)
+    assert aligned is not None
+    assert aligned[0]["text"] == "Sanibonani."
+    assert aligned[1]["text"] == "Ninjani?"
+    assert aligned[0]["end"] < aligned[1]["start"]
+    assert abs(aligned[1]["start"] - 1.40) < 0.05
+
+
+def test_failed_alignment_flags_every_cue_for_manual_review():
+    manifest = {"cues": [
+        {"text": "Sanibonani.", "start": 0.1, "end": 0.4},
+        {"text": "Ninjani?", "start": 0.5, "end": 0.8},
+    ]}
+    reviewed = apply_timing_result(manifest, None)
+    assert reviewed["timing_review_required"] is True
+    assert reviewed["cues"][0]["text"] == "Sanibonani."
+    assert reviewed["cues"][0]["start"] == 0.1
+    assert {cue["timing_status"] for cue in reviewed["cues"]} == {"manual_review"}
+    confirmed = apply_timing_result(manifest, [
+        {"text": "Sanibonani.", "start": 0.2, "end": 0.5},
+        {"text": "Ninjani?", "start": 1.4, "end": 1.7},
+    ])
+    assert confirmed["timing_review_required"] is False
+    assert confirmed["cues"][1]["timing_status"] == "speech_onset_aligned"
+    assert confirmed["cues"][1]["text"] == "Ninjani?"
+
+
+def test_native_greeting_order_keeps_sanibonani_before_ninjani():
+    import json
+    from pathlib import Path
+    source = Path(__file__).resolve().parents[1] / "app/data/lesson01_approved_139.json"
+    payload = json.loads(source.read_text())
+    by_order = {cue["order"]: cue["text_to_speak"] for cue in payload["spoken_cues"]}
+    assert [by_order[n] for n in (3, 4, 5, 6)] == [
+        "Sawubona.", "Sanibonani.", "Unjani?", "Ninjani?",
+    ]
 
 
 def test_full_audio_response_has_no_range_header():

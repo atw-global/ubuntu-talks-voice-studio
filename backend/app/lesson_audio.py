@@ -39,10 +39,12 @@ def align_spoken_cues(pcm: bytes, sample_rate: int, cues: list[dict]) -> list[di
     """Place each cue on a detected spoken burst.
 
     Stored MP3 timestamps can sit ahead of the voice after a concat export.
-    This returns a new cue list only when the recording separates into the
-    same number of lines. A mismatch keeps the stored timings.
+    A short breath inside one line is joined when the gap is shorter than the
+    pause written between lines. This returns a new cue list only when the
+    recording then separates into the same number of lines. A mismatch keeps
+    the stored timings.
     """
-    regions = _speech_regions(pcm, sample_rate)
+    regions = _join_short_gaps(_speech_regions(pcm, sample_rate), len(cues))
     if len(regions) != len(cues) or not cues:
         return None
     aligned = []
@@ -54,6 +56,25 @@ def align_spoken_cues(pcm: bytes, sample_rate: int, cues: list[dict]) -> list[di
         updated["end"] = round(end, 3)
         aligned.append(updated)
     return aligned
+
+
+def apply_timing_result(manifest: dict, aligned: list[dict] | None) -> dict:
+    """Keep stored times when speech detection does not match, and mark them unconfirmed."""
+    served = dict(manifest)
+    source = aligned if aligned else list(manifest.get("cues") or [])
+    cues = []
+    for cue in source:
+        item = dict(cue)
+        item["timing_status"] = "speech_onset_aligned" if aligned else "manual_review"
+        cues.append(item)
+    served["cues"] = cues
+    if aligned:
+        served["timing_method"] = "speech_onset_aligned_to_verified_mp3"
+        served["timing_review_required"] = False
+    else:
+        served["timing_method"] = "stored_timestamps_require_manual_review"
+        served["timing_review_required"] = True
+    return served
 
 
 def _speech_regions(pcm: bytes, sample_rate: int) -> list[tuple[float, float]]:
@@ -104,3 +125,19 @@ def _speech_regions(pcm: bytes, sample_rate: int) -> list[tuple[float, float]]:
         else:
             merged.append((start, end))
     return merged
+
+
+def _join_short_gaps(regions: list[tuple[float, float]], expected: int) -> list[tuple[float, float]]:
+    """Join splits inside one line. Never cross the pause between lines."""
+    joined = list(regions)
+    while len(joined) > expected > 0:
+        gaps = [
+            (joined[index + 1][0] - joined[index][1], index)
+            for index in range(len(joined) - 1)
+        ]
+        gap, index = min(gaps)
+        if gap >= 0.32:
+            break
+        joined[index] = (joined[index][0], joined[index + 1][1])
+        del joined[index + 1]
+    return joined
