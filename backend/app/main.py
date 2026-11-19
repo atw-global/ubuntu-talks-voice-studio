@@ -202,7 +202,7 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
         _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
-    # Produce immutable instructor-introduced private sample once; unchanged
+    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Produce immutable instructor-introduced private sample once; unchanged
     # approved voices and exact source cue text, no public rights implied.
     if _envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY"):
         import asyncio as _intro_asyncio
