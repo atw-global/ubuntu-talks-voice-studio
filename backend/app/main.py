@@ -202,7 +202,19 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
         _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
-    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Verify source-exact sync timings before presenting any learner preview.
+    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Source-locked native-only sample is a different immutable object than
+    # the original 85s sample, which included English instructor narration.
+    import asyncio as _native_sample_asyncio
+    async def _stage_native_only_sample():
+        try:
+            from app.api.endpoints.lesson1_sample_sync import stage_once as _stage_native
+            outcome = await _native_sample_asyncio.to_thread(_stage_native)
+            logger.info("Ubuntu native-only lesson sample R2 READY state=%s duration=%s cues=%s sha256=%s",
+                outcome["status"],outcome["duration"],outcome["cues"],outcome["sha256"])
+        except Exception as exc:
+            logger.error("Ubuntu native-only lesson sample R2 FAILED type=%s",type(exc).__name__)
+    _native_sample_asyncio.create_task(_stage_native_only_sample(),name="ubuntu-native-only-lesson01-stager")
+    # Verify source-exact sync timings before presenting any learner preview.
     import asyncio as _sync_asyncio
     async def _verify_native_dialogue_sync():
         try:
