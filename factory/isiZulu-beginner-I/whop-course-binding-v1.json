@@ -265,7 +265,7 @@
     "publish_allowed": false,
     "whop_api_key": "CONNECTED_SERVER_SIDE",
     "whop_browser_login_required_for_ordinary_media": "NO",
-    "native_qa": "PENDING_QUALIFIED_SIGNOFF",
+    "native_qa": "PENDING",
     "azure_commercial_rights": "F0_NOT_CLEARED_REQUIRES_S0_REGENERATED_V2",
     "review_page_path": "/api/ubuntu/azure/lesson1/release-review/review",
     "release_status_path": "/api/ubuntu/azure/lesson1/release-review/status",
@@ -298,7 +298,10 @@
     "react_classroom": "LIVE_STAGING_CODE_SYNTAX_AND_COMPONENT_SMOKE_PASS",
     "native_only_audio": "PRIVATE_F0_REFERENCE",
     "whop_native_course_ui": "UNCHANGED",
-    "authenticated_browser_end_to_end": "PENDING_USER_VERIFICATION"
+    "authenticated_browser_end_to_end": "PENDING_USER_VERIFICATION",
+    "premium_react_classroom": "STAGING_LIVE",
+    "backend_sample_playback": "NOT_READY_FOR_SIGNOFF_502_UPSTREAM_SEEN",
+    "azure_s0": "UNVERIFIED"
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
@@ -375,7 +378,7 @@
     "react_classroom_file": "frontend/static/ubuntu-isizulu-beginner-i-classroom.html",
     "react_app_file": "frontend/static/ubuntu-classroom-react.js",
     "react_css_file": "frontend/static/ubuntu-classroom.css",
-    "react_classroom_deploy": "dep-dbve70740ujc7398a24g",
+    "react_classroom_deploy": "dep-dbvei7e7bikc738d0gd0",
     "react_classroom_deploy_state": "LIVE_2026_11_19",
     "entrypoint": "LANDING_CTA_TO_ACTUAL_REACT_CLASSROOM_NO_DUPLICATE_SALES_PAGE_PLAYER",
     "navigation": "COURSE_SIDEBAR_LESSON1_ACTIVE_LESSONS2_10_LOCKED",
@@ -404,6 +407,23 @@
     "more_menu": "Translation_enquiries_to_contact_Shop_About_Help",
     "landing_double_cta": "REMOVED",
     "landing_second_artwork": "REPLACED_WITH_THREE_STEP_LEARNING_JOURNEY",
-    "preview_scope": "SHORT_INTERACTIVE_EXCERPT_OF_HEAR_STAGE_NOT_COMPLETE_LESSON"
+    "preview_scope": "SHORT_INTERACTIVE_EXCERPT_OF_HEAR_STAGE_NOT_COMPLETE_LESSON",
+    "new_ui_features": [
+      "African banner smaller green pane and larger original artwork",
+      "banner bottom striped trim removed",
+      "branded guide text Mrs Ubuntu English only",
+      "3-round greeting game",
+      "top dashboard and more menu",
+      "read-along dialogue cards under MP3 player",
+      "premium typography",
+      "mobile responsive"
+    ],
+    "audio_format": "MP3_ONLY_NOT_VIDEO",
+    "mrs_ubuntu_audio": "NOT_CHANGED_ENGLISH_ONLY_GUIDE_TEXT_ADDED",
+    "mrs_ubuntu_new_voice": "SHORTLIST_REVIEW_ONLY_NOT_SELECTED",
+    "authenticated_playback": "NOT_VERIFIED_502_SLEEPING_RENDER_BACKEND_OBSERVED",
+    "actual_video": "NOT_PRODUCED",
+    "buyer_access": "NOT_TESTED",
+    "whop_course": "NATIVE_COURSE_UNCHANGED"
   }
 }
