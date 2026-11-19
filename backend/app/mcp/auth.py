@@ -124,9 +124,10 @@ def authenticate(token: str) -> dict | None:
         row = conn.execute(select(
             credentials.c.id, credentials.c.label, credentials.c.scopes, credentials.c.revoked_at,
         ).where(credentials.c.token_hash == digest)).first()
-    if not row or row.revoked_at is not None:
-        return None
-    return {"id": row.id, "label": row.label, "scopes": set(row.scopes.split())}
+    if row and row.revoked_at is None:
+        return {"id": row.id, "label": row.label, "scopes": set(row.scopes.split())}
+    from app.mcp.oauth import access_credential
+    return access_credential(digest)
 
 
 def write_audit(credential_id: str | None, session_id: str | None, method: str, tool: str | None, ok: bool, detail: str) -> None:

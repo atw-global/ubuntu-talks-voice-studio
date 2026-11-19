@@ -11,6 +11,10 @@ import secrets
 
 from starlette.responses import JSONResponse
 
+from app.mcp.oauth import PUBLIC_PATHS
+
+GATEWAY_EXEMPT = PUBLIC_PATHS | {"/health"}
+
 
 class StudioGateway:
     def __init__(self, application):
@@ -21,13 +25,9 @@ class StudioGateway:
         if typ not in {"http", "websocket"}:
             return await self.application(scope, receive, send)
 
-        # Render health monitoring must work without API credentials.
-        if typ == "http" and scope.get("path") == "/health":
-            return await self.application(scope, receive, send)
-
-        # The MCP client uses its own credential. It must not receive or send
-        # the internal gateway token. Every other route keeps that check.
-        if typ == "http" and scope.get("path") == "/api/ubuntu/mcp/v1":
+        # Health, the MCP route, and the OAuth discovery routes authenticate
+        # themselves. Every other route keeps the internal gateway token.
+        if typ == "http" and scope.get("path") in GATEWAY_EXEMPT:
             return await self.application(scope, receive, send)
 
         expected = os.environ.get("STUDIO_BACKEND_GATEWAY_TOKEN", "")

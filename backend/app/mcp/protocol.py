@@ -11,6 +11,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 
 from app.mcp.auth import authenticate, write_audit
+from app.mcp.oauth import public_origin, www_authenticate
 from app.mcp.tools import call_tool, public_tool_definitions
 
 PROTOCOL_VERSIONS = ("2025-06-18", "2025-03-26")
@@ -31,7 +32,8 @@ def _session(session_id: str, credential_id: str) -> dict | None:
 def _origin_allowed(origin: str | None) -> bool:
     if not origin:
         return True
-    allowed = [item.strip() for item in os.environ.get("UBUNTU_MCP_ALLOWED_ORIGINS", "").split(",") if item.strip()]
+    allowed = {"https://chatgpt.com", "https://chat.openai.com", public_origin()}
+    allowed.update(item.strip() for item in os.environ.get("UBUNTU_MCP_ALLOWED_ORIGINS", "").split(",") if item.strip())
     return origin in allowed
 
 
@@ -143,7 +145,7 @@ def _bearer(header: str) -> str:
 
 
 def _auth_headers() -> dict[str, str]:
-    return {"content-type": "application/json", "www-authenticate": 'Bearer realm="ubuntu-talks-voice-studio"'}
+    return {"content-type": "application/json", "www-authenticate": www_authenticate()}
 
 
 def _error(request_id, code: int, message: str) -> dict:
