@@ -294,7 +294,10 @@
     "staging_header": "CANONICAL_SITE_NAV_MATCHED",
     "native_only_preview": "STAGED_F0_PRIVATE",
     "sample_production_gate": "S0_AND_NATIVE_QA_REMAIN",
-    "commercial_release_allowed": false
+    "commercial_release_allowed": false,
+    "react_classroom": "DEPLOYED_PRIVATE_STAGING",
+    "native_only_audio": "PRIVATE_F0_REFERENCE",
+    "whop_native_course_ui": "NOT_YET_CHANGED"
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
@@ -366,6 +369,32 @@
       "rights": "INTERNAL_F0_REFERENCE_ONLY",
       "stage_status": "ARCHIVED_PRIVATE",
       "public_whop_audio_attached": false
-    }
+    },
+    "react_classroom_url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-classroom.html",
+    "react_classroom_file": "frontend/static/ubuntu-isizulu-beginner-i-classroom.html",
+    "react_app_file": "frontend/static/ubuntu-classroom-react.js",
+    "react_css_file": "frontend/static/ubuntu-classroom.css",
+    "react_classroom_deploy": "dep-dbv85krrjlhs73b6o1g0",
+    "react_classroom_deploy_state": "LIVE_2026_11_19",
+    "entrypoint": "LANDING_CTA_TO_ACTUAL_REACT_CLASSROOM_NO_DUPLICATE_SALES_PAGE_PLAYER",
+    "navigation": "COURSE_SIDEBAR_LESSON1_ACTIVE_LESSONS2_10_LOCKED",
+    "free_access": "HEAR_STAGE_ONLY_SIX_REMAINING_STAGES_LOCKED",
+    "features": [
+      "mobile responsive sidebar",
+      "African-styled full-height banner",
+      "native-only source-aligned horizontal audio transcript",
+      "automatic active dialogue highlighting",
+      "first greeting knowledge check",
+      "Did you know cultural insight modal",
+      "lesson-gated enrollment modal"
+    ],
+    "remaining_qa": [
+      "authenticated browser React mount and media playback",
+      "learner mobile interaction QA",
+      "Whop production course integration",
+      "Azure S0 licensed audio",
+      "native speaker signoff"
+    ],
+    "public_released": false
   }
 }
