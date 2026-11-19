@@ -202,7 +202,21 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
         _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
-    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Produce immutable instructor-introduced private sample once; unchanged
+    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Verify source-exact sync timings before presenting any learner preview.
+    import asyncio as _sync_asyncio
+    async def _verify_native_dialogue_sync():
+        try:
+            from app.api.endpoints.lesson1_sample_sync import synced_dialogue
+            result = await _sync_asyncio.to_thread(synced_dialogue)
+            rows = result["cues"]
+            if len(rows) != 25 or rows[0]["cue"] != 3 or rows[-1]["cue"] != 27 or rows[-1]["end"] > 85.3:
+                raise RuntimeError("25-cue sample sync mismatch")
+            logger.info("Ubuntu native-only dialogue SYNC PASS cues=%s duration=%s first=%s last=%s",
+                        len(rows),result["duration_seconds"],rows[0]["cue"],rows[-1]["cue"])
+        except Exception as exc:
+            logger.error("Ubuntu native-only dialogue SYNC FAILED type=%s",type(exc).__name__)
+    _sync_asyncio.create_task(_verify_native_dialogue_sync(),name="ubuntu-lesson01-native-timing-check")
+    # Produce immutable instructor-introduced private sample once; unchanged
     # approved voices and exact source cue text, no public rights implied.
     if _envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY"):
         import asyncio as _intro_asyncio
