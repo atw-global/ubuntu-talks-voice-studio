@@ -63,6 +63,22 @@ main{padding-bottom:80px}
 footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:var(--muted);font-size:12px}
 @media(max-width:1040px){.header-links{gap:12px;font-size:12px}.signin{padding:8px 10px}}@media(max-width:850px){.menu-toggle{display:flex}.header-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--stroke);padding:18px;z-index:10;box-shadow:0 14px 30px #143c2c18;flex-direction:column;align-items:stretch;gap:0}.header-links.open{display:flex}.header-links a{min-height:44px;display:flex;align-items:center;padding:8px 14px}.header{position:relative;z-index:20}.hero{grid-template-columns:minmax(0,1fr);gap:25px}.price-card{position:static;padding:23px}.sample-card{grid-template-columns:1fr;gap:20px}.exercise{border:0;border-top:1px solid var(--stroke);padding:25px 0 0}.under{flex-direction:column}}
 @media(max-width:550px){.wrap{padding-inline:17px}.header .wrap{min-height:62px}.brand{font-size:17px}.brand img{height:39px;max-width:145px}.header-links{font-size:14px}.hero{padding-top:20px}.hero-cover{border-radius:12px}.hero h1{font-size:37px}.lead{font-size:14px}.actions{display:grid;grid-template-columns:1fr;margin-top:20px}.btn{width:100%}.preview{padding-top:42px}.sample-card{padding:19px}.audio-panel{padding:13px}.phrases{grid-template-columns:1fr 1fr}.section-title{font-size:31px}.course-row{grid-template-columns:28px 1fr auto;gap:8px;font-size:12px}.under h2{font-size:26px}}
+
+/* Unified Ubuntu Talks immersive course-shell language. */
+.course-stage-banner{display:flex;justify-content:space-between;align-items:center;gap:24px}.course-stage-banner .eyebrow{margin:0}.course-stage-banner .section-intro{margin-bottom:18px}.chapter-indicator{white-space:nowrap;font:600 41px Georgia,serif;color:var(--sage)}.chapter-indicator span{font:500 17px system-ui;color:#a2a39c}
+.lesson-shell{background:#fff;border:1px solid #dfdacd;border-radius:19px;overflow:hidden;box-shadow:0 16px 46px #1935270b}
+.shell-top{min-height:51px;background:#183f33;color:#f7e7c6;padding:12px 25px;display:flex;align-items:center;gap:12px;font-size:11px;font-weight:750;letter-spacing:.1em;border-bottom:5px solid #cf8e46}.shell-light{color:#d9e0d0;font-weight:500}.shell-right{margin-left:auto;color:#eee1b4}.mini-symbol{color:#d9a158;font-size:19px}
+.shell-body{padding:34px 36px 30px;background:linear-gradient(160deg,#fff 0%,#fff 66%,#fcf8f0 100%)}
+.lesson-title h3{font:600 33px Georgia,serif;letter-spacing:-.04em;margin:7px 0}.lesson-title p:last-child{font-size:14px;color:var(--muted);line-height:1.6;margin:0 0 20px}
+.lesson-shell .audio-panel{margin:0 0 10px;max-width:none;background:#f3f5f1;border:1px solid #e2e9df;padding:16px 20px}
+.lesson-shell .status{min-height:26px;margin:0 0 23px}
+.dialogue-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:11px;font-size:14px}.dialogue-head span{font-size:12px;color:var(--muted)}
+.dialogue-track{display:flex;gap:12px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;scroll-snap-type:x proximity;overscroll-behavior-x:contain;padding:4px 1px 14px;scroll-behavior:smooth;outline-offset:3px}.dialogue-track::-webkit-scrollbar{display:none}
+.dialogue-item{min-width:clamp(210px,32%,340px);max-width:340px;scroll-snap-align:center;flex:0 0 clamp(210px,32%,340px);border:1px solid #e3ddd1;border-radius:12px;padding:17px 18px;display:flex;flex-direction:column;align-items:flex-start;gap:8px;background:#fbfaf7;text-align:left;color:var(--ink);transition:background .2s,border-color .2s,box-shadow .2s;min-height:132px}
+.dialogue-item .speaker{font-size:11px;color:#9d6f4c;letter-spacing:.06em;text-transform:uppercase;font-weight:800}.dialogue-item .spoken{font-size:20px;font-weight:760;color:#185c50;line-height:1.25}.dialogue-item .meaning{font-size:13px;color:#6c746c;line-height:1.4}.dialogue-item.active{background:#eaf2e9;border-color:#447e69;box-shadow:0 0 0 2px #447e6924}.dialogue-item:focus-visible{outline:3px solid #c68a44}
+.dialogue-placeholder{font-size:14px;color:var(--muted);padding:12px}.mini-instructions{font-size:12px;color:var(--muted);margin:0 0 24px}
+.lesson-actions{border-top:1px solid #eae7dd;padding-top:20px;display:flex;gap:18px;align-items:center;justify-content:space-between}.lesson-actions span{font-size:13px;color:var(--muted)}
+@media(max-width:650px){.course-stage-banner .section-intro{font-size:14px}.chapter-indicator{font-size:27px}.shell-top{min-height:44px;padding:10px 15px;font-size:9px}.shell-right{display:none}.shell-body{padding:20px 14px}.lesson-title h3{font-size:28px}.lesson-shell .audio-panel{padding:12px}.dialogue-item{flex-basis:82%;min-width:82%;max-width:82%;min-height:140px}.lesson-actions{align-items:stretch;flex-direction:column}.lesson-actions .btn{width:100%}}
 </style></head><body>
 <header class="header"><div class="wrap">
 <a class="brand" href="https://ubuntu-talks.whop.site/" aria-label="Ubuntu Talks home">
@@ -89,7 +105,7 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 <p class="eyebrow">Everyday isiZulu · Beginner I</p>
 <h1>Your first real <em>isiZulu</em> conversation starts here.</h1>
 <p class="lead">A practical, instructor-led introduction to everyday isiZulu. Hear it, say it, and build the confidence to speak naturally.</p>
-<div class="actions"><button class="btn primary" type="button" id="heroPlay">▶ Listen to Lesson 1 · 1:25</button><a class="btn light" href="#curriculum">Explore the curriculum</a></div>
+<div class="actions"><button class="btn primary" type="button" id="heroPlay">▶ Hear the Lesson 1 sample</button><a class="btn light" href="#curriculum">Explore the curriculum</a></div>
 </div>
 <aside class="price-card"><span class="price-label">One-time enrollment</span><h2>Everyday isiZulu — Beginner I</h2>
 <div class="price"><strong>$29.99</strong><del>$49</del><span class="badge">Save 39%</span></div>
@@ -98,26 +114,30 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 <p class="fine">Pilot in review. The secure Whop checkout is configured, but the complete course is not yet released. No test purchase is needed.</p>
 </aside>
 </section>
-<section class="preview" id="preview">
-<p class="eyebrow">Your first lesson</p><h2 class="section-title">Greetings &amp; Respect</h2>
-<p class="section-intro">Mrs Ubuntu sets the scene, then Thando and Themba model greetings, questions and responses. Follow the exact spoken lines below as you listen.</p>
-<div class="sample-card">
-<div>
-<p class="eyebrow" style="margin:0">Lesson 01 · Audio sample</p>
-<h3>Listen, repeat, respond.</h3><p class="audio-sub">Short lesson excerpt · Mrs Ubuntu, Thando &amp; Themba</p>
-<div class="audio-panel">
-<div class="player-main"><button class="play-button" id="play" type="button" aria-label="Play lesson audio sample">▶</button><div class="player-info"><strong>Greetings &amp; Respect</strong><div id="time" class="time">0:00 / 1:25</div></div></div>
-<input id="seek" class="track" type="range" min="0" max="85.08" value="0" step=".1" aria-label="Seek in sample">
-<audio id="audio" preload="none" src="/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3"></audio>
+<section class="preview" id="preview" aria-label="Inside Lesson 1">
+<div class="course-stage-banner">
+  <div><p class="eyebrow">Step inside the course · Lesson 01</p><h2 class="section-title">Greetings &amp; Respect</h2><p class="section-intro">A first taste of the actual lesson: listen, follow the conversation and try speaking aloud. The recording uses Thando and Themba, your approved isiZulu voices.</p></div>
+  <span class="chapter-indicator">01 <span>/ 10</span></span>
 </div>
-<p class="status" id="status" role="status">Private staging recording. Listen for review; public commercial release is not yet authorized.</p>
-<div class="sample-next"><a class="text-link" href="/ubuntu-lesson1-course-review.html">Review the guided seven-stage lesson ↗</a></div>
+<div class="lesson-shell">
+  <div class="shell-top"><span class="mini-symbol" aria-hidden="true">◆</span><span>UBUNTU TALKS <span class="shell-light">/ EVERYDAY ISIZULU</span></span><span class="shell-right">HEAR · NOTICE · SPEAK</span></div>
+  <div class="shell-body">
+  <div class="lesson-title"><p class="eyebrow">HEAR · Preview</p><h3>Your first exchange</h3><p>Listen to the greetings and follow each line as the speakers take turns.</p></div>
+  <div class="audio-panel"><div class="player-main">
+      <button class="play-button" id="play" type="button" aria-label="Play lesson audio sample">▶</button>
+      <div class="player-info"><strong>Greetings &amp; Respect</strong><div id="time" class="time">0:00 / 1:25</div></div>
+    </div>
+    <input id="seek" class="track" type="range" min="0" max="85.08" value="0" step=".1" aria-label="Seek through the conversation">
+    <audio id="audio" preload="metadata" src="/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3"></audio>
+  </div>
+  <p class="status" id="status" role="status">Private lesson preview · Approved isiZulu voice cast. This recording is not cleared for commercial release.</p>
+  <div class="dialogue-head"><strong>Follow the conversation</strong><span>Highlights follow the audio</span></div>
+  <div id="transcript" class="dialogue-track" role="list" tabindex="0" aria-label="Swipe or scroll across synchronized dialogue lines"><div class="dialogue-placeholder">Loading the recorded dialogue…</div></div>
+  <p id="transcriptNote" class="mini-instructions">Swipe to explore the conversation. Select a phrase to replay it.</p>
+  <div class="lesson-actions"><a class="btn primary" href="/ubuntu-lesson1-course-review.html">Enter the Lesson 1 classroom ↗</a><span>Practice: greet one person, then greet a group.</span></div>
+  </div>
 </div>
-<div class="exercise"><p class="eyebrow" style="margin:0">Follow the conversation</p><h3>Exact spoken script</h3>
-<p id="transcriptNote" style="margin:0 0 12px">Loading lines from the source-locked recording…</p>
-<div class="transcript" id="transcript" aria-label="Audio transcript"><p class="fine">The transcript is being matched to the selected preview recording.</p></div>
-<p class="script-footnote">The opening demonstrates singular and group greetings, then repeats key patterns for practice. It is not one uninterrupted two-person dialogue.</p></div>
-</div></section>
+</section>
 <section class="under"><div><h2>Built for real conversations.</h2><p>Each lesson follows a clear learning rhythm: hear the language, notice the meaning, imitate, retrieve, practise a conversation, and demonstrate what you can say.</p></div><a href="/ubuntu-lesson1-course-review.html" class="btn light">Explore Lesson 1 ↗</a></section>
 <section class="curriculum" id="curriculum"><p class="eyebrow">The learning path</p><h2 class="section-title">10 progressive lessons</h2><p class="section-intro">One introductory audio sample on this page. The remaining lessons form the progression after enrollment and will be released as they are completed and approved.</p><div class="course-list">
 <div class="course-row"><span class="n">01</span><strong>Sounds, Greetings &amp; Respect</strong><span class="state">Sample above</span></div>
@@ -134,77 +154,71 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 <footer><div class="wrap">Ubuntu Talks · Language connects us. · Private review preview</div></footer>
 <script>
 (()=>{'use strict';
-const menu=document.getElementById('menuToggle'), nav=document.getElementById('site-nav');
+const $=id=>document.getElementById(id);
+const menu=$('menuToggle'),nav=$('site-nav'),audio=$('audio'),play=$('play'),hero=$('heroPlay'),seek=$('seek'),time=$('time'),status=$('status'),track=$('transcript'),note=$('transcriptNote');
+const DURATION=85.08;
+let cues=[],cards=[],busy=false,lastActive=-1;
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'✕':'☰'});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}});
-const audio=document.getElementById('audio'),play=document.getElementById('play'),hero=document.getElementById('heroPlay'),seek=document.getElementById('seek'),time=document.getElementById('time'),status=document.getElementById('status'),section=document.getElementById('preview'),transcript=document.getElementById('transcript'),transcriptNote=document.getElementById('transcriptNote');
-let busy=false,reported=false,expectedLength=85.08;
-const stamp=v=>{if(!Number.isFinite(v))return '0:00';return Math.floor(v/60)+':'+String(Math.floor(v%60)).padStart(2,'0')};
-const glossary={
-"Sawubona.":"Hello (one person).","Sanibonani.":"Hello (a group).","Unjani?":"How are you? (one person)","Ninjani?":"How are you? (a group)",
-"Ngiyaphila.":"I am fine.","Ngiyaphila, wena unjani?":"I'm fine. And how are you?","Sisaphila, nina ninjani?":"We are fine. How are you all?","Ngiyabonga.":"Thank you.","Sala kahle.":"Stay well (said by the person leaving).","Ngizokubona kusasa.":"I will see you tomorrow."};
-const people={MRS_UBUNTU:'Mrs Ubuntu',ZULU_A:'Thando',ZULU_B:'Themba'};
-const original='/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3';
-const introduced='/api/ubuntu/azure/lesson1/sample/intro-stage/listen.mp3';
-function refresh(){play.textContent=audio.paused?'▶':'❚❚';play.setAttribute('aria-label',audio.paused?'Play lesson audio sample':'Pause lesson audio sample');hero.textContent=audio.paused?'▶ Listen to Lesson 1 sample':'❚❚ Pause the Lesson 1 sample';if(Number.isFinite(audio.currentTime))seek.value=String(audio.currentTime);time.textContent=stamp(audio.currentTime)+' / '+stamp(Number.isFinite(audio.duration)?audio.duration:expectedLength)}
-function showLines(cues){transcript.replaceChildren();for(const cue of cues){
- const line=document.createElement('div');line.className='line';
- const who=document.createElement('span');who.className='who';who.textContent=people[cue.speaker]||cue.speaker;
- const text=document.createElement('div');text.className='spoken';text.textContent=cue.text;
- if(glossary[cue.text]){const meaning=document.createElement('span');meaning.className='meaning';meaning.textContent=glossary[cue.text];text.appendChild(meaning)}
- line.append(who,text);transcript.appendChild(line);
- }}
-async function fetchTranscriptWithRetry(url){
-  let lastError;
-  for(let attempt=0;attempt<5;attempt++){
-    try{
-      const response=await fetch(url,{credentials:'same-origin',cache:'no-store'});
-      if(response.ok)return response;
-      if(response.status===401||response.status===403)throw new Error('Sign-in required');
-      lastError=new Error('Preview audio service warming up ('+response.status+')');
-    }catch(err){lastError=err;if(String(err.message).includes('Sign-in required'))break}
-    if(attempt<4)await new Promise(resolve=>setTimeout(resolve,1800*(attempt+1)));
-  }
-  throw lastError;
+const stamp=t=>Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0');
+function updatePlayer(){
+ play.textContent=audio.paused?'▶':'❚❚';
+ play.setAttribute('aria-label',audio.paused?'Play sample':'Pause sample');
+ hero.textContent=audio.paused?'▶ Hear the Lesson 1 sample':'❚❚ Pause Lesson 1 sample';
+ const t=Number.isFinite(audio.currentTime)?audio.currentTime:0;
+ seek.value=String(t);time.textContent=stamp(t)+' / '+stamp(DURATION);
 }
-async function configure(){
- try{
-  transcriptNote.textContent='Connecting to the private Lesson 1 preview…';
-  const response=await fetchTranscriptWithRetry('/api/ubuntu/azure/lesson1/sample/intro-stage/transcript');
-  const data=await response.json();
-  if(!Array.isArray(data.cues)||data.cues[0].order!==2||data.commercial_release!==false)throw Error('Wrong source manifest');
-  audio.src=introduced;expectedLength=Number(data.audio_seconds)||90;seek.max=String(expectedLength);
-  showLines(data.cues);
-  transcriptNote.textContent='Mrs Ubuntu introduces the scene; the voices then demonstrate the approved words in their recorded order.';
-  refresh();return;
- }catch(err){
-  audio.src=original;expectedLength=85.08;seek.max='85.08';
-  try{const r=await fetch('/api/ubuntu/azure/lesson1/playlist',{credentials:'same-origin'});if(!r.ok)throw Error('Source unavailable');
-    const data=await r.json();showLines(data.cues.filter(x=>x.order>=3&&x.order<=27));transcriptNote.textContent='Exact text from the original 85-second sample, without an instructor introduction.';
-  }catch(_){transcriptNote.textContent='Transcript temporarily unavailable. Refer to the private guided lesson.'}
-  refresh();
- }
+function follow(t){
+ if(!cues.length)return;
+ let idx=cues.findIndex((c,i)=>t>=c.start&&t<(cues[i+1]?.start??DURATION+.25));
+ if(idx<0)idx=t>=DURATION?cues.length-1:0;
+ if(idx===lastActive)return;
+ lastActive=idx;
+ cards.forEach((el,i)=>{el.classList.toggle('active',i===idx);el.setAttribute('aria-current',i===idx?'true':'false')});
+ const el=cards[idx];if(el&&track.clientWidth){const target=el.offsetLeft-track.offsetLeft-(track.clientWidth-el.offsetWidth)/2;track.scrollTo({left:Math.max(0,target),behavior:'smooth'})}
 }
 async function toggle(){
  if(busy)return;
- if(!audio.paused){audio.pause();refresh();return}
- busy=true;play.disabled=true;status.className='status';
- status.textContent='Connecting to Lesson 1 audio…';
- try{
-  if(audio.error)audio.load();
-  await audio.play();
-  status.textContent='Playing the private Lesson 1 sample for review. Commercial publication remains locked.';
- }catch(err){
-  status.className='status error';
-  status.textContent='The audio service may still be waking up. Press Play again to retry. If it continues, refresh the page.';
- }finally{busy=false;play.disabled=false;refresh()}
+ if(!audio.paused){audio.pause();updatePlayer();return;}
+ busy=true;play.disabled=true;status.className='status';status.textContent='Loading the protected sample…';
+ try{if(audio.error)audio.load();await audio.play();status.textContent='Playing the private review sample · Thando and Themba.'}
+ catch(e){status.className='status error';status.textContent='Playback unavailable. Press Play again or refresh after the service wakes up.'}
+ finally{busy=false;play.disabled=false;updatePlayer()}
 }
-play.onclick=toggle;hero.onclick=()=>{section.scrollIntoView({behavior:'smooth',block:'start'});toggle()};
-audio.addEventListener('loadedmetadata',refresh);audio.addEventListener('timeupdate',refresh);audio.addEventListener('play',refresh);audio.addEventListener('pause',refresh);
-audio.addEventListener('error',()=>{status.className='status error';status.textContent='Audio is temporarily unavailable. Press Play again to retry or refresh the page.';});
-audio.addEventListener('ended',()=>{seek.value='0';refresh()});
-seek.addEventListener('input',()=>{if(audio.readyState>=1)audio.currentTime=Number(seek.value);refresh()});
-configure();
+play.addEventListener('click',toggle);
+hero.addEventListener('click',()=>{document.getElementById('preview').scrollIntoView({behavior:'smooth',block:'start'});toggle()});
+audio.addEventListener('timeupdate',()=>{updatePlayer();follow(audio.currentTime)});
+audio.addEventListener('seeked',()=>follow(audio.currentTime));
+audio.addEventListener('play',updatePlayer);audio.addEventListener('pause',updatePlayer);
+audio.addEventListener('loadedmetadata',updatePlayer);audio.addEventListener('ended',()=>{follow(DURATION);updatePlayer()});
+audio.addEventListener('error',()=>{status.className='status error';status.textContent='Audio temporarily unavailable. Retry playback after the service wakes up.'});
+seek.addEventListener('input',()=>{if(audio.readyState>=1)audio.currentTime=Number(seek.value);follow(Number(seek.value));updatePlayer()});
+async function load(){
+ let error;
+ for(let attempt=0;attempt<4;attempt++){
+  try{
+   const r=await fetch('/api/ubuntu/azure/lesson1/sample/synced-dialogue',{cache:'no-store',credentials:'same-origin'});
+   if(!r.ok)throw Error('HTTP '+r.status);
+   const data=await r.json();
+   if(!Array.isArray(data.cues)||data.cues.length!==25||data.source_sha256!=='d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0')throw Error('Timing manifest mismatch');
+   cues=data.cues;break;
+  }catch(e){error=e;if(attempt<3)await new Promise(resolve=>setTimeout(resolve,(attempt+1)*1900))}
+ }
+ if(!cues.length){note.textContent='Timed captions are unavailable. The original audio player remains ready to use.';track.textContent='Transcript loading failed; try refreshing the page.';return}
+ track.replaceChildren();
+ cards=cues.map((c,i)=>{
+  const b=document.createElement('button');b.type='button';b.className='dialogue-item';b.setAttribute('role','listitem');b.setAttribute('aria-label',c.speaker+': '+c.text);
+  const who=document.createElement('span');who.className='speaker';who.textContent=c.speaker;
+  const zu=document.createElement('span');zu.className='spoken';zu.textContent=c.text;zu.lang='zu';
+  b.append(who,zu);
+  if(c.meaning){const meaning=document.createElement('span');meaning.className='meaning';meaning.textContent=c.meaning;b.appendChild(meaning)}
+  b.addEventListener('click',()=>{audio.currentTime=c.start;follow(c.start);if(audio.paused)toggle()});
+  track.appendChild(b);return b;
+ });
+ note.textContent='The highlighted phrase follows the audio automatically. Swipe horizontally or choose any line to replay it.';
+ follow(0);
+}
+updatePlayer();load();
 })();
 </script></body></html>
