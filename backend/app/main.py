@@ -339,6 +339,10 @@ app.include_router(lesson1_archive_router)
 from app.api.endpoints.lesson1_master import router as lesson1_master_router
 app.include_router(lesson1_master_router)
 
+# Native-speaker-only learner-stage preview cue timing; no instructor speech.
+from app.api.endpoints.lesson1_sample_sync import router as lesson1_sample_sync_router
+app.include_router(lesson1_sample_sync_router)
+
 # Internal source-verified greeting audio QA sample; StudioGateway protected.
 from app.api.endpoints.lesson1_sample import router as lesson1_sample_router
 app.include_router(lesson1_sample_router)
