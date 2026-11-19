@@ -68,3 +68,12 @@
  .micro-controls{flex-wrap:wrap}.micro-controls>.button{width:100%}
  .top-enroll-strong{display:none}
 }
+
+
+/* Ubuntu Talks premium editorial type: accessible system fallbacks remain offline-safe. */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Fraunces:opsz,wght,SOFT@9..144,500,25;9..144,600,25;9..144,700,25&display=swap');
+body,.app-shell,button,input{font-family:"DM Sans","Segoe UI",sans-serif}
+.hero-writing h1,.welcome-line h2,.guide-message h3,.stage-heading h2,.path-card h3,.micro-quest h3,.closing-cta h2,.modal h2,.sidebar-invite strong{font-family:"Fraunces",Georgia,serif;font-variation-settings:"SOFT" 25}
+.hero-writing h1{font-weight:600}
+.dialogue-card:focus-visible,.micro-choice:focus-visible{outline-offset:2px}
+@media(prefers-reduced-motion:reduce){.dialogue-strip{scroll-behavior:auto}.micro-choice,.button,.play-main{transition:none}}
