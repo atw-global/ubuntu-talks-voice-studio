@@ -136,7 +136,7 @@ export function App() {
               <p className="eyebrow">Mrs Ubuntu · your guide</p>
               <h2 id="mrs-ubuntu">{guide.title}</h2>
               <p className="guide-now">{guide.body}</p>
-              <p className="guide-note">I&apos;m Mrs Ubuntu. Thando and Themba speak the isiZulu. You are in the free opening of Lesson 1.</p>
+              <p className="guide-note">I&apos;m Mrs Ubuntu. This introduction is separate from the greeting recording. Listen to our friends below.</p>
               <button type="button" className="text-button" onClick={() => setTipOpen(true)}>About these greetings</button>
             </div>
           </section>
@@ -159,7 +159,7 @@ export function App() {
                         {audio.playing ? 'Pause' : 'Play'}
                       </button>
                       <div>
-                        <strong>Greetings · Thando and Themba</strong>
+                        <strong>Listen to our friends</strong>
                         <span>{audio.ready ? `${clock(audio.time)} / ${clock(duration)}` : 'Preparing the recording…'}</span>
                       </div>
                       <input

@@ -30,3 +30,7 @@ The `ubuntu-talks-media` bucket has Hausa final lesson MP3s under `courses/hausa
 2. Legacy voice's commercial license (or voice actor consent) and current paid generation rights.
 3. Approved stand-alone English instructor voice samples for the present isiZulu Lesson 1 — do not claim Chitonga audio is transferable.
 4. Actual learner-browser synchronized playback of intro / native exchange / post-guide.
+
+## Re-check the same day
+
+The curriculum file `public/audio/guides/L01A/L01A_slide_1_pre.mp3` is present in git and starts with an ID3 header from Lavf 60.16.100. Its manifest script is the Chitonga Lesson 1 introduction, 270,045 bytes. It was not decoded to a clean local file in this workspace, and it was not attached to Everyday isiZulu. No new ElevenLabs or Azure audio was generated.

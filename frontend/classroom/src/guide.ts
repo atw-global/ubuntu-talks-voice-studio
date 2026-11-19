@@ -2,8 +2,8 @@ export type GuidePhase = 'welcome' | 'listening' | 'heard' | 'practice' | 'done'
 
 export const GUIDE: Record<GuidePhase, { title: string; body: string }> = {
   welcome: {
-    title: "Welcome — I'm Mrs Ubuntu, and I'll guide you through this lesson.",
-    body: 'First, listen for the difference between greeting one person and greeting a group.',
+    title: "Welcome. I'm Mrs Ubuntu.",
+    body: "I'll guide you through this lesson. Listen to our friends. You do not need to understand every word yet.",
   },
   listening: {
     title: 'Listen with me.',

@@ -42,6 +42,35 @@ def test_alignment_moves_early_cues_onto_the_voice():
     assert align_spoken_cues(_tone(0.2, 1.0), 16000, cues) is None
 
 
+def test_alignment_joins_a_breath_without_crossing_the_next_line():
+    rate = 16000
+    samples = array.array("h", [0] * int(2.4 * rate))
+    for start, end in ((0.20, 0.45), (0.67, 0.90), (1.40, 1.70)):
+        for index in range(int(start * rate), int(end * rate)):
+            samples[index] = 9000
+    cues = [
+        {"text": "Sanibonani.", "start": 0.00, "end": 0.40},
+        {"text": "Ninjani?", "start": 0.50, "end": 0.90},
+    ]
+    aligned = align_spoken_cues(samples.tobytes(), rate, cues)
+    assert aligned is not None
+    assert aligned[0]["text"] == "Sanibonani."
+    assert aligned[1]["text"] == "Ninjani?"
+    assert aligned[0]["end"] < aligned[1]["start"]
+    assert abs(aligned[1]["start"] - 1.40) < 0.05
+
+
+def test_native_greeting_order_keeps_sanibonani_before_ninjani():
+    import json
+    from pathlib import Path
+    source = Path(__file__).resolve().parents[1] / "app/data/lesson01_approved_139.json"
+    payload = json.loads(source.read_text())
+    by_order = {cue["order"]: cue["text_to_speak"] for cue in payload["spoken_cues"]}
+    assert [by_order[n] for n in (3, 4, 5, 6)] == [
+        "Sawubona.", "Sanibonani.", "Unjani?", "Ninjani?",
+    ]
+
+
 def test_full_audio_response_has_no_range_header():
     status, body, extra = clip_audio(b"abcdef", None)
     assert status == 200 and body == b"abcdef" and extra == {}
