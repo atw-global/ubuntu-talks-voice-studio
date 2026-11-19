@@ -289,7 +289,9 @@
     "learner_preview_audio": "INTRODUCED_89_9S_PRIVATE_REFERENCE",
     "transcript": "SOURCE_MATCHED_22_CUES",
     "voice_cast": "LOCKED_3_APPROVED_SPEAKERS",
-    "f0_commercial_release": "NOT_ALLOWED"
+    "f0_commercial_release": "NOT_ALLOWED",
+    "staging_proxy_result": "HTTP_200_TRANSCRIPT_HTTP_206_AUDIO_OBSERVED_AFTER_WARMUP",
+    "staging_header": "CANONICAL_SITE_NAV_MATCHED"
   },
   "staging_preview": {
     "url": "https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-preview.html",
@@ -307,12 +309,12 @@
       "zu-ZA-ThandoNeural",
       "zu-ZA-ThembaNeural"
     ],
-    "frontend_commit": "d7b3037bb5918929e53f4fcf4dcf9e692dd89e08",
+    "frontend_commit": "5805feacc21c6480a78e5e07b2598c19e61bfa4c",
     "audio_path": "/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3",
     "audio_source": "R2_IMMUTABLE_85S_F0_REFERENCE",
     "audio_server_selftest": "PASS_HTTP_200_SHA_VERIFIED_1021292_BYTES_AND_HTTP_206_RANGE",
     "audio_backend_commit": "d6046cafc316fe8d7e7add459deb9c40012e972b",
-    "frontend_deploy": "dep-dbv6skl6e07s73audasg",
+    "frontend_deploy": "dep-dbv7jo1srm7s73blpoa0",
     "backend_deploy": "dep-dbv6sjrrjlhs73b377v0",
     "authenticated_browser_playback": "PENDING_USER_ACCEPTANCE_TEST",
     "introduced_sample": {
@@ -331,6 +333,18 @@
     "curriculum_status_labels": "REMOVED_FROM_LEARNER_UI",
     "sample_policy": "ONE_LANDING_PAGE_LESSON_1_SAMPLE_ONLY",
     "mrs_ubuntu_voice": "SAME_APPROVED_LEAH_NEURAL; NEXT_S0_A_B_NATURAL_PROSODY_TEST_PEND",
-    "browser_playback": "PENDING_USER_REVIEW"
+    "browser_playback": "PENDING_USER_REVIEW",
+    "site_header": "MATCHED_CANONICAL_UBUNTU_TALKS_HEADER_NAV_WITH_MOBILE_MENU",
+    "header_source": "atw-global/ubuntu-talks-whop/app/src/components/Chrome.tsx_READ_ONLY",
+    "backend_proxy": "PUBLIC_URL_WITH_RETRY_PRIVATE_HOSTNAME_NOT_YET_AVAILABLE",
+    "live_observed_http": {
+      "introduced_transcript": 200,
+      "introduced_audio": 206,
+      "original_audio": 206
+    },
+    "confirmed_audio_bytes": 1079180,
+    "confirmed_browser_media_play_end_to_end": "NOT_VERIFIED_HEARD_BY_OWNER",
+    "transcript_retry": "ENABLED",
+    "release_status": "PRIVATE_F0_REFERENCE_ONLY"
   }
 }
