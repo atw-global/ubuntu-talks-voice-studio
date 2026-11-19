@@ -7,9 +7,9 @@
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}
 .wrap{max-width:1100px;margin-inline:auto;padding-inline:28px}
 .header{background:#fff;border-bottom:1px solid var(--stroke)}
-.header .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
-.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:760;letter-spacing:-.035em}.brand img{width:38px;height:38px}
-.header-links{display:flex;gap:25px;font-size:13px;font-weight:600}.header-links a:hover{color:var(--sage)}
+.header .wrap{display:flex;justify-content:space-between;align-items:center;min-height:74px;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-size:19px;font-weight:760;letter-spacing:-.035em;flex-shrink:0}.brand img{height:48px;max-width:175px;width:auto;object-fit:contain}
+.header-links{display:flex;align-items:center;gap:18px;font-size:13px;font-weight:650}.header-links a:hover{color:var(--sage)}.signin{padding:9px 16px;border:1px solid #b7c9b6;color:#145943;border-radius:9px;font-weight:700;white-space:nowrap}.menu-toggle{display:none;min-width:44px;min-height:44px;align-items:center;justify-content:center;border:1px solid var(--stroke);border-radius:10px;background:#fff;color:var(--sage);font-size:22px}.site-nav{display:flex;align-items:center;gap:18px}
 .pilot{font-size:11px;letter-spacing:.11em;text-transform:uppercase;text-align:center;padding:10px 15px;color:#805d39;background:#f3eee7;font-weight:690}
 main{padding-bottom:80px}
 .hero{padding-top:44px;display:grid;grid-template-columns:minmax(0,1fr) 315px;gap:46px;align-items:start}
@@ -61,10 +61,26 @@ main{padding-bottom:80px}
 .course-row{display:grid;grid-template-columns:38px 1fr auto;align-items:center;gap:14px;border-bottom:1px solid var(--stroke);padding:15px 4px;font-size:14px}
 .course-row .n{color:#ad8770;font-size:12px;font-weight:750}.course-row .state{font-size:11px;color:var(--muted)}
 footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:var(--muted);font-size:12px}
-@media(max-width:850px){.hero{grid-template-columns:minmax(0,1fr);gap:25px}.price-card{position:static;padding:23px}.sample-card{grid-template-columns:1fr;gap:20px}.exercise{border:0;border-top:1px solid var(--stroke);padding:25px 0 0}.under{flex-direction:column}}
-@media(max-width:550px){.wrap{padding-inline:17px}.header .wrap{height:62px}.brand{font-size:17px}.header-links{gap:13px;font-size:12px}.hero{padding-top:20px}.hero-cover{border-radius:12px}.hero h1{font-size:37px}.lead{font-size:14px}.actions{display:grid;grid-template-columns:1fr;margin-top:20px}.btn{width:100%}.preview{padding-top:42px}.sample-card{padding:19px}.audio-panel{padding:13px}.phrases{grid-template-columns:1fr 1fr}.section-title{font-size:31px}.course-row{grid-template-columns:28px 1fr auto;gap:8px;font-size:12px}.under h2{font-size:26px}}
+@media(max-width:1040px){.header-links{gap:12px;font-size:12px}.signin{padding:8px 10px}}@media(max-width:850px){.menu-toggle{display:flex}.header-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;border:1px solid var(--stroke);padding:18px;z-index:10;box-shadow:0 14px 30px #143c2c18;flex-direction:column;align-items:stretch;gap:0}.header-links.open{display:flex}.header-links a{min-height:44px;display:flex;align-items:center;padding:8px 14px}.header{position:relative;z-index:20}.hero{grid-template-columns:minmax(0,1fr);gap:25px}.price-card{position:static;padding:23px}.sample-card{grid-template-columns:1fr;gap:20px}.exercise{border:0;border-top:1px solid var(--stroke);padding:25px 0 0}.under{flex-direction:column}}
+@media(max-width:550px){.wrap{padding-inline:17px}.header .wrap{min-height:62px}.brand{font-size:17px}.brand img{height:39px;max-width:145px}.header-links{font-size:14px}.hero{padding-top:20px}.hero-cover{border-radius:12px}.hero h1{font-size:37px}.lead{font-size:14px}.actions{display:grid;grid-template-columns:1fr;margin-top:20px}.btn{width:100%}.preview{padding-top:42px}.sample-card{padding:19px}.audio-panel{padding:13px}.phrases{grid-template-columns:1fr 1fr}.section-title{font-size:31px}.course-row{grid-template-columns:28px 1fr auto;gap:8px;font-size:12px}.under h2{font-size:26px}}
 </style></head><body>
-<header class="header"><div class="wrap"><a class="brand" href="#top"><img src="/logo.svg" alt="Ubuntu Talks logo">Ubuntu Talks</a><nav class="header-links"><a href="#preview">Preview</a><a href="#curriculum">Curriculum</a></nav></div></header>
+<header class="header"><div class="wrap">
+<a class="brand" href="https://ubuntu-talks.whop.site/" aria-label="Ubuntu Talks home">
+<img src="https://ubuntu-talks.whop.site/imported/3c1c35df76f2-ubuntu-talks-official-transparent-BYLFrLfn.png" alt="Ubuntu Talks" onerror="this.style.display='none';this.parentElement.append('Ubuntu Talks')">
+</a>
+<nav id="site-nav" class="header-links" aria-label="Ubuntu Talks main navigation">
+<a href="https://ubuntu-talks.whop.site/">Home</a>
+<a href="https://ubuntu-talks.whop.site/#languages">Languages</a>
+<a href="https://ubuntu-talks.whop.site/tutoring">Tutors</a>
+<a href="https://ubuntu-talks.whop.site/become-tutor">Become a Tutor</a>
+<a href="https://ubuntu-talks.whop.site/dashboard">Dashboard</a>
+<a href="https://ubuntu-talks.whop.site/shop">Shop</a>
+<a href="https://ubuntu-talks.whop.site/about">About</a>
+<a href="https://ubuntu-talks.whop.site/help">Help</a>
+<a class="signin" href="https://ubuntu-talks.whop.site/signin">Sign in</a>
+</nav>
+<button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-controls="site-nav" aria-expanded="false" type="button">☰</button>
+</div></header>
 <div class="pilot">Private course preview · For approval only</div>
 <main class="wrap" id="top">
 <section class="hero" aria-label="Course introduction">
@@ -118,6 +134,10 @@ footer{border-top:1px solid var(--stroke);background:white;padding:26px 0;color:
 <footer><div class="wrap">Ubuntu Talks · Language connects us. · Private review preview</div></footer>
 <script>
 (()=>{'use strict';
+const menu=document.getElementById('menuToggle'), nav=document.getElementById('site-nav');
+menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'✕':'☰'});
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}});
 const audio=document.getElementById('audio'),play=document.getElementById('play'),hero=document.getElementById('heroPlay'),seek=document.getElementById('seek'),time=document.getElementById('time'),status=document.getElementById('status'),section=document.getElementById('preview'),transcript=document.getElementById('transcript'),transcriptNote=document.getElementById('transcriptNote');
 let busy=false,reported=false,expectedLength=85.08;
 const stamp=v=>{if(!Number.isFinite(v))return '0:00';return Math.floor(v/60)+':'+String(Math.floor(v%60)).padStart(2,'0')};
