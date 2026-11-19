@@ -3,6 +3,15 @@
 <link rel="preconnect" href="https://unpkg.com" crossorigin>
 </head><body>
 <div id="app"><main style="max-width:900px;margin:70px auto;font-family:system-ui;padding:24px"><h1 style="color:#173f34;font:600 36px Georgia,serif">Ubuntu Talks · Everyday isiZulu</h1><p>Opening your private Lesson 1 classroom…</p><p><a href="/ubuntu-isizulu-beginner-i-preview.html">Return to the course overview</a></p></main></div>
+<script>
+window.addEventListener('load',function(){
+  setTimeout(function(){
+    if(document.querySelector('.app-shell'))return;
+    var root=document.getElementById('app');
+    if(root)root.innerHTML='<main style="max-width:650px;margin:70px auto;padding:25px;color:#173f34;font-family:system-ui"><h1 style="font:600 32px Georgia,serif">Your lesson preview could not open</h1><p>The interactive classroom did not finish loading. Please refresh this page, or return to the course overview.</p><a style="color:#185c50;font-weight:700" href="/ubuntu-isizulu-beginner-i-preview.html">Back to Everyday isiZulu</a></main>';
+  },2000);
+});
+</script>
 <script defer src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
 <script defer src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
 <script defer src="/ubuntu-classroom-react.js"></script>
