@@ -202,32 +202,33 @@ async def lifespan(_app: FastAPI):
             except Exception as exc:
                 logger.error("Ubuntu private Lesson01 R2 PLAYER SELFTEST FAIL type=%s", type(exc).__name__)
         _audio_check_asyncio.create_task(_check_private_sample_playback(), name="ubuntu-r2-sample-private-player-selftest")
-    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Source-locked native-only sample is a different immutable object than
-    # the original 85s sample, which included English instructor narration.
+    # Render private network DNS locator is not a credential. Log only its hostname.\n    logger.info("Ubuntu backend private-network discovery=%s", _envos.environ.get("RENDER_DISCOVERY_SERVICE", "UNSET"))\n    # Stage then verify the identical native-only MP3 and cue manifest in sequence.
+    # These are private reference files; no public access or license asserted.
     import asyncio as _native_sample_asyncio
     async def _stage_native_only_sample():
         try:
-            from app.api.endpoints.lesson1_sample_sync import stage_once as _stage_native
-            outcome = await _native_sample_asyncio.to_thread(_stage_native)
-            logger.info("Ubuntu native-only lesson sample R2 READY state=%s duration=%s cues=%s sha256=%s",
-                outcome["status"],outcome["duration"],outcome["cues"],outcome["sha256"])
+            from app.api.endpoints.lesson1_sample_sync import stage_once, synced_dialogue, native_only_audio
+            from starlette.requests import Request as _NativeRequest
+            result = await _native_sample_asyncio.to_thread(stage_once)
+            manifest = await _native_sample_asyncio.to_thread(synced_dialogue)
+            rows = manifest["cues"]
+            if (len(rows) != result["cues"] or rows[0]["cue"] != 3
+                or rows[-1]["end"] > manifest["duration_seconds"] + 0.25
+                or any(r["speaker"] not in ("Thando", "Themba") for r in rows)
+                or manifest["instructor_english_audio"] is not False):
+                raise RuntimeError("Native speaker sync manifest invalid")
+            request = _NativeRequest({"type":"http","method":"GET",
+                "path":"/api/ubuntu/azure/lesson1/sample/native-only.mp3",
+                "headers":[(b"range",b"bytes=0-1023")]})
+            audio = await _native_sample_asyncio.to_thread(native_only_audio, request)
+            if (audio.status_code != 206 or len(audio.body) != 1024
+                or not audio.headers.get("content-range","").startswith("bytes 0-1023/")):
+                raise RuntimeError("Native sample mobile-range transport invalid")
+            logger.info("Ubuntu native-only sample PLAYBACK+SYNC PASS duration=%s cues=%s hash=%s sample_range=206",
+                result["duration"],len(rows),result["sha256"])
         except Exception as exc:
-            logger.error("Ubuntu native-only lesson sample R2 FAILED type=%s",type(exc).__name__)
+            logger.error("Ubuntu native-only sample PLAYBACK+SYNC FAILED type=%s",type(exc).__name__)
     _native_sample_asyncio.create_task(_stage_native_only_sample(),name="ubuntu-native-only-lesson01-stager")
-    # Verify source-exact sync timings before presenting any learner preview.
-    import asyncio as _sync_asyncio
-    async def _verify_native_dialogue_sync():
-        try:
-            from app.api.endpoints.lesson1_sample_sync import synced_dialogue
-            result = await _sync_asyncio.to_thread(synced_dialogue)
-            rows = result["cues"]
-            if (len(rows) < 14 or rows[0]["cue"] != 3 or rows[-1]["end"] > result["duration_seconds"] + 0.25 or any(r["speaker"] not in ("Thando","Themba") for r in rows)):
-                raise RuntimeError("25-cue sample sync mismatch")
-            logger.info("Ubuntu native-only dialogue SYNC PASS cues=%s duration=%s first=%s last=%s",
-                        len(rows),result["duration_seconds"],rows[0]["cue"],rows[-1]["cue"])
-        except Exception as exc:
-            logger.error("Ubuntu native-only dialogue SYNC FAILED type=%s",type(exc).__name__)
-    _sync_asyncio.create_task(_verify_native_dialogue_sync(),name="ubuntu-lesson01-native-timing-check")
     # Produce immutable instructor-introduced private sample once; unchanged
     # approved voices and exact source cue text, no public rights implied.
     if _envos.environ.get("UBUNTU_R2_ACCESS_KEY_ID") and _envos.environ.get("UBUNTU_R2_SECRET_ACCESS_KEY"):
