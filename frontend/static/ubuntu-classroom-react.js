@@ -17,7 +17,7 @@ function useMedia(){
  useEffect(()=>{
   let alive=true,controller=new AbortController();
   async function get(){
-   for(let i=0;i<4;i++){
+   for(let i=0;i<12;i++){
     try{
      const res=await fetch(API+"/synced-dialogue",{credentials:"same-origin",cache:"no-store",signal:controller.signal});
      if(!res.ok)throw Error("Media request "+res.status);
@@ -25,7 +25,7 @@ function useMedia(){
      if(j.version!=="native-greeting-lesson01-v1"||j.instructor_english_audio!==false||j.commercial_release!==false||!Array.isArray(j.cues)||j.cues.length<14)throw Error("Unverified media manifest");
      if(alive){setManifest(j);setReady(true);setStatus("Ready. Listen as the highlighted phrases follow the voices.");}
      return;
-    }catch(e){if(i===3&&alive){setError(true);setStatus("The protected sample is unavailable. Refresh the page to retry.");}else await new Promise(r=>setTimeout(r,1500*(i+1)));}
+    }catch(e){if(i===11&&alive){setError(true);setStatus("The lesson audio service is unavailable. Refresh to try again.");}else {if(alive)setStatus("Connecting to your lesson audio… (the studio service may be waking up)");await new Promise(r=>setTimeout(r,Math.min(6500,1000*(i+1))));}}
    }
   }get();
   return()=>{alive=false;controller.abort()};
@@ -154,15 +154,15 @@ function App(){
      h("div",{className:"lesson-workspace"},h("div",{className:"lesson-main"},
       h("section",{className:"lesson-step"},
        h("div",{className:"stage-heading"},h("div",null,h("span",{className:"eyebrow"},"01 / 07  ·  HEAR"),h("h2",null,"Listen to the conversation.")),h("span",{className:"preview-tag"},"LESSON 01 · HEAR")),
-       h("p",{className:"stage-intro"},"Listen once, following Thando and Themba. Then replay any phrase and repeat it aloud. The highlighted card moves with the audio."),
+       h("p",{className:"stage-intro"},"Hear Thando and Themba model each turn, follow the words underneath and repeat them. The dialogue moves with the audio. Mrs Ubuntu is your guide; the isiZulu models come from the native voices."),
        h("div",{className:"audio-player"},
         h("div",{className:"audio-controls"},h("button",{className:"play-main",disabled:!media.ready,onClick:media.toggle,"aria-label":media.playing?"Pause audio":"Play lesson audio"},media.playing?"Ⅱ":"▶"),
-          h("div",{className:"audio-details"},h("strong",null,"Greetings · Guided conversation"),h("span",null,media.ready?fmt(media.time)+" / "+fmt(d):"Preparing the private sample…")),h("span",{className:"audio-voice"},"Thando + Themba")),
+          h("div",{className:"audio-details"},h("strong",null,"Greetings · Guided conversation"),h("span",null,media.ready?fmt(media.time)+" / "+fmt(d):"Preparing the private sample…")),h("span",{className:"audio-voice"},"Audio · Thando + Themba")),
         h("input",{className:"seek",type:"range",min:0,max:d||1,step:.05,value:Math.min(media.time,d||1),disabled:!media.ready,
            onChange:e=>{if(media.audio.current){media.audio.current.currentTime=Number(e.target.value);media.setTime?.(Number(e.target.value))}},"aria-label":"Seek sample audio"}),
         h("audio",{ref:media.audio,preload:"metadata",src:media.ready?API+"/native-only.mp3":undefined,...media.events})),
        h("p",{className:"media-state "+(media.error?"media-error":""),role:"status"},media.status),
-       h("div",{className:"transcript-bar"},h("strong",null,"Follow the conversation"),h("span",null,"Swipe or tap to replay a line")),
+       h("div",{className:"transcript-bar"},h("strong",null,"Read along · the conversation"),h("span",null,"Follows playback · swipe to replay")),
        h("div",{className:"dialogue-strip",ref:media.rail,role:"list",tabIndex:0,"aria-label":"Horizontal synchronized isiZulu dialogue"},
         media.manifest?.cues?.map((cue,i)=>h("button",{type:"button",key:cue.cue,ref:el=>media.cardRefs.current[i]=el,
           className:"dialogue-card "+(i===media.active?"active":""),onClick:()=>media.jump(cue,i),
