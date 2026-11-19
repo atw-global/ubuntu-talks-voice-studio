@@ -83,7 +83,7 @@ function SideNav({onUnlock,onNavigate,open,onClose}){
 }
 function StageBar({onUnlock}){
  return h("div",{className:"stage-steps","aria-label":"Seven learning stages"},STAGES.map((name,i)=>h("button",{key:name,type:"button",className:"stage-step "+(i===0?"selected":"restricted"),onClick:()=>i?onUnlock():document.getElementById("hear").scrollIntoView({behavior:"smooth",block:"start"}),
-  "aria-label":i?name+" stage, locked until enrollment":name+" stage, available",
+  "aria-label":i?name+" stage, locked until enrollment":name+" stage, available"},
   h("span",{className:"stage-n"},String(i+1).padStart(2,"0")),h("span",null,name),i?h("span",{className:"lock","aria-hidden":"true"},"🔒"):null)));
 }
 function GreetingChallenge({onUnlock}){
