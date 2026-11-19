@@ -188,7 +188,13 @@ async def lifespan(_app: FastAPI):
         async def _check_private_sample_playback():
             try:
                 from app.api.endpoints.lesson1_sample_archive import play_private_archived_sample
-                result = await _audio_check_asyncio.to_thread(play_private_archived_sample)
+                from starlette.requests import Request as _PlaybackRequest
+                asgi_request = _PlaybackRequest({"type": "http", "method": "GET", "path": "/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3", "headers": []})
+                result = await _audio_check_asyncio.to_thread(play_private_archived_sample, asgi_request)
+                partial_request = _PlaybackRequest({"type": "http", "method": "GET", "path": "/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3", "headers": [(b"range", b"bytes=0-1023")]})
+                partial = await _audio_check_asyncio.to_thread(play_private_archived_sample, partial_request)
+                if partial.status_code != 206 or len(partial.body) != 1024 or partial.headers.get("content-range") != "bytes 0-1023/1021292":
+                    raise RuntimeError("Mobile byte-range playback failed")
                 from app.api.endpoints.lesson1_sample_archive import EXPECTED_BYTES
                 if result.status_code != 200 or result.media_type != "audio/mpeg" or len(result.body) != EXPECTED_BYTES:
                     raise RuntimeError("Unexpected private sample response identity")
