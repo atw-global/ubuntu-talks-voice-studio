@@ -5,6 +5,7 @@ export type Cue = {
   meaning?: string
   start: number
   end: number
+  timing_status?: 'speech_onset_aligned' | 'manual_review'
 }
 
 export type Manifest = {
@@ -13,6 +14,7 @@ export type Manifest = {
   cue_count?: number
   instructor_english_audio: boolean
   commercial_release: boolean
+  timing_review_required?: boolean
   cues: Cue[]
 }
 

@@ -1,7 +1,7 @@
 """Lesson 1 audio ranges and enrollment decisions. No network and no R2."""
 import array
 
-from app.lesson_audio import align_spoken_cues, clip_audio
+from app.lesson_audio import align_spoken_cues, apply_timing_result, clip_audio
 from app.lesson1_learning import (
     PHRASES,
     SELF_CHECK,
@@ -58,6 +58,25 @@ def test_alignment_joins_a_breath_without_crossing_the_next_line():
     assert aligned[1]["text"] == "Ninjani?"
     assert aligned[0]["end"] < aligned[1]["start"]
     assert abs(aligned[1]["start"] - 1.40) < 0.05
+
+
+def test_failed_alignment_flags_every_cue_for_manual_review():
+    manifest = {"cues": [
+        {"text": "Sanibonani.", "start": 0.1, "end": 0.4},
+        {"text": "Ninjani?", "start": 0.5, "end": 0.8},
+    ]}
+    reviewed = apply_timing_result(manifest, None)
+    assert reviewed["timing_review_required"] is True
+    assert reviewed["cues"][0]["text"] == "Sanibonani."
+    assert reviewed["cues"][0]["start"] == 0.1
+    assert {cue["timing_status"] for cue in reviewed["cues"]} == {"manual_review"}
+    confirmed = apply_timing_result(manifest, [
+        {"text": "Sanibonani.", "start": 0.2, "end": 0.5},
+        {"text": "Ninjani?", "start": 1.4, "end": 1.7},
+    ])
+    assert confirmed["timing_review_required"] is False
+    assert confirmed["cues"][1]["timing_status"] == "speech_onset_aligned"
+    assert confirmed["cues"][1]["text"] == "Ninjani?"
 
 
 def test_native_greeting_order_keeps_sanibonani_before_ninjani():

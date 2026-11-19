@@ -58,6 +58,25 @@ def align_spoken_cues(pcm: bytes, sample_rate: int, cues: list[dict]) -> list[di
     return aligned
 
 
+def apply_timing_result(manifest: dict, aligned: list[dict] | None) -> dict:
+    """Keep stored times when speech detection does not match, and mark them unconfirmed."""
+    served = dict(manifest)
+    source = aligned if aligned else list(manifest.get("cues") or [])
+    cues = []
+    for cue in source:
+        item = dict(cue)
+        item["timing_status"] = "speech_onset_aligned" if aligned else "manual_review"
+        cues.append(item)
+    served["cues"] = cues
+    if aligned:
+        served["timing_method"] = "speech_onset_aligned_to_verified_mp3"
+        served["timing_review_required"] = False
+    else:
+        served["timing_method"] = "stored_timestamps_require_manual_review"
+        served["timing_review_required"] = True
+    return served
+
+
 def _speech_regions(pcm: bytes, sample_rate: int) -> list[tuple[float, float]]:
     if sample_rate <= 0 or len(pcm) < 4:
         return []

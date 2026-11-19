@@ -179,7 +179,7 @@ export function App() {
                     {audio.error && <button type="button" className="text-button" onClick={() => setRetry(retry + 1)}>Try the recording again</button>}
                     <div className="dialogue-label">
                       <strong>Follow the conversation</strong>
-                      <span>The highlighted line is the one being spoken</span>
+                      <span>{audio.manifest?.timing_review_required ? 'Caption timing needs a manual check against this recording' : 'The highlighted line is the one being spoken'}</span>
                     </div>
                     <div
                       className="dialogue-strip"

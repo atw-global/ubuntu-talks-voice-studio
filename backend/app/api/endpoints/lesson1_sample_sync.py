@@ -19,7 +19,7 @@ from botocore.exceptions import ClientError, BotoCoreError
 from sqlalchemy import select
 from app.api.endpoints.lesson1_archive import BUCKET, _r2_client
 from app.api.endpoints.lesson1_recording import CUES, recordings, engine, _hash
-from app.lesson_audio import align_spoken_cues, clip_audio
+from app.lesson_audio import align_spoken_cues, apply_timing_result, clip_audio
 
 router = APIRouter(prefix="/api/ubuntu/azure/lesson1/sample", tags=["ubuntu-lesson1-synced-dialogue"])
 log = logging.getLogger(__name__)
@@ -180,10 +180,15 @@ def _verified_package():
 
 
 def _with_spoken_timing(blob: bytes, manifest: dict) -> dict:
-    """Serve cue times that follow the voice. The stored MP3 is unchanged."""
+    """Serve cue times that follow the voice. The stored MP3 is unchanged.
+
+    When the spoken regions do not match the cue count, the stored times stay
+    and each cue is flagged for manual review.
+    """
     cues = manifest.get("cues")
     if not isinstance(cues, list) or not cues:
-        return manifest
+        return apply_timing_result(manifest, None)
+    aligned = None
     try:
         decoded = subprocess.run(
             ["ffmpeg", "-nostdin", "-hide_banner", "-loglevel", "error",
@@ -192,15 +197,11 @@ def _with_spoken_timing(blob: bytes, manifest: dict) -> dict:
         )
         aligned = align_spoken_cues(decoded.stdout, 16000, cues)
     except (subprocess.SubprocessError, ValueError):
-        log.warning("Lesson 1 kept the stored cue timings")
-        return manifest
+        log.warning("Lesson 1 cue timing needs manual review")
+        aligned = None
     if not aligned:
-        log.info("Lesson 1 kept the stored cue timings")
-        return manifest
-    served = dict(manifest)
-    served["cues"] = aligned
-    served["timing_method"] = "speech_onset_aligned_to_verified_mp3"
-    return served
+        log.info("Lesson 1 cue timing needs manual review")
+    return apply_timing_result(manifest, aligned)
 
 @router.get("/synced-dialogue")
 def synced_dialogue():

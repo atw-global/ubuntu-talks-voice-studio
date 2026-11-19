@@ -67,3 +67,21 @@ Inspected without generating audio, changing the approved voice, or attaching a 
 - Reported mismatch: the recording says "Sanibonani" while the screen shows "Ninjani?". In the approved manifest those are orders 4 and 6, with "Unjani?" between them. The caption list is not swapped. The likely cause is concat timing that moves the highlight ahead of the voice. Alignment now joins a breath inside one line when the gap is shorter than the 0.35 second pause between lines, and it still refuses to rewrite timings when the number of spoken regions does not match the cue count. This is not verified against the private MP3.
 - Mrs Ubuntu's introduction in the classroom is written and separate from the native greeting recording. Her spoken line does not use personal names or the language name. The approved cue texts, including orders 1 and 2, were not edited.
 - Whop course `cors_EYwVx1BwLtuXB`, lesson `lesn_p61ZUtWXJkEie`, still has no verified audio attachment. None was added. Commercial release remains blocked on native-language QA, Azure S0 rights, and owner approval.
+
+## 2026-11-19 — retrieval attempt for the 139-cue master
+
+The historical reference remains version `english-instructor-v1`, SHA-256 `ef9078dcb41fa0a43b4f2ca0c40d364ae2be66dbc13fe832ef1d117a0ea32a9a`, 7,401,068 bytes, 617 seconds, 139 cues. In code, that version replaces orders 1 and 2 with revised English narration and leaves orders 3–139 unchanged. It was not retrieved, decoded, or hashed in this session.
+
+Access blockers, checked directly:
+
+- `GET https://ubuntu-talks-voice-studio-api.onrender.com/health` returned 200.
+- `GET /api/ubuntu/azure/lesson1/status` returned 403: “Not authorized to access the Ubuntu Talks Voice Studio backend.” This workspace has no `STUDIO_BACKEND_GATEWAY_TOKEN`.
+- `GET https://ubuntu-talks-voice-studio.onrender.com/ubuntu-isizulu-beginner-i-classroom.html` returned 401 from nginx basic auth. No studio password is available here.
+- No `UBUNTU_R2_ACCESS_KEY_ID` or `UBUNTU_R2_SECRET_ACCESS_KEY` is present, so `courses/zu/beginner-i/lesson-01/v1/master.mp3` in bucket `ubuntu-talks-instructor-masters` could not be read. The Render Postgres resource `dpg-dbttmmek1f9s739nrs00-a` is also unreachable from this workspace. The only named database secret here is `UBUNTU_STAGING_DB`, and its value is not available to this machine.
+- No replacement audio was generated. `POST /api/ubuntu/azure/lesson1/master/start` was not called.
+
+Whop readback the same day: course `cors_EYwVx1BwLtuXB` is `hidden`; lesson `lesn_p61ZUtWXJkEie` has `attachments: []`, `video_asset: null`, and `embed_id: null`; product `prod_EBSCxcpCQvcgI` is `hidden` with `member_count` 0; memberships for that product total 0. Nothing was uploaded or published.
+
+Mrs Ubuntu: no isiZulu introduction MP3 was found to evaluate. The Chitonga guide files were not copied in. Narration audio stays pending. Voice ID `BcpjRWrYhDBHmOnetmBl` stays the historical reference. Leah remains the assigned Azure narrator.
+
+Orders 4, 5, and 6 were not played from the private MP3. If speech-region detection later fails on a retrieved file, the served manifest sets `timing_review_required` and `timing_status: manual_review` instead of treating the stored timestamps as confirmed.
