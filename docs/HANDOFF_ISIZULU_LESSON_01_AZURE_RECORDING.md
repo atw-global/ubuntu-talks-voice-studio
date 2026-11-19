@@ -1,6 +1,6 @@
 # Ubuntu Talks Voice Studio — isiZulu Beginner I, Lesson 01 recording handoff
 
-**Date:** 2026-11-17. **Read this file first when resuming.**
+**Date:** 2026-11-17. **Read this file first when resuming.** MCP access is specified in [VOICE_STUDIO_MCP.md](VOICE_STUDIO_MCP.md). It is not a substitute for retrieving the master.
 
 ## Verified milestone
 The user explicitly approved the Azure voice cast and authorized recording Lesson 1. On 2026-11-17 at 18:08 UTC the dedicated Render API deployed and started recording the exact 139 approved ElevenLabs speech cues. Azure Speech POST requests returned HTTP 200 with MP3 data; a verified API status shortly afterward showed **7/139 clips**, `state=recording`, `remaining=132`, `bytes=510336`, `last_error=null`. This is an **early checkpoint**, not the final tally. Read live status for latest progress. **Never claim 139/139 without verifying.**
