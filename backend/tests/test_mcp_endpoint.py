@@ -9,7 +9,9 @@ import tempfile
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 
-os.environ["UBUNTU_MCP_DATABASE_URL"] = "sqlite:///" + tempfile.mktemp(prefix="ubuntu-mcp-", suffix=".sqlite")
+_database_fd, _database_path = tempfile.mkstemp(prefix="ubuntu-mcp-", suffix=".sqlite")
+os.close(_database_fd)
+os.environ["UBUNTU_MCP_DATABASE_URL"] = "sqlite:///" + _database_path
 os.environ["UBUNTU_MCP_BOOTSTRAP_TOKEN"] = "test-read-credential"
 os.environ["UBUNTU_MCP_ADMIN_TOKEN"] = "test-admin-credential"
 os.environ.pop("UBUNTU_MCP_READ_TOKENS", None)
