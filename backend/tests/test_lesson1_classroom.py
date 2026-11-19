@@ -4,6 +4,7 @@ from app.lesson1_learning import (
     PHRASES,
     SELF_CHECK,
     language_strings,
+    membership_header_accepted,
     membership_record_grants,
     resolve_stage,
 )
@@ -66,3 +67,16 @@ def test_unknown_stage_and_membership_binding():
         {"status": "canceled", "product_id": PRODUCT, "plan_id": PLAN}
     )
     assert not membership_record_grants({"status": "active", "product_id": PRODUCT})
+    assert not membership_record_grants(
+        {"status": "expired", "product_id": PRODUCT, "plan_id": PLAN}
+    )
+    assert not membership_record_grants(
+        {"status": "past_due", "product_id": PRODUCT, "plan_id": PLAN}
+    )
+    assert not membership_record_grants(
+        {"status": "active", "product_id": "prod_other", "plan_id": PLAN}
+    )
+    assert membership_header_accepted("mem_abc123")
+    assert not membership_header_accepted("true")
+    assert not membership_header_accepted("mem_")
+    assert not membership_header_accepted("mem_other-product")

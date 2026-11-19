@@ -8,25 +8,28 @@ from __future__ import annotations
 
 import logging
 import os
-import re
 
 import httpx
 from fastapi import APIRouter, Request
 from fastapi.responses import JSONResponse
 
-from app.lesson1_learning import access_catalog, membership_record_grants, resolve_stage
+from app.lesson1_learning import (
+    access_catalog,
+    membership_header_accepted,
+    membership_record_grants,
+    resolve_stage,
+)
 
 router = APIRouter(prefix="/api/ubuntu/azure/lesson1/classroom", tags=["ubuntu-lesson1-classroom"])
 log = logging.getLogger(__name__)
 WHOP_ORIGIN = "https://api.whop.com/api/v1"
 API_VERSION = "2026-11-17-3"
-MEMBERSHIP_ID = re.compile(r"^mem_[A-Za-z0-9]+$")
 
 
 def _enrolled(request: Request) -> bool:
     raw = request.headers.get("x-ubuntu-membership-id", "").strip()
     token = os.environ.get("WHOP_API_KEY", "").strip()
-    if not raw or not token or not MEMBERSHIP_ID.fullmatch(raw):
+    if not membership_header_accepted(raw) or not token:
         return False
     try:
         response = httpx.get(

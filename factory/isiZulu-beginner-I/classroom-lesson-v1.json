@@ -1,29 +1,72 @@
 {
   "id": "ubuntu-classroom-lesson-v1",
+  "curriculum_version": "isiZulu-beginner-I-classroom-v1",
   "course_id": "cors_EYwVx1BwLtuXB",
   "lesson_id": "lesn_p61ZUtWXJkEie",
   "product_id": "prod_EBSCxcpCQvcgI",
   "plan_id": "plan_KhrZ8JGb2YWRt",
   "stages": ["hear", "understand", "imitate", "manipulate", "retrieve", "converse", "assess"],
   "activity_types": ["choice", "match", "order", "self_check"],
+  "speakers": {
+    "instructor": {
+      "name": "Mrs Ubuntu",
+      "role": "english_guidance",
+      "voice": "en-ZA-LeahNeural",
+      "may_speak_target_language": false
+    },
+    "dialogue": [
+      {"name": "Thando", "voice": "zu-ZA-ThandoNeural"},
+      {"name": "Themba", "voice": "zu-ZA-ThembaNeural"}
+    ]
+  },
   "audio": {
     "kind": "mp3",
     "manifest": "/api/ubuntu/azure/lesson1/sample/synced-dialogue",
     "media": "/api/ubuntu/azure/lesson1/sample/native-only.mp3",
     "voices": ["zu-ZA-ThandoNeural", "zu-ZA-ThembaNeural"],
-    "instructor_audio_in_sample": false
+    "source_locked_cues": "backend/app/data/lesson01_approved_139.json",
+    "timing": "cue start and end seconds from the verified manifest only"
+  },
+  "instructor_audio": {
+    "status": "not_attached",
+    "voice": "en-ZA-LeahNeural",
+    "language": "en",
+    "contains_target_language": false,
+    "media": null,
+    "script_status": "proposed_not_source_locked",
+    "proposed_audition_script": "Welcome. I'm Mrs Ubuntu, and I'll guide you as you learn. Today you'll hear two neighbours greeting one another. First, listen. Notice how the greeting changes when one person speaks to a group. After that, it's your turn. Ready? Let's begin.",
+    "audition_record": "factory/isiZulu-beginner-I/MRS_UBUNTU_VOICE_CASTING_SHORTLIST_2026-11-19.md",
+    "replacement_policy": "Keep en-ZA-LeahNeural until a separate owner approval names another voice. Do not synthesize this script into the lesson."
+  },
+  "learning_objectives": [
+    "Hear the greeting models in the verified recording.",
+    "Tell a one-person greeting from a group greeting.",
+    "Reuse only lines that appear in the approved cue list."
+  ],
+  "activities": "Authored in backend/app/lesson1_learning.py. Answers are the approved phrases, not new lines.",
+  "completion": {
+    "unit": "stage",
+    "criterion": "Every activity in the stage has a correct response or an honest self-check.",
+    "persistence": "sessionStorage key ubuntu-lesson1-progress on this device",
+    "provider_progress": "not connected to Whop lesson progress"
   },
   "access": {
     "catalog": "/api/ubuntu/azure/lesson1/classroom/access",
     "stage": "/api/ubuntu/azure/lesson1/classroom/stages/{stage_id}",
     "membership_header": "X-Ubuntu-Membership-Id",
-    "free_stages": ["hear"]
+    "free_stages": ["hear"],
+    "entitlement": "Whop membership status active, completed, or trialing on prod_EBSCxcpCQvcgI and plan_KhrZ8JGb2YWRt"
+  },
+  "lessons": {
+    "01": "open",
+    "02-10": "not_authored"
   },
   "rules": [
     "Dialogue cards render only the verified MP3 manifest.",
     "Activity strings are copied from the approved cue list.",
     "Paid stage bodies are omitted until Whop confirms this product and plan.",
     "self_check must not claim automatic pronunciation scoring.",
-    "Lessons 2-10 stay not_authored until their own manifests exist."
+    "Lessons 2-10 stay not_authored until their own manifests exist.",
+    "Do not attach an instructor recording until the audition is approved and the file is stored like the private lesson MP3."
   ]
 }

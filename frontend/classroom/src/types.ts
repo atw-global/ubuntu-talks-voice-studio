@@ -64,7 +64,15 @@ export type Access = {
   product_id: string
   plan_id: string
   audio_kind: 'mp3'
-  instructor_audio: boolean
+  instructor_audio: {
+    status: 'not_attached'
+    voice: 'en-ZA-LeahNeural'
+    language: 'en'
+    contains_target_language: false
+    media: null
+    script_status: 'proposed_not_source_locked'
+    audition: string
+  }
   lessons: LessonInfo[]
   stages: StageInfo[]
 }

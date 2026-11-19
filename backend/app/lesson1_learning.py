@@ -6,6 +6,8 @@ Paid stage bodies stay on the server until a Whop membership is verified.
 """
 from __future__ import annotations
 
+import re
+
 COURSE_ID = "cors_EYwVx1BwLtuXB"
 LESSON_ID = "lesn_p61ZUtWXJkEie"
 PRODUCT_ID = "prod_EBSCxcpCQvcgI"
@@ -290,7 +292,15 @@ def access_catalog() -> dict:
         "checkout_url": CHECKOUT_URL,
         "commercial_release": False,
         "audio_kind": "mp3",
-        "instructor_audio": False,
+        "instructor_audio": {
+            "status": "not_attached",
+            "voice": "en-ZA-LeahNeural",
+            "language": "en",
+            "contains_target_language": False,
+            "media": None,
+            "script_status": "proposed_not_source_locked",
+            "audition": "factory/isiZulu-beginner-I/MRS_UBUNTU_VOICE_CASTING_SHORTLIST_2026-11-19.md",
+        },
         "lessons": [dict(item) for item in LESSONS],
         "stages": [
             {
@@ -327,6 +337,11 @@ def resolve_stage(stage_id: str, enrolled: bool) -> tuple[int, dict]:
         "activities": stage["activities"],
         "pronunciation_graded": False,
     }
+
+
+def membership_header_accepted(value: str) -> bool:
+    """A membership id is only a lookup key. It never grants access by itself."""
+    return bool(re.fullmatch(r"mem_[A-Za-z0-9]+", (value or "").strip()))
 
 
 def membership_record_grants(record: dict) -> bool:

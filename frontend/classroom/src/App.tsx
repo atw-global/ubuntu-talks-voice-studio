@@ -119,6 +119,7 @@ export function App() {
               <h2 id="mrs-ubuntu">Welcome. I&apos;m Mrs Ubuntu, and I&apos;ll be guiding you through today&apos;s lesson.</h2>
               <p>You&apos;ll hear Thando and Themba model each greeting. Listen carefully to how the greeting changes when speaking to one person or a group. First, listen. Then, it&apos;s your turn.</p>
               <p className="guide-note">This introduction is written guidance. Recorded isiZulu in this lesson is spoken by Thando and Themba.</p>
+              <p className="guide-note">Instructor recording: {access?.instructor_audio.status === 'not_attached' ? 'not attached' : 'unavailable'}. Approved voice remains en-ZA-LeahNeural, and she is not assigned spoken isiZulu.</p>
               <button type="button" className="text-button" onClick={() => setTipOpen(true)}>About these greetings</button>
             </div>
           </section>
