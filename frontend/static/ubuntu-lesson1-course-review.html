@@ -52,9 +52,9 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 <div class="lesson-card" id="preview"><div class="lesson-top"><span>LESSON 01 · HEAR</span><span>01 / 10</span></div><div class="lesson-body">
 <span class="eyebrow">Step inside the lesson</span><h2>Follow the conversation</h2>
 <p class="muted">Hear Thando and Themba exchange greetings. The phrase cards follow the audio and can be tapped to replay.</p>
-<div class="audio-panel"><div class="player-main"><button id="play" class="play-button" aria-label="Play Lesson 1 preview" type="button">▶</button><div class="player-info"><strong>Greetings &amp; Respect</strong><div id="time" class="time">0:00 / 1:25</div></div></div>
+<div class="audio-panel"><div class="player-main"><button id="play" class="play-button" aria-label="Play Lesson 1 preview" type="button">▶</button><div class="player-info"><strong>Greetings &amp; Respect</strong><div id="time" class="time">Preparing sample…</div></div></div>
 <input id="seek" class="track" type="range" min="0" max="85.08" step=".1" value="0" aria-label="Seek sample audio">
-<audio id="audio" preload="metadata" src="/api/ubuntu/azure/lesson1/sample/archive/private-preview.mp3"></audio></div>
+<audio id="audio" preload="metadata" ></audio></div>
 <p id="status" class="status" role="status">Private F0 reference sample for review only.</p>
 <div class="dialogue-head"><strong>Follow the conversation</strong><span>Captions move with the audio</span></div><div id="transcript" class="dialogue-track" role="list" tabindex="0" aria-label="Horizontal synchronized dialogue"><span class="muted">Loading the source-locked dialogue…</span></div><p id="transcriptNote" class="mini-instructions">Swipe between phrases. Tap a line to replay.</p>
 <button id="heroPlay" class="btn primary" type="button" style="margin-top:14px">▶ Hear the Lesson 1 sample</button>
@@ -68,7 +68,7 @@ footer{border-top:1px solid var(--line);padding:25px 22px;color:var(--muted);fon
 (()=>{'use strict';
 const $=id=>document.getElementById(id);
 const menu=$('menuToggle'),nav=$('site-nav'),audio=$('audio'),play=$('play'),hero=$('heroPlay'),seek=$('seek'),time=$('time'),status=$('status'),track=$('transcript'),note=$('transcriptNote');
-const DURATION=85.08;
+let DURATION=85.08;
 let cues=[],cards=[],busy=false,lastActive=-1;
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close menu':'Open menu');menu.textContent=open?'✕':'☰'});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.textContent='☰'}));
@@ -113,11 +113,13 @@ async function load(){
    const r=await fetch('/api/ubuntu/azure/lesson1/sample/synced-dialogue',{cache:'no-store',credentials:'same-origin'});
    if(!r.ok)throw Error('HTTP '+r.status);
    const data=await r.json();
-   if(!Array.isArray(data.cues)||data.cues.length!==25||data.source_sha256!=='d8a87dde1a3e92c3e6727e8dab2106eac1739a02e34597a1f6da6cb73640c7e0')throw Error('Timing manifest mismatch');
-   cues=data.cues;break;
+   if(!Array.isArray(data.cues)||data.cues.length<14||data.version!=='native-greeting-lesson01-v1'||data.instructor_english_audio!==false||data.commercial_release!==false)throw Error('Native-only timing manifest mismatch');
+   cues=data.cues;DURATION=Number(data.duration_seconds);seek.max=String(DURATION);
+   audio.src='/api/ubuntu/azure/lesson1/sample/native-only.mp3';
+   audio.load();updatePlayer();break;
   }catch(e){error=e;if(attempt<3)await new Promise(resolve=>setTimeout(resolve,(attempt+1)*1900))}
  }
- if(!cues.length){note.textContent='Timed captions are unavailable. The original audio player remains ready to use.';track.textContent='Transcript loading failed; try refreshing the page.';return}
+ if(!cues.length){note.textContent='The native-only sample is still preparing. Refresh the page to retry.';track.textContent='Preview temporarily unavailable.';status.textContent='Native-only sample is preparing; audio has not been released.';play.disabled=true;hero.disabled=true;return}
  track.replaceChildren();
  cards=cues.map((c,i)=>{
   const b=document.createElement('button');b.type='button';b.className='dialogue-item';b.setAttribute('role','listitem');b.setAttribute('aria-label',c.speaker+': '+c.text);
@@ -131,7 +133,7 @@ async function load(){
  note.textContent='The highlighted phrase follows the audio automatically. Swipe horizontally or choose any line to replay it.';
  follow(0);
 }
-updatePlayer();load();
+play.disabled=true;hero.disabled=true;load().then(()=>{if(cues.length){play.disabled=false;hero.disabled=false;updatePlayer()}});
 })();
 </script>
 <script>
