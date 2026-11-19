@@ -1,5 +1,6 @@
-import React, {useEffect, useRef, useState} from "https://esm.sh/react@18.3.1";
-import {createRoot} from "https://esm.sh/react-dom@18.3.1/client?external=react";
+const React=window.React;
+const {useEffect,useRef,useState}=React;
+const {createRoot}=window.ReactDOM;
 const h=React.createElement;
 const API="/api/ubuntu/azure/lesson1/sample";
 const IMG="https://cdn.shopify.com/s/files/1/0712/9500/8877/files/ubuntu-talks-everyday-isizulu-beginner-i-hd.png?v=1795026974";
