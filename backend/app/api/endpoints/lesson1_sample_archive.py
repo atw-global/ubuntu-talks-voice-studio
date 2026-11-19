@@ -124,7 +124,7 @@ def play_private_archived_sample(request: Request):
     }
     range_header = request.headers.get("range", "")
     if range_header:
-        match = re.fullmatch(r"bytes=(\\d*)-(\\d*)", range_header.strip())
+        match = re.fullmatch(r"bytes=(\d*)-(\d*)", range_header.strip())
         if not match or not (match.group(1) or match.group(2)):
             return Response(status_code=416, headers={**headers, "Content-Range": f"bytes */{EXPECTED_BYTES}"})
         first, last = match.groups()
