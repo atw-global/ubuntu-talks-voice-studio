@@ -12,7 +12,7 @@ import logging
 import os
 
 from botocore.exceptions import BotoCoreError, ClientError
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 
 from app.api.endpoints.lesson1_archive import BUCKET, _r2_client
 from app.api.endpoints.lesson1_sample import _assemble, _read_verified
@@ -93,7 +93,7 @@ async def upload_sample():
 
 
 @router.get("/private-preview.mp3")
-def play_private_archived_sample():
+def play_private_archived_sample(request: Request):
     """Play immutable F0 reference in the already Basic-auth + gateway-locked Studio.
 
     Unlike qa-preview.mp3, no database clip lookup or ffmpeg rebuild happens
@@ -112,14 +112,33 @@ def play_private_archived_sample():
     except (ClientError, BotoCoreError, ValueError) as exc:
         log.error("Private preview read failed type=%s", type(exc).__name__)
         raise HTTPException(502, detail="Private reference sample not available") from exc
-    return Response(
-        content=body, media_type="audio/mpeg",
-        headers={
-            "Cache-Control": "private, no-store, max-age=0",
-            "Content-Disposition": 'inline; filename="UbuntuTalks_Lesson1_InternalReview.mp3"',
-            "Accept-Ranges": "none",
-            "X-Ubuntu-Preview-Reference": "F0-private-QA-only",
-            "X-Ubuntu-Preview-Seconds": "85.08",
-            "X-Robots-Tag": "noindex, nofollow",
-        },
-    )
+    from fastapi.responses import Response
+    import re
+    headers = {
+        "Cache-Control": "private, no-store, max-age=0",
+        "Content-Disposition": 'inline; filename="UbuntuTalks_Lesson1_InternalReview.mp3"',
+        "Accept-Ranges": "bytes",
+        "X-Ubuntu-Preview-Reference": "F0-private-QA-only",
+        "X-Ubuntu-Preview-Seconds": "85.08",
+        "X-Robots-Tag": "noindex, nofollow",
+    }
+    range_header = request.headers.get("range", "")
+    if range_header:
+        match = re.fullmatch(r"bytes=(\\d*)-(\\d*)", range_header.strip())
+        if not match or not (match.group(1) or match.group(2)):
+            return Response(status_code=416, headers={**headers, "Content-Range": f"bytes */{EXPECTED_BYTES}"})
+        first, last = match.groups()
+        if first:
+            start = int(first)
+            stop = int(last) if last else EXPECTED_BYTES - 1
+        else:
+            suffix = int(last)
+            if not suffix:
+                return Response(status_code=416, headers={**headers, "Content-Range": f"bytes */{EXPECTED_BYTES}"})
+            start, stop = max(0, EXPECTED_BYTES - suffix), EXPECTED_BYTES - 1
+        stop = min(stop, EXPECTED_BYTES - 1)
+        if start >= EXPECTED_BYTES or start > stop:
+            return Response(status_code=416, headers={**headers, "Content-Range": f"bytes */{EXPECTED_BYTES}"})
+        return Response(content=body[start:stop+1], media_type="audio/mpeg", status_code=206,
+                        headers={**headers, "Content-Range": f"bytes {start}-{stop}/{EXPECTED_BYTES}"})
+    return Response(content=body, media_type="audio/mpeg", headers=headers)
