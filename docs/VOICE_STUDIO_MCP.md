@@ -2,7 +2,7 @@
 
 Versioned Streamable HTTP endpoint on the existing API service `ubuntu-talks-voice-studio-api` (`srv-dbttr1psrm7s73e17im0`). No new recording service, database, or course is created.
 
-This endpoint is not operational on Render until this commit is deployed and a real authenticated request against that deployment succeeds. The check on 19 November 2026 received HTTP 403 from `StudioGateway` at the URL below, which is the response for a route the running process does not exempt.
+The route is deployed. An unauthenticated `POST` returns HTTP 401 with `WWW-Authenticate`. ChatGPT custom connectors can use OAuth only, so this service also publishes OAuth 2.1 discovery on the same origin. A connector is connected only after the owner approves it and `studio_health` succeeds with the issued token.
 
 ## Endpoint
 
@@ -26,7 +26,44 @@ Set the token values on the API service in Render. Do not put them in GitHub, in
 | `UBUNTU_MCP_READ_TOKENS` | one `read`, `verify` credential per comma-separated token | Remove a token from the list to revoke it. |
 | `UBUNTU_MCP_ADMIN_TOKEN` | all scopes, including `admin` | Change the value to revoke the previous admin hash. |
 
-A browser `Origin` is rejected unless it is listed in `UBUNTU_MCP_ALLOWED_ORIGINS`. Machine clients omit `Origin`.
+A browser `Origin` is rejected unless it is `https://chatgpt.com`, `https://chat.openai.com`, the API origin, or listed in `UBUNTU_MCP_ALLOWED_ORIGINS`. Machine clients omit `Origin`.
+
+## ChatGPT OAuth
+
+ChatGPT’s custom MCP form offers OAuth or no authentication. Use OAuth. The connector URL is the MCP endpoint above. Do not select “No authentication”.
+
+The API origin is the authorization server. These routes are public and do not accept the gateway token or the bootstrap token:
+
+| URL | Purpose |
+| --- | --- |
+| `/.well-known/oauth-protected-resource/api/ubuntu/mcp/v1` | Protected-resource metadata. The 401 `resource_metadata` parameter points here. |
+| `/.well-known/oauth-authorization-server` | Issuer, authorization, token, registration, and revocation endpoints. PKCE `S256` only. |
+| `POST /oauth/register` | Dynamic client registration for an allowlisted redirect. The issued client is a public PKCE client even if the request names `private_key_jwt`. |
+| `GET` and `POST /oauth/authorize` | Owner consent. No code is issued unless the owner password matches. |
+| `POST /oauth/token` | Authorization code or refresh token, public client (`none`). |
+| `POST /oauth/revoke` | Revoke an access or refresh token. The response is empty. |
+
+Allowed redirects are `https://chatgpt.com/connector_platform_oauth_redirect` and `https://chatgpt.com/connector/oauth/{callback_id}`. A client metadata document is accepted only at `https://chatgpt.com/oauth/client.json` or `https://chatgpt.com/oauth/{callback_id}/client.json`. The server fetches that HTTPS URL itself, refuses redirects, and checks `client_id` and `redirect_uris`.
+
+Every issued token has scopes `read` and `verify`, including when the request asks for more. Access tokens expire after one hour. Refresh tokens expire after 30 days and are replaced on use; the previous refresh token stops working. Sessions still expire after 12 hours. Authorization, token, and revocation events are written to `ubuntu_mcp_audit` without the token or the owner password.
+
+Set these names on `ubuntu-talks-voice-studio-api` (`srv-dbttr1psrm7s73e17im0`) only. Do not put the values in GitHub, the frontend service, or chat.
+
+| Environment variable | Required | Effect |
+| --- | --- | --- |
+| `UBUNTU_MCP_OWNER_PASSWORD` | yes, before a client can connect | Consent password. If it is unset, authorization fails closed. Use a new value, different from the gateway token and the bootstrap token. |
+| `UBUNTU_MCP_OAUTH_REVOKED_BEFORE` | no | ISO-8601 timestamp. Access and refresh tokens issued at or before that time are rejected. Set it to the current UTC time to revoke every OAuth token. |
+| `UBUNTU_MCP_OAUTH_REDIRECTS` | no | Extra exact redirect URIs, comma-separated. Leave unset for ChatGPT. |
+| `UBUNTU_MCP_PUBLIC_ORIGIN` | no | Defaults to `https://ubuntu-talks-voice-studio-api.onrender.com`. Set it only if the public API origin changes. |
+
+Owner steps after this commit is deployed:
+
+1. On the API service, set `UBUNTU_MCP_OWNER_PASSWORD`. Save and let the service restart. Do not set `UBUNTU_MCP_RECORDING_ENABLED`, `UBUNTU_MCP_REPLACE_ENABLED`, or `UBUNTU_MCP_WHOP_STAGE_ENABLED`.
+2. In ChatGPT, add a custom connector with the MCP URL and OAuth authentication.
+3. When the consent page opens, confirm the client and the `chatgpt.com` redirect, then enter the owner password. Approve only a page you opened yourself.
+4. Ask the connector to call `studio_health`. The result `ok: true` is the connection check. A token that asks for `publish` is denied.
+
+Changing `UBUNTU_MCP_OWNER_PASSWORD` does not revoke tokens already issued. To revoke them, call `POST /oauth/revoke` with the token, or set `UBUNTU_MCP_OAUTH_REVOKED_BEFORE`.
 
 ## Authorization matrix
 
@@ -60,7 +97,7 @@ Cursor, or another Streamable HTTP client, connects to the endpoint above. The b
 }
 ```
 
-Give ChatGPT and Cursor different values in `UBUNTU_MCP_READ_TOKENS` so one can be revoked without the other. Do not reuse a browser login.
+Cursor can keep using a bearer token from `UBUNTU_MCP_BOOTSTRAP_TOKEN` or `UBUNTU_MCP_READ_TOKENS`. ChatGPT uses the OAuth section above instead of a pasted bearer token. Do not reuse a browser login.
 
 ## Voni
 

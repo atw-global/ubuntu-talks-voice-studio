@@ -52,5 +52,9 @@ The versioned endpoint is `POST /api/ubuntu/mcp/v1` on the existing API origin. 
 - `UBUNTU_MCP_BOOTSTRAP_TOKEN` — read and verify
 - `UBUNTU_MCP_READ_TOKENS` — additional read and verify credentials, comma-separated
 - `UBUNTU_MCP_ADMIN_TOKEN` — separate admin credential; publication remains gated
+- `UBUNTU_MCP_OWNER_PASSWORD` — consent password for OAuth clients; required before ChatGPT can receive a token
+- `UBUNTU_MCP_OAUTH_REVOKED_BEFORE` — optional ISO-8601 timestamp that rejects OAuth tokens issued at or before that time
+- `UBUNTU_MCP_OAUTH_REDIRECTS` — optional extra exact redirect URIs; leave unset for ChatGPT
+- `UBUNTU_MCP_PUBLIC_ORIGIN` — optional; defaults to the API origin
 
-Do not commit the values. The specification is `docs/VOICE_STUDIO_MCP.md`.
+Do not commit the values. The specification is `docs/VOICE_STUDIO_MCP.md`. Deploy the OAuth change to this same API service. Do not create a service.
