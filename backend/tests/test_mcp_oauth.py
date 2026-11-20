@@ -15,7 +15,7 @@ os.environ["UBUNTU_MCP_DATABASE_URL"] = "sqlite:///" + _database_path
 os.environ["UBUNTU_MCP_BOOTSTRAP_TOKEN"] = "test-read-credential"
 os.environ["UBUNTU_MCP_ADMIN_TOKEN"] = "test-admin-credential"
 os.environ["UBUNTU_MCP_PUBLIC_ORIGIN"] = "http://studio"
-os.environ["UBUNTU_MCP_OWNER_PASSWORD"] = "owner-approval-secret"
+os.environ["UBUNTU_MCP_OAUTH_OWNER_SECRET"] = "owner-approval-secret"
 os.environ.pop("UBUNTU_MCP_READ_TOKENS", None)
 os.environ.pop("UBUNTU_MCP_OAUTH_REVOKED_BEFORE", None)
 os.environ.pop("UBUNTU_R2_ACCESS_KEY_ID", None)
@@ -29,7 +29,7 @@ from app.mcp.oauth import fetch_cimd, tokens
 from app.mcp.protocol import handle_http
 from app.middleware.studio_gateway import StudioGateway
 
-OWNER = os.environ["UBUNTU_MCP_OWNER_PASSWORD"]
+OWNER = os.environ["UBUNTU_MCP_OAUTH_OWNER_SECRET"]
 BOOTSTRAP = os.environ["UBUNTU_MCP_BOOTSTRAP_TOKEN"]
 REDIRECT = "https://chatgpt.com/connector_platform_oauth_redirect"
 app = FastAPI()
@@ -154,10 +154,10 @@ def test_owner_must_approve_and_pkce_exchanges_for_studio_health():
     status, _headers, page = _asgi(gateway, "GET", "/oauth/authorize", b"", {}, query)
     assert status == 400 and b"code=" not in page
     query = query.replace("code_challenge_method=plain", "code_challenge_method=S256")
-    saved = os.environ.pop("UBUNTU_MCP_OWNER_PASSWORD")
+    saved = os.environ.pop("UBUNTU_MCP_OAUTH_OWNER_SECRET")
     status, _headers, page = _asgi(gateway, "GET", "/oauth/authorize", b"", {}, query)
     assert status == 400 and b"not configured" in page
-    os.environ["UBUNTU_MCP_OWNER_PASSWORD"] = saved
+    os.environ["UBUNTU_MCP_OAUTH_OWNER_SECRET"] = saved
     status, _headers, page = _asgi(gateway, "GET", "/oauth/authorize", b"", {}, query)
     assert status == 200 and b"Approve read access" in page and OWNER.encode() not in page
     fields = {
@@ -167,6 +167,14 @@ def test_owner_must_approve_and_pkce_exchanges_for_studio_health():
     }
     status, headers, page = _form("/oauth/authorize", fields)
     assert status == 401 and "location" not in headers and "code=" not in page
+    os.environ["UBUNTU_MCP_OWNER_PASSWORD"] = "legacy-password-not-used"
+    try:
+        stale = dict(fields)
+        stale["owner_password"] = "legacy-password-not-used"
+        status, headers, page = _form("/oauth/authorize", stale)
+        assert status == 401 and "location" not in headers and "legacy-password-not-used" not in page
+    finally:
+        os.environ.pop("UBUNTU_MCP_OWNER_PASSWORD", None)
     fields["owner_password"] = OWNER
     status, headers, _page = _form("/oauth/authorize", fields)
     assert status == 302

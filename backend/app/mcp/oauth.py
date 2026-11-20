@@ -1,7 +1,7 @@
 """OAuth 2.1 authorization for ChatGPT and other MCP clients.
 
 Authorization Code with S256 PKCE. A client is never approved silently:
-the owner must submit UBUNTU_MCP_OWNER_PASSWORD on the consent page.
+the owner must submit UBUNTU_MCP_OAUTH_OWNER_SECRET on the consent page.
 Issued tokens have only the read and verify scopes. The gateway token and
 the bootstrap token are not used here and are not returned.
 """
@@ -231,7 +231,7 @@ def submit_authorization(params: dict, remote: str) -> tuple[int, dict[str, str]
     prepared = _prepare_authorization(params)
     if prepared.get("error"):
         return 400, {"content-type": "text/html; charset=utf-8"}, _page(prepared["error"], None)
-    expected = os.environ.get("UBUNTU_MCP_OWNER_PASSWORD", "")
+    expected = os.environ.get("UBUNTU_MCP_OAUTH_OWNER_SECRET", "")
     supplied = params.get("owner_password") or ""
     if not expected or not isinstance(supplied, str) or not _equal(expected, supplied):
         _failures.setdefault(remote, []).append(datetime.now(timezone.utc))
@@ -378,7 +378,7 @@ def _prepare_authorization(params: dict) -> dict:
     allowed = client_redirects(client_id)
     if not allowed or redirect_uri not in allowed:
         return {"error": "This client is not approved for that redirect."}
-    if not os.environ.get("UBUNTU_MCP_OWNER_PASSWORD", ""):
+    if not os.environ.get("UBUNTU_MCP_OAUTH_OWNER_SECRET", ""):
         return {"error": "Owner approval is not configured on this service."}
     return {
         "client_id": client_id,
